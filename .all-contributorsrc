@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "DesignrKnight",
+      "name": "Abel Mathew",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/27865704?v=4",
+      "profile": "https://github.com/DesignrKnight",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "project-icecream",
+  "projectOwner": "dscnitrourkela",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
