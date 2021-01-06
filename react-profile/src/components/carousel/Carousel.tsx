@@ -32,7 +32,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
 
   return (
     <Container className={classes.root}>
-      <NukaCarousel wrapAround={true}>
+      <NukaCarousel wrapAround={true} dragging={false}>
         {data.map((frame, index) => (
           <Item
             key={index}

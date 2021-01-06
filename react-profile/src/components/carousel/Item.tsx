@@ -28,7 +28,7 @@ const Item: React.FC<Props> = (props) => {
         className={classes.cropperDiv}
         style={{ backgroundImage: `url(${frame})` }}
       >
-        {/* <img
+        <img
           src={'/frame.png'}
           alt='frame'
           style={{
@@ -39,7 +39,7 @@ const Item: React.FC<Props> = (props) => {
             top: 0,
             left: 0,
           }}
-        /> */}
+        />
         <Cropper
           image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
           crop={crop}
