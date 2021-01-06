@@ -27,7 +27,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "firebase:deploy": "cd .. && firebase deploy --only hosting",
+    "firebase:preview:deploy": "cd .. && firebase hosting:channel:deploy ui-build",
+    "deploy:preview": "yarn build && yarn firebase:preview:deploy",
+    "deploy:prod": "yarn build && yarn firebase:deploy"
   },
   "eslintConfig": {
     "extends": [
