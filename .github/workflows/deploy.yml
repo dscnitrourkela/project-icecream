@@ -3,10 +3,7 @@ name: Firebase Deployment
 on:
     push:
         branches:
-            - master
-    paths-ignore:
-        - docs
-        - planning
+            - development
 
 jobs:
     firebase-deploy:
