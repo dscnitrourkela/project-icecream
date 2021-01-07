@@ -8,7 +8,7 @@ import Cropper from 'react-easy-crop';
 import { Card } from '@material-ui/core';
 
 // Types
-import { Crop, Gradient } from '../../types';
+import { Crop, Gradient, FrameData } from '../../types';
 
 interface Props {
   uploadImage: null | File;
@@ -23,6 +23,7 @@ interface Props {
   onNextClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   bgcolor: Gradient;
   frame: string;
+  frameData: FrameData;
 }
 
 const Item: React.FC<Props> = (props) => {
@@ -37,6 +38,7 @@ const Item: React.FC<Props> = (props) => {
     bgcolor,
     onNextClick,
     onPreviousClick,
+    frameData,
   } = props;
 
   const classes = useStyles();
@@ -55,10 +57,14 @@ const Item: React.FC<Props> = (props) => {
       />
       <div
         className={classes.cropperDiv}
-        style={{ backgroundImage: `url(${frame})` }}
+        style={{
+          backgroundImage: `url(${frame})`,
+          width: frameData.renderDimensions.width,
+          height: frameData.renderDimensions.height,
+        }}
       >
         <img
-          src={'/frame.png'}
+          src={frame}
           alt='frame'
           style={{
             width: '100%',
@@ -84,6 +90,12 @@ const Item: React.FC<Props> = (props) => {
             containerClassName: `${classes.cropperContainer}`,
             mediaClassName: `${classes.cropperMedia}`,
             cropAreaClassName: `${classes.cropArea}`,
+          }}
+          style={{
+            containerStyle: {
+              top: frameData.renderDimensions.top,
+              left: frameData.renderDimensions.left,
+            },
           }}
         />
       </div>
@@ -119,8 +131,6 @@ const useStyles = makeStyles({
     zIndex: 0,
   },
   cropperDiv: {
-    height: 576 + 64,
-    width: 576 + 64,
     overflow: 'hidden',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -131,8 +141,6 @@ const useStyles = makeStyles({
     height: 512,
     overflow: 'hidden',
     position: 'absolute',
-    top: '64px !important',
-    left: '64px !important',
     zIndex: 100,
   },
   cropperMedia: {

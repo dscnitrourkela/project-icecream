@@ -8,9 +8,9 @@ import NukaCarousel from 'nuka-carousel';
 import Item from './Item';
 
 // Types
-import { Data, Crop } from '../../types';
+import { FrameData, Crop } from '../../types';
 interface Props {
-  data: Data[];
+  data: FrameData[];
   uploadImage: null | File;
   crop: Crop;
   zoom: number;
@@ -52,6 +52,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
             onNextClick={onNextClick}
             frame={frame.frame}
             bgcolor={data[index].background}
+            frameData={frame}
           />
         ))}
       </NukaCarousel>
