@@ -1,30 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+// Libraries
 import { makeStyles } from '@material-ui/core';
 import NukaCarousel from 'nuka-carousel';
 
+// Components
 import Item from './Item';
 
-declare type Crop = {
-  x: number;
-  y: number;
-};
-
-declare type frameBackground = {
-  type: string;
-  color1: string;
-  color2: string;
-};
-
-declare type Data = {
-  resolution: number;
-  width: number;
-  shape: string;
-  frame: string;
-  background: frameBackground;
-};
+// Types
+import { FrameData, Crop } from '../../types';
 interface Props {
-  data: Data[];
+  data: FrameData[];
   uploadImage: null | File;
   crop: Crop;
   zoom: number;
@@ -36,6 +22,10 @@ interface Props {
 const FrameCarousel: React.FC<Props> = (props) => {
   const classes = useStyles();
   const { data, uploadImage, crop, zoom, aspect, setCrop, setZoom } = props;
+  const [carouselSlide, setCarouselSlider] = useState<number>(0);
+
+  const onPreviousClick = () => setCarouselSlider(carouselSlide - 1);
+  const onNextClick = () => setCarouselSlider(carouselSlide + 1);
 
   return (
     <div className={classes.root}>
@@ -43,16 +33,11 @@ const FrameCarousel: React.FC<Props> = (props) => {
         wrapAround={true}
         dragging={false}
         disableEdgeSwiping={true}
-        heightMode="max"
-        defaultControlsConfig={{
-          prevButtonStyle: {position: 'absolute', left: '10%', padding: '1rem'},
-          nextButtonStyle: {position: 'absolute', right: '30%'},
-          nextButtonText: 'Next Frame',
-          prevButtonText: 'Prev Frame',
-          pagingDotsStyle: {
-            fill: 'yellow'
-          }
-        }}
+        transitionMode='scroll'
+        slideIndex={carouselSlide}
+        afterSlide={(slideIndex) => setCarouselSlider(slideIndex)}
+        renderCenterLeftControls={() => null}
+        renderCenterRightControls={() => null}
       >
         {data.map((frame, index) => (
           <Item
@@ -63,8 +48,11 @@ const FrameCarousel: React.FC<Props> = (props) => {
             aspect={aspect}
             setCrop={setCrop}
             setZoom={setZoom}
+            onPreviousClick={onPreviousClick}
+            onNextClick={onNextClick}
             frame={frame.frame}
             bgcolor={data[index].background}
+            frameData={frame}
           />
         ))}
       </NukaCarousel>
@@ -81,6 +69,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor: 'green'
+    backgroundColor: 'green',
   },
 }));
