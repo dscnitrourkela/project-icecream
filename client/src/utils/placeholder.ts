@@ -35,8 +35,8 @@ export const data = [
     renderDimensions: determineRenderDimensions(2250, 2250, 245, 245, 245, 245),
     background: {
       type: 'linear',
-      color1: '#F60534',
-      color2: '#FED900',
+      color1: 'rgba(246, 5, 52, 1)',
+      color2: 'rgba(254, 217, 0, 1)',
     },
   },
 ];
