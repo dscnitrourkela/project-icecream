@@ -6,10 +6,11 @@ export const determineRenderDimensions = (
   top: number,
   right: number,
   bottom: number,
-  left: number
+  left: number,
+  frameWidth: number = 512
 ): FrameDimensions => {
-  const cropperDivWidth = (width * 512) / (width - left - right);
-  const cropperDivHeight = (height * 512) / (height - top - bottom);
+  const cropperDivWidth = (width * frameWidth) / (width - left - right);
+  const cropperDivHeight = (height * frameWidth) / (height - top - bottom);
 
   const cropContainerTop = (cropperDivHeight * top) / height;
   const cropContainerBottom = (cropperDivHeight * bottom) / height;

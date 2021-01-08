@@ -10,6 +10,10 @@ import { Card } from '@material-ui/core';
 // Types
 import { Crop, FrameData } from '../../utils/types';
 
+// Helpers + Hooks
+import { determineRenderDimensions } from '../../utils/helpers';
+import useWindow from '../../hooks/useWindow';
+
 interface Props {
   uploadImage: null | File;
   crop: Crop;
@@ -38,8 +42,19 @@ const Item: React.FC<Props> = (props) => {
     onPreviousClick,
     frameData,
   } = props;
-
+  const windowSize = useWindow();
   const classes = useStyles();
+
+  const { width, height, top, right, bottom, left } = frameData.dimensions;
+  const mobileDimensions = determineRenderDimensions(
+    width,
+    height,
+    top,
+    right,
+    bottom,
+    left,
+    windowSize.width < 600 ? windowSize.width - 200 : windowSize.width / 2
+  );
   const onCrop = () => {};
 
   return (
@@ -53,15 +68,25 @@ const Item: React.FC<Props> = (props) => {
         <i
           style={{ color: '#fff', marginRight: 40 }}
           onClick={onPreviousClick}
-          className='fas fa-chevron-left fa-3x'
+          className={`fas fa-chevron-left fa-${
+            windowSize.width < 600 ? '1' : '3'
+          }x`}
         />
         <div
           className={classes.cropperDiv}
-          style={{
-            backgroundImage: `url(${frame})`,
-            width: frameData.renderDimensions.width,
-            height: frameData.renderDimensions.height,
-          }}
+          style={
+            windowSize.width <= 1230
+              ? {
+                  backgroundImage: `url(${frame})`,
+                  width: mobileDimensions.width,
+                  height: mobileDimensions.height,
+                }
+              : {
+                  backgroundImage: `url(${frame})`,
+                  width: frameData.renderDimensions.width,
+                  height: frameData.renderDimensions.height,
+                }
+          }
         >
           <img src={frame} alt='frame' className={classes.frameImage} />
           <Cropper
@@ -81,17 +106,35 @@ const Item: React.FC<Props> = (props) => {
               cropAreaClassName: `${classes.cropArea}`,
             }}
             style={{
-              containerStyle: {
-                top: frameData.renderDimensions.top,
-                left: frameData.renderDimensions.left,
-              },
+              containerStyle:
+                windowSize.width <= 1230
+                  ? {
+                      width:
+                        windowSize.width < 600
+                          ? windowSize.width - 200
+                          : windowSize.width / 2,
+                      height:
+                        windowSize.width < 600
+                          ? windowSize.width - 200
+                          : windowSize.width / 2,
+                      top: mobileDimensions.top,
+                      left: mobileDimensions.left,
+                    }
+                  : {
+                      width: 512,
+                      height: 512,
+                      top: frameData.renderDimensions.top,
+                      left: frameData.renderDimensions.left,
+                    },
             }}
           />
         </div>
         <i
           style={{ color: '#fff', marginLeft: 40 }}
           onClick={onNextClick}
-          className='fas fa-chevron-right fa-3x'
+          className={`fas fa-chevron-right fa-${
+            windowSize.width < 600 ? 1 : 3
+          }x`}
         />
       </div>
     </Card>
@@ -100,12 +143,17 @@ const Item: React.FC<Props> = (props) => {
 
 export default Item;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     height: window.innerHeight,
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      paddingTop: 30,
+    },
   },
   cropperDiv: {
     overflow: 'hidden',
@@ -114,8 +162,6 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   cropperContainer: {
-    width: 512,
-    height: 512,
     overflow: 'hidden',
     position: 'absolute',
     zIndex: 9,
@@ -141,5 +187,10 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   },
-});
+}));

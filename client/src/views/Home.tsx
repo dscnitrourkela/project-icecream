@@ -93,7 +93,7 @@ const App: React.FC = () => {
 
 export default App;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   features: {
     position: 'absolute',
     right: '15%',
@@ -106,6 +106,11 @@ const useStyles = makeStyles({
     color: '#fff',
     display: 'flex',
     flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+      right: '10%',
+      left: '10%',
+      top: '70%',
+    },
   },
   frame: {
     width: '100%',
@@ -121,4 +126,4 @@ const useStyles = makeStyles({
     height: 'fit-content',
     margin: 0,
   },
-});
+}));

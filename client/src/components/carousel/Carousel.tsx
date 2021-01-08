@@ -32,6 +32,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
       <NukaCarousel
         wrapAround={true}
         dragging={false}
+        swiping={false}
         disableEdgeSwiping={true}
         transitionMode='scroll'
         slideIndex={carouselSlide}
