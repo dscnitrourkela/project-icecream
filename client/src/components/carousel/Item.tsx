@@ -42,6 +42,7 @@ const Item: React.FC<Props> = (props) => {
   } = props;
 
   const classes = useStyles();
+  const onCrop = () => {};
 
   return (
     <Card
@@ -84,7 +85,7 @@ const Item: React.FC<Props> = (props) => {
           restrictPosition={false}
           cropSize={{ width: 512, height: 512 }}
           onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
-          onCropComplete={() => console.log(crop)}
+          onCropComplete={onCrop}
           onZoomChange={(zoom: number) => setZoom(zoom)}
           classes={{
             containerClassName: `${classes.cropperContainer}`,
