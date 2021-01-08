@@ -11,12 +11,15 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
+// Helpers
+import { uploadImage } from '../utils/uploadFrame';
+
 // Components
 import CustomTextField from '../components/shared/TextField';
 
 function Upload() {
   const classes = useStyles();
-  const [uploadFrame, setUploadFrame] = useState<null | File>(null);
+  const [uploadFrame, setUploadFrame] = useState<string | File>('');
 
   const [frameName, setFrameName] = useState<string>('');
   const [frameWidth, setFrameWidth] = useState<number>(0);
@@ -36,6 +39,10 @@ function Upload() {
   const handleBackgroundTypeChange = (
     event: React.ChangeEvent<{ value: unknown }>
   ) => setBackgroundColorType(event.target.value as string);
+
+  const submitImageUpload = async () => {
+    const frameURL = await uploadImage(uploadFrame);
+  };
 
   return (
     <Container className={classes.root}>
@@ -164,6 +171,8 @@ function Upload() {
                 setUploadFrame(picture[0]);
               }}
             />
+
+            <button onClick={submitImageUpload}>Upload Frame</button>
           </div>
         </Grid>
       </Grid>
