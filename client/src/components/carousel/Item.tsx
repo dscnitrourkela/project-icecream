@@ -8,7 +8,7 @@ import Cropper from 'react-easy-crop';
 import { Card } from '@material-ui/core';
 
 // Types
-import { Crop, Gradient, FrameData } from '../../utils/types';
+import { Crop, FrameData } from '../../utils/types';
 
 interface Props {
   uploadImage: null | File;
@@ -49,60 +49,51 @@ const Item: React.FC<Props> = (props) => {
         backgroundImage: `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`,
       }}
     >
-      <i
-        style={{ color: '#fff' }}
-        onClick={onPreviousClick}
-        className='fas fa-chevron-left'
-      />
-      <div
-        className={classes.cropperDiv}
-        style={{
-          backgroundImage: `url(${frame})`,
-          width: frameData.renderDimensions.width,
-          height: frameData.renderDimensions.height,
-        }}
-      >
-        <img
-          src={frame}
-          alt='frame'
-          style={{
-            width: '100%',
-            height: 'auto',
-            zIndex: 10,
-            position: 'absolute',
-            top: 0,
-            left: 0,
-          }}
+      <div className={classes.frameContainer}>
+        <i
+          style={{ color: '#fff', marginRight: 40 }}
+          onClick={onPreviousClick}
+          className='fas fa-chevron-left fa-3x'
         />
-        <Cropper
-          image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
-          crop={crop}
-          zoom={zoom}
-          aspect={aspect}
-          minZoom={1}
-          restrictPosition={false}
-          cropSize={{ width: 512, height: 512 }}
-          onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
-          onCropComplete={onCrop}
-          onZoomChange={(zoom: number) => setZoom(zoom)}
-          classes={{
-            containerClassName: `${classes.cropperContainer}`,
-            mediaClassName: `${classes.cropperMedia}`,
-            cropAreaClassName: `${classes.cropArea}`,
-          }}
+        <div
+          className={classes.cropperDiv}
           style={{
-            containerStyle: {
-              top: frameData.renderDimensions.top,
-              left: frameData.renderDimensions.left,
-            },
+            backgroundImage: `url(${frame})`,
+            width: frameData.renderDimensions.width,
+            height: frameData.renderDimensions.height,
           }}
+        >
+          <img src={frame} alt='frame' className={classes.frameImage} />
+          <Cropper
+            image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
+            crop={crop}
+            zoom={zoom}
+            aspect={aspect}
+            minZoom={1}
+            restrictPosition={false}
+            cropSize={{ width: 512, height: 512 }}
+            onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
+            onCropComplete={onCrop}
+            onZoomChange={(zoom: number) => setZoom(zoom)}
+            classes={{
+              containerClassName: `${classes.cropperContainer}`,
+              mediaClassName: `${classes.cropperMedia}`,
+              cropAreaClassName: `${classes.cropArea}`,
+            }}
+            style={{
+              containerStyle: {
+                top: frameData.renderDimensions.top,
+                left: frameData.renderDimensions.left,
+              },
+            }}
+          />
+        </div>
+        <i
+          style={{ color: '#fff', marginLeft: 40 }}
+          onClick={onNextClick}
+          className='fas fa-chevron-right fa-3x'
         />
       </div>
-      <i
-        style={{ color: '#fff' }}
-        onClick={onNextClick}
-        className='fas fa-chevron-right'
-      />
     </Card>
   );
 };
@@ -112,22 +103,9 @@ export default Item;
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: window.innerHeight,
-  },
-  image: {
-    width: 550,
-    height: 550,
-    zIndex: 10,
-  },
-  userImage: {
-    width: 600,
-    height: 'auto',
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    zIndex: 0,
   },
   cropperDiv: {
     overflow: 'hidden',
@@ -140,7 +118,7 @@ const useStyles = makeStyles({
     height: 512,
     overflow: 'hidden',
     position: 'absolute',
-    zIndex: 100,
+    zIndex: 9,
   },
   cropperMedia: {
     objectFit: 'cover',
@@ -148,5 +126,20 @@ const useStyles = makeStyles({
   },
   cropArea: {
     boxShadow: '0 0 0 0 !important',
+  },
+  frameImage: {
+    width: '100%',
+    height: 'auto',
+    zIndex: 10,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    pointerEvents: 'none',
+  },
+  frameContainer: {
+    width: '65%',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });

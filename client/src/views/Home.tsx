@@ -7,6 +7,7 @@ import {
   makeStyles,
   FormControlLabel,
   Switch,
+  Grid,
 } from '@material-ui/core';
 import ImageUploader from 'react-images-upload';
 import firebase from 'firebase/app';
@@ -110,7 +111,6 @@ const useStyles = makeStyles({
     width: '100%',
     height: window.innerHeight,
     zIndex: 0,
-    backgroundColor: 'blue',
   },
   upload: {
     width: 'auto',
