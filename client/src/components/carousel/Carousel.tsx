@@ -8,7 +8,7 @@ import NukaCarousel from 'nuka-carousel';
 import Item from './Item';
 
 // Types
-import { FrameData, Crop } from '../../types';
+import { FrameData, Crop } from '../../utils/types';
 interface Props {
   data: FrameData[];
   uploadImage: null | File;

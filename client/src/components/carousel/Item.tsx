@@ -8,7 +8,7 @@ import Cropper from 'react-easy-crop';
 import { Card } from '@material-ui/core';
 
 // Types
-import { Crop, Gradient, FrameData } from '../../types';
+import { Crop, Gradient, FrameData } from '../../utils/types';
 
 interface Props {
   uploadImage: null | File;

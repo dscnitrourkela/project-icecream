@@ -1,4 +1,4 @@
-import { FrameDimensions } from '../types';
+import { FrameDimensions } from './types';
 
 export const determineRenderDimensions = (
   width: number,

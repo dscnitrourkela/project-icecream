@@ -11,7 +11,7 @@ import {
 import ImageUploader from 'react-images-upload';
 
 // Components
-import FrameCarousel from './carousel/Carousel';
+import FrameCarousel from '../components/carousel/Carousel';
 
 // Assets
 import { data } from '../utils/placeholder';
