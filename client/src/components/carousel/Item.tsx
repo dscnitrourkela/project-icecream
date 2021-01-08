@@ -21,7 +21,6 @@ interface Props {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   onNextClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  bgcolor: Gradient;
   frame: string;
   frameData: FrameData;
 }
@@ -35,7 +34,6 @@ const Item: React.FC<Props> = (props) => {
     setCrop,
     setZoom,
     frame,
-    bgcolor,
     onNextClick,
     onPreviousClick,
     frameData,
@@ -48,7 +46,7 @@ const Item: React.FC<Props> = (props) => {
     <Card
       className={classes.root}
       style={{
-        backgroundImage: `${bgcolor.type}-gradient(to right, ${bgcolor.color1} , ${bgcolor.color2})`,
+        backgroundImage: `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`,
       }}
     >
       <i

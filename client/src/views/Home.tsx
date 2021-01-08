@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import {
@@ -9,12 +9,15 @@ import {
   Switch,
 } from '@material-ui/core';
 import ImageUploader from 'react-images-upload';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 // Components
 import FrameCarousel from '../components/carousel/Carousel';
 
 // Assets
-import { data } from '../utils/placeholder';
+// import { data } from '../utils/placeholder';
+import { FrameData } from '../utils/types';
 
 const App: React.FC = () => {
   const [uploadImage, setUploadImage] = useState<null | File>(null);
@@ -22,7 +25,26 @@ const App: React.FC = () => {
   const [zoom, setZoom] = useState<number>(1);
   const [aspect] = useState<number>(1 / 1);
 
+  const [data, setData] = useState<FrameData[] | null>(null);
+
   const classes = useStyles();
+
+  // let data: FrameData[] | null = null;
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection('frames')
+      .where('approved', '==', true)
+      .get()
+      .then((query: any) => {
+        let frames: any = [];
+
+        query.forEach((frame: any) => {
+          frames.push(frame.data());
+        });
+        setData(frames);
+      });
+  }, []);
 
   return (
     <div>
@@ -50,15 +72,19 @@ const App: React.FC = () => {
       </Box>
 
       <Box className={classes.frame}>
-        <FrameCarousel
-          uploadImage={uploadImage}
-          crop={crop}
-          zoom={zoom}
-          aspect={aspect}
-          setCrop={setCrop}
-          setZoom={setZoom}
-          data={data}
-        />
+        {data !== null ? (
+          <FrameCarousel
+            uploadImage={uploadImage}
+            crop={crop}
+            zoom={zoom}
+            aspect={aspect}
+            setCrop={setCrop}
+            setZoom={setZoom}
+            data={data}
+          />
+        ) : (
+          <h2>Loading...</h2>
+        )}
       </Box>
     </div>
   );

@@ -51,7 +51,6 @@ const FrameCarousel: React.FC<Props> = (props) => {
             onPreviousClick={onPreviousClick}
             onNextClick={onNextClick}
             frame={frame.frame}
-            bgcolor={data[index].background}
             frameData={frame}
           />
         ))}

@@ -10,9 +10,12 @@ import {
   Select,
   MenuItem,
 } from '@material-ui/core';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 // Helpers
 import { uploadImage } from '../utils/uploadFrame';
+import { determineRenderDimensions } from '../utils/helpers';
 
 // Components
 import CustomTextField from '../components/shared/TextField';
@@ -22,6 +25,7 @@ function Upload() {
   const [uploadFrame, setUploadFrame] = useState<string | File>('');
 
   const [frameName, setFrameName] = useState<string>('');
+  const [frameShape, setFrameShape] = useState<string>('square');
   const [frameWidth, setFrameWidth] = useState<number>(0);
   const [frameHeight, setFrameHeight] = useState<number>(0);
 
@@ -40,8 +44,44 @@ function Upload() {
     event: React.ChangeEvent<{ value: unknown }>
   ) => setBackgroundColorType(event.target.value as string);
 
+  const handleFrameShapeChange = (
+    event: React.ChangeEvent<{ value: unknown }>
+  ) => setFrameShape(event.target.value as string);
+
   const submitImageUpload = async () => {
     const frameURL = await uploadImage(uploadFrame);
+
+    firebase
+      .firestore()
+      .collection('frames')
+      .add({
+        name: frameName,
+        frame: frameURL,
+        shape: frameShape,
+        dimensions: {
+          width: frameWidth,
+          height: frameHeight,
+          top: frameTop,
+          right: frameRight,
+          bottom: frameBottom,
+          left: frameLeft,
+        },
+        renderDimensions: determineRenderDimensions(
+          frameWidth,
+          frameHeight,
+          frameTop,
+          frameRight,
+          frameBottom,
+          frameLeft
+        ),
+        backgroundColor: {
+          type: backgroundColorType,
+          color1,
+          color2,
+        },
+        approved: false,
+      })
+      .then(() => console.log('done'));
   };
 
   return (
@@ -126,11 +166,22 @@ function Upload() {
 
             <div style={{ marginTop: 40 }}>
               <Select
+                label='Frame Shape'
+                onChange={handleFrameShapeChange}
+                value={frameShape}
+                variant='outlined'
+                style={{ width: '100%' }}
+              >
+                <MenuItem value='square'>Square</MenuItem>
+                <MenuItem value='circle'>Circle</MenuItem>
+              </Select>
+
+              <Select
                 label='Background Color Type'
                 onChange={handleBackgroundTypeChange}
                 value={backgroundColorType}
                 variant='outlined'
-                style={{ width: '100%' }}
+                style={{ width: '100%', marginTop: 20 }}
               >
                 <MenuItem value='solid'>Solid</MenuItem>
                 <MenuItem value='linear'>Linear Gradient</MenuItem>
