@@ -11,6 +11,7 @@ interface Props {
   className?: string;
   placeholder?: string;
   required?: boolean;
+  [x: string]: any;
 }
 
 const CustomTextField: React.FC<Props> = (props) => {
@@ -20,13 +21,14 @@ const CustomTextField: React.FC<Props> = (props) => {
     label,
     className,
     placeholder,
-    required,
+    required = true,
     type,
+    rest,
   } = props;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'number') {
-      if (value > -1) setValue(parseInt(event.target.value, 10));
+      if (value >= 0) setValue(parseInt(event.target.value, 10));
     } else setValue(event.target.value);
   };
 
@@ -37,9 +39,10 @@ const CustomTextField: React.FC<Props> = (props) => {
       label={label}
       className={className}
       placeholder={placeholder}
-      required={required ? required : true}
-      variant='outlined'
+      required={required}
       type={type}
+      variant='outlined'
+      {...rest}
     />
   );
 };
