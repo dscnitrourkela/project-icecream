@@ -17,11 +17,25 @@ interface Props {
   aspect: number;
   setCrop: (param: Crop) => void;
   setZoom: (param: number) => void;
+  primaryText: string;
+  secondaryText: string;
+  position: string;
 }
 
 const FrameCarousel: React.FC<Props> = (props) => {
   const classes = useStyles();
-  const { data, uploadImage, crop, zoom, aspect, setCrop, setZoom } = props;
+  const {
+    data,
+    uploadImage,
+    crop,
+    zoom,
+    aspect,
+    setCrop,
+    setZoom,
+    primaryText,
+    secondaryText,
+    position,
+  } = props;
   const [carouselSlide, setCarouselSlider] = useState<number>(0);
 
   const onPreviousClick = () => setCarouselSlider(carouselSlide - 1);
@@ -53,6 +67,9 @@ const FrameCarousel: React.FC<Props> = (props) => {
             onNextClick={onNextClick}
             frame={frame.frame}
             frameData={frame}
+            primaryText={primaryText}
+            secondaryText={secondaryText}
+            position={position}
           />
         ))}
       </NukaCarousel>
@@ -67,7 +84,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
+    minHeight: '100%',
     width: '100%',
   },
 }));

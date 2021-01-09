@@ -27,6 +27,9 @@ interface Props {
   onNextClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   frame: string;
   frameData: FrameData;
+  primaryText: string;
+  secondaryText: string;
+  position: string;
 }
 
 const Item: React.FC<Props> = (props) => {
@@ -41,6 +44,9 @@ const Item: React.FC<Props> = (props) => {
     onNextClick,
     onPreviousClick,
     frameData,
+    primaryText,
+    secondaryText,
+    position,
   } = props;
   const windowSize = useWindow();
   const classes = useStyles();
@@ -56,6 +62,9 @@ const Item: React.FC<Props> = (props) => {
     windowSize.width < 600 ? windowSize.width - 200 : windowSize.width / 2
   );
   const onCrop = () => {};
+
+  const vertical = position.split('-')[0];
+  const horizontal = position.split('-')[1];
 
   return (
     <Card
@@ -88,6 +97,44 @@ const Item: React.FC<Props> = (props) => {
                 }
           }
         >
+          <div
+            style={{
+              minWidth: 200,
+              height: 80,
+              position: 'absolute',
+              // @ts-ignore
+              [vertical]: frameData.renderDimensions[vertical],
+              // @ts-ignore
+              [horizontal]: frameData.renderDimensions[horizontal],
+              // backgroundImage: `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`,
+              backgroundColor: '#fff',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              zIndex: 10,
+            }}
+          >
+            <h2
+              style={{
+                // color: '#fff',
+                margin: 10,
+                fontFamily: "'Bungee', 'Arial'",
+              }}
+            >
+              {primaryText}
+            </h2>
+            <h3
+              style={{
+                // color: '#fff',
+                margin: 10,
+                marginTop: 0,
+                fontFamily: "'Bungee', 'Arial'",
+              }}
+            >
+              {secondaryText}
+            </h3>
+          </div>
           <img src={frame} alt='frame' className={classes.frameImage} />
           <Cropper
             image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
@@ -148,7 +195,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: window.innerHeight,
+    minHeight: window.innerHeight,
+    height: 'auto',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
       alignItems: 'flex-start',
@@ -160,6 +208,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     position: 'relative',
+    minHeight: '100%',
   },
   cropperContainer: {
     overflow: 'hidden',
