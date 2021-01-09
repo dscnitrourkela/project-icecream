@@ -8,7 +8,7 @@ import NukaCarousel from 'nuka-carousel';
 import Item from './Item';
 
 // Types
-import { FrameData, Crop } from '../../types';
+import { FrameData, Crop } from '../../utils/types';
 interface Props {
   data: FrameData[];
   uploadImage: null | File;
@@ -32,6 +32,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
       <NukaCarousel
         wrapAround={true}
         dragging={false}
+        swiping={false}
         disableEdgeSwiping={true}
         transitionMode='scroll'
         slideIndex={carouselSlide}
@@ -51,7 +52,6 @@ const FrameCarousel: React.FC<Props> = (props) => {
             onPreviousClick={onPreviousClick}
             onNextClick={onNextClick}
             frame={frame.frame}
-            bgcolor={data[index].background}
             frameData={frame}
           />
         ))}
@@ -69,6 +69,5 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor: 'green',
   },
 }));

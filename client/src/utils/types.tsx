@@ -30,5 +30,6 @@ export declare type FrameData = {
   shape: string;
   dimensions: FrameDimensions;
   renderDimensions: FrameDimensions;
-  background: FrameBackground;
+  backgroundColor: FrameBackground;
+  approved: boolean;
 };
