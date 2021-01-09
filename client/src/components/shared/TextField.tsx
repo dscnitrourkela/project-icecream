@@ -28,7 +28,7 @@ const CustomTextField: React.FC<Props> = (props) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'number') {
-      if (value >= 0) setValue(parseInt(event.target.value, 10));
+      setValue(parseInt(event.target.value, 10));
     } else setValue(event.target.value);
   };
 

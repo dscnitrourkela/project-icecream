@@ -9,6 +9,8 @@ import {
   Typography,
   Select,
   MenuItem,
+  Checkbox,
+  FormControlLabel,
 } from '@material-ui/core';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -35,6 +37,7 @@ function Upload() {
   const [frameLeft, setFrameLeft] = useState<number>(0);
   const [frameRight, setFrameRight] = useState<number>(0);
 
+  const [showTextBox, setShowTextBox] = useState<boolean>(false);
   const [color1, setColor1] = useState<string>('#000000');
   const [color2, setColor2] = useState<string>('#000000');
   const [backgroundColorType, setBackgroundColorType] = useState<string>(
@@ -48,6 +51,10 @@ function Upload() {
   const handleFrameShapeChange = (
     event: React.ChangeEvent<{ value: unknown }>
   ) => setFrameShape(event.target.value as string);
+
+  const handleShowTextBox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShowTextBox(event.target.checked);
+  };
 
   const submitImageUpload = async () => {
     if (
@@ -93,6 +100,7 @@ function Upload() {
             color2: backgroundColorType === 'solid' ? color1 : color2,
           },
           approved: false,
+          showTextBox,
         })
         .then(() => console.log('done'));
     }
@@ -239,6 +247,18 @@ function Upload() {
                   />
                 )}
               </div>
+
+              <FormControlLabel
+                style={{ marginTop: 10 }}
+                control={
+                  <Checkbox
+                    checked={showTextBox}
+                    onChange={handleShowTextBox}
+                    inputProps={{ 'aria-label': 'Show Custom Text Box' }}
+                  />
+                }
+                label='Show Custom Text Box on Frame'
+              />
             </div>
 
             <button

@@ -44,4 +44,5 @@ export declare type FrameData = {
   renderDimensions: FrameDimensions;
   backgroundColor: FrameBackground;
   approved: boolean;
+  showTextBox: boolean;
 };
