@@ -22,6 +22,7 @@ import CustomTextField from '../components/shared/TextField';
 
 function Upload() {
   const classes = useStyles();
+
   const [uploadFrame, setUploadFrame] = useState<string | File>('');
 
   const [frameName, setFrameName] = useState<string>('');
@@ -34,8 +35,8 @@ function Upload() {
   const [frameLeft, setFrameLeft] = useState<number>(0);
   const [frameRight, setFrameRight] = useState<number>(0);
 
-  const [color1, setColor1] = useState<string>('');
-  const [color2, setColor2] = useState<string>('');
+  const [color1, setColor1] = useState<string>('#000000');
+  const [color2, setColor2] = useState<string>('#000000');
   const [backgroundColorType, setBackgroundColorType] = useState<string>(
     'solid'
   );
@@ -49,52 +50,84 @@ function Upload() {
   ) => setFrameShape(event.target.value as string);
 
   const submitImageUpload = async () => {
-    const frameURL = await uploadImage(uploadFrame);
+    if (
+      frameName === '' ||
+      frameWidth === 0 ||
+      frameHeight === 0 ||
+      frameTop === 0 ||
+      frameRight === 0 ||
+      frameBottom === 0 ||
+      frameLeft === 0 ||
+      uploadFrame === ''
+    ) {
+      alert('Please fill all the fields');
+    } else {
+      const frameURL = await uploadImage(uploadFrame);
 
-    firebase
-      .firestore()
-      .collection('frames')
-      .add({
-        name: frameName,
-        frame: frameURL,
-        shape: frameShape,
-        dimensions: {
-          width: frameWidth,
-          height: frameHeight,
-          top: frameTop,
-          right: frameRight,
-          bottom: frameBottom,
-          left: frameLeft,
-        },
-        renderDimensions: determineRenderDimensions(
-          frameWidth,
-          frameHeight,
-          frameTop,
-          frameRight,
-          frameBottom,
-          frameLeft
-        ),
-        backgroundColor: {
-          type: backgroundColorType,
-          color1,
-          color2,
-        },
-        approved: false,
-      })
-      .then(() => console.log('done'));
+      firebase
+        .firestore()
+        .collection('frames')
+        .add({
+          name: frameName,
+          frame: frameURL,
+          shape: frameShape,
+          dimensions: {
+            width: frameWidth,
+            height: frameHeight,
+            top: frameTop,
+            right: frameRight,
+            bottom: frameBottom,
+            left: frameLeft,
+          },
+          renderDimensions: determineRenderDimensions(
+            frameWidth,
+            frameHeight,
+            frameTop,
+            frameRight,
+            frameBottom,
+            frameLeft
+          ),
+          backgroundColor: {
+            type: 'linear',
+            color1,
+            color2: backgroundColorType === 'solid' ? color1 : color2,
+          },
+          approved: false,
+        })
+        .then(() => console.log('done'));
+    }
   };
 
   return (
     <Container className={classes.root}>
       <Grid container spacing={2} className={classes.container}>
         <Grid item sm={12} md={12} lg={6} className={classes.column1}>
-          <div className={classes.imgPlaceHolder} />
-          {uploadFrame && (
+          {uploadFrame ? (
             <img
               className={classes.img}
               src={URL.createObjectURL(uploadFrame)}
               alt='Upload Frame'
             />
+          ) : (
+            <div className={classes.imgPlaceHolder}>
+              <ImageUploader
+                withIcon={true}
+                withLabel={false}
+                buttonText='Choose Frame'
+                imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
+                maxFileSize={5242880 * 2}
+                singleImage={true}
+                fileContainerStyle={{
+                  boxShadow: '0px 0px 0px black',
+                  width: '50%',
+                  backgroundColor: '#ddd',
+                }}
+                buttonClassName={classes.buttonStyles}
+                onChange={(picture: File[]) => {
+                  setUploadFrame(picture[0]);
+                }}
+              />
+            </div>
           )}
         </Grid>
 
@@ -208,22 +241,12 @@ function Upload() {
               </div>
             </div>
 
-            <ImageUploader
-              className={classes.upload}
-              withIcon={false}
-              withLabel={false}
-              buttonText='Choose Frame'
-              imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
-              maxFileSize={5242880 * 2}
-              singleImage={true}
-              fileContainerStyle={{ height: '20px' }}
-              buttonClassName={classes.buttonStyles}
-              onChange={(picture: File[]) => {
-                setUploadFrame(picture[0]);
-              }}
-            />
-
-            <button onClick={submitImageUpload}>Upload Frame</button>
+            <button
+              className={classes.uploadButton}
+              onClick={submitImageUpload}
+            >
+              Upload Frame
+            </button>
           </div>
         </Grid>
       </Grid>
@@ -233,7 +256,7 @@ function Upload() {
 
 export default Upload;
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: window.innerHeight,
     display: 'flex',
@@ -247,12 +270,20 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: '100%',
+    },
   },
   column2: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '85%',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: '100%',
+    },
   },
   img: {
     width: '100%',
@@ -263,15 +294,15 @@ const useStyles = makeStyles(() => ({
     height: 512,
     backgroundColor: '#ddd',
     borderRadius: 10,
-  },
-  upload: {
-    width: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonStyles: {
     backgroundColor: '#3F51B5',
-    width: '100%',
-    height: 100,
+    width: '90%',
     margin: 0,
+    position: 'relative',
   },
   inputRow: {
     display: 'flex',
@@ -285,5 +316,20 @@ const useStyles = makeStyles(() => ({
   inputShort: {
     marginTop: 20,
     width: '47%',
+  },
+  uploadButton: {
+    width: '100%',
+    boxShadow: 'none',
+    border: '0px solid black',
+    backgroundColor: '#ddd',
+    fontSize: '18px',
+    padding: 10,
+    marginTop: 15,
+    marginBottom: 15,
+    borderRadius: 50,
+    color: '#181818',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
 }));
