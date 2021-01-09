@@ -21,6 +21,8 @@ interface Props {
   aspect: number;
   setCrop: (param: Crop) => void;
   setZoom: (param: number) => void;
+  setCroppedAreaPixels: (param: any) => void;
+  setFrame: (param: any) => void;
   onPreviousClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
@@ -47,6 +49,8 @@ const Item: React.FC<Props> = (props) => {
     primaryText,
     secondaryText,
     position,
+    setCroppedAreaPixels,
+    setFrame,
   } = props;
   const windowSize = useWindow();
   const classes = useStyles();
@@ -140,8 +144,11 @@ const Item: React.FC<Props> = (props) => {
             restrictPosition={false}
             cropSize={{ width: 512, height: 512 }}
             onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
-            onCropComplete={onCrop}
             onZoomChange={(zoom: number) => setZoom(zoom)}
+            onCropComplete={(croppedArea, croppedAreaPixels) => {
+              setCroppedAreaPixels(croppedAreaPixels);
+              setFrame(frameData);
+            }}
             classes={{
               containerClassName: `${classes.cropperContainer}`,
               mediaClassName: `${classes.cropperMedia}`,
