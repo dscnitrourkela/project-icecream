@@ -84,21 +84,28 @@ const Item: React.FC<Props> = (props) => {
   // ================== Constants ==================
   const vertical = position.split('-')[0];
   const horizontal = position.split('-')[1];
+  const cropperDivDimensions =
+    windowSize.width <= 1230 ? mobileDimensions : frameData.renderDimensions;
   const backgroundColor = `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`;
 
   // ================== Styles ==================
-  const cropperDiv =
-    windowSize.width <= 1230
-      ? {
-          backgroundImage: `url(${frame})`,
-          width: mobileDimensions.width,
-          height: mobileDimensions.height,
-        }
-      : {
-          backgroundImage: `url(${frame})`,
-          width: frameData.renderDimensions.width,
-          height: frameData.renderDimensions.height,
-        };
+  const cropperDiv = {
+    backgroundImage: `url(${frame})`,
+    width: cropperDivDimensions?.width,
+    height: cropperDivDimensions?.height,
+  };
+  // const cropperDiv =
+  //   windowSize.width <= 1230
+  //     ? {
+  //         backgroundImage: `url(${frame})`,
+  //         width: mobileDimensions.width,
+  //         height: mobileDimensions.height,
+  //       }
+  //     : {
+  //         backgroundImage: `url(${frame})`,
+  //         width: frameData.renderDimensions.width,
+  //         height: frameData.renderDimensions.height,
+  //       };
   const textBox = {
     // @ts-ignore
     [vertical]: frameData.renderDimensions[vertical],
@@ -167,10 +174,9 @@ const Item: React.FC<Props> = (props) => {
             cropSize={{ width: 512, height: 512 }}
             onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
             onZoomChange={(zoom: number) => setZoom(zoom)}
-            onCropComplete={(croppedArea, croppedAreaPixels) => {
-              setCroppedAreaPixels(croppedAreaPixels);
-              // setFrame(frameData);
-            }}
+            onCropComplete={(croppedArea, croppedAreaPixels) =>
+              setCroppedAreaPixels(croppedAreaPixels)
+            }
             classes={{
               containerClassName: `${classes.cropperContainer}`,
               mediaClassName: `${classes.cropperMedia}`,
@@ -200,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     minHeight: window.innerHeight,
-    height: 'auto',
+    height: '100%',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
       alignItems: 'flex-start',
@@ -248,7 +254,10 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     minWidth: 200,
+    maxWidth: 400,
     height: 80,
+    padding: '0px 10px',
+    margin: 0,
     position: 'absolute',
     backgroundColor: '#fff',
     display: 'flex',
@@ -258,12 +267,13 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 10,
   },
   primaryText: {
-    margin: 10,
+    margin: 0,
+    padding: 0,
     fontFamily: "'Bungee', 'Arial'",
   },
   secondaryText: {
-    margin: 10,
-    marginTop: 0,
+    margin: 0,
+    padding: 0,
     fontFamily: "'Poppins', 'Arial'",
     fontWeight: 500,
   },
