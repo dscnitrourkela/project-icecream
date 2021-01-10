@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core/styles';
@@ -51,7 +51,6 @@ const Item: React.FC<Props> = (props) => {
     secondaryText,
     position,
     setCroppedAreaPixels,
-    setFrame,
     setTextBoxDimenstions,
   } = props;
 
@@ -69,7 +68,7 @@ const Item: React.FC<Props> = (props) => {
         height: textBox?.offsetHeight,
       });
     }
-  }, [primaryText, secondaryText]);
+  }, [primaryText, secondaryText, setTextBoxDimenstions]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -81,7 +80,6 @@ const Item: React.FC<Props> = (props) => {
     left,
     windowSize.width < 600 ? windowSize.width - 200 : windowSize.width / 2
   );
-  const onCrop = () => {};
 
   // ================== Constants ==================
   const vertical = position.split('-')[0];

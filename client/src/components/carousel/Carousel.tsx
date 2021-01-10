@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core';
@@ -26,7 +26,6 @@ interface Props {
 }
 
 const FrameCarousel: React.FC<Props> = (props) => {
-  const classes = useStyles();
   const {
     data,
     uploadImage,
@@ -42,10 +41,18 @@ const FrameCarousel: React.FC<Props> = (props) => {
     setFrame,
     setTextBoxDimenstions,
   } = props;
+
   const [carouselSlide, setCarouselSlider] = useState<number>(0);
+  const classes = useStyles();
 
   const onPreviousClick = () => setCarouselSlider(carouselSlide - 1);
   const onNextClick = () => setCarouselSlider(carouselSlide + 1);
+
+  useEffect(() => {
+    if (carouselSlide > -1 && carouselSlide < data.length) {
+      setFrame(data[carouselSlide]);
+    }
+  }, [carouselSlide, data, setFrame]);
 
   return (
     <div className={classes.root}>

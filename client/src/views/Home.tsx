@@ -63,6 +63,7 @@ const App: React.FC = () => {
       });
   }, []);
 
+  // Event Handlers
   const handlePositionChange = (event: React.ChangeEvent<{ value: unknown }>) =>
     setPosition(event.target.value as string);
 
@@ -72,6 +73,7 @@ const App: React.FC = () => {
     setGreyScale(event.target.checked);
   };
 
+  // Generate Frame
   const overlayImage = async () => {
     if (frame) {
       console.log('start');
