@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,6 +21,9 @@ interface Props {
   aspect: number;
   setCrop: (param: Crop) => void;
   setZoom: (param: number) => void;
+  setCroppedAreaPixels: (param: any) => void;
+  setFrame: (param: any) => void;
+  setTextBoxDimenstions: (param: any) => void;
   onPreviousClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
@@ -47,9 +50,26 @@ const Item: React.FC<Props> = (props) => {
     primaryText,
     secondaryText,
     position,
+    setCroppedAreaPixels,
+    setFrame,
+    setTextBoxDimenstions,
   } = props;
+
+  // Hooks + States
   const windowSize = useWindow();
   const classes = useStyles();
+
+  useEffect(() => {
+    const textBox = document.querySelector('#custom-text-box');
+    if (textBox) {
+      setTextBoxDimenstions({
+        // @ts-ignore
+        width: textBox?.offsetWidth,
+        // @ts-ignore
+        height: textBox?.offsetHeight,
+      });
+    }
+  }, [primaryText, secondaryText]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -63,16 +83,55 @@ const Item: React.FC<Props> = (props) => {
   );
   const onCrop = () => {};
 
+  // ================== Constants ==================
   const vertical = position.split('-')[0];
   const horizontal = position.split('-')[1];
+  const backgroundColor = `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`;
 
+  // ================== Styles ==================
+  const cropperDiv =
+    windowSize.width <= 1230
+      ? {
+          backgroundImage: `url(${frame})`,
+          width: mobileDimensions.width,
+          height: mobileDimensions.height,
+        }
+      : {
+          backgroundImage: `url(${frame})`,
+          width: frameData.renderDimensions.width,
+          height: frameData.renderDimensions.height,
+        };
+  const textBox = {
+    // @ts-ignore
+    [vertical]: frameData.renderDimensions[vertical],
+    // @ts-ignore
+    [horizontal]: frameData.renderDimensions[horizontal],
+    // backgroundImage: backgroundColor,
+  };
+  const cropperContainerStyle =
+    windowSize.width <= 1230
+      ? {
+          width:
+            windowSize.width < 600
+              ? windowSize.width - 200
+              : windowSize.width / 2,
+          height:
+            windowSize.width < 600
+              ? windowSize.width - 200
+              : windowSize.width / 2,
+          top: mobileDimensions.top,
+          left: mobileDimensions.left,
+        }
+      : {
+          width: 512,
+          height: 512,
+          top: frameData.renderDimensions.top,
+          left: frameData.renderDimensions.left,
+        };
+
+  // ================== Render ==================
   return (
-    <Card
-      className={classes.root}
-      style={{
-        backgroundImage: `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`,
-      }}
-    >
+    <Card className={classes.root} style={{ backgroundImage: backgroundColor }}>
       <div className={classes.frameContainer}>
         <i
           style={{ color: '#fff', marginRight: 40 }}
@@ -81,61 +140,25 @@ const Item: React.FC<Props> = (props) => {
             windowSize.width < 600 ? '1' : '3'
           }x`}
         />
+
         <div
+          id='entire-frame-div'
           className={classes.cropperDiv}
-          style={
-            windowSize.width <= 1230
-              ? {
-                  backgroundImage: `url(${frame})`,
-                  width: mobileDimensions.width,
-                  height: mobileDimensions.height,
-                }
-              : {
-                  backgroundImage: `url(${frame})`,
-                  width: frameData.renderDimensions.width,
-                  height: frameData.renderDimensions.height,
-                }
-          }
+          style={cropperDiv}
         >
-          <div
-            style={{
-              minWidth: 200,
-              height: 80,
-              position: 'absolute',
-              // @ts-ignore
-              [vertical]: frameData.renderDimensions[vertical],
-              // @ts-ignore
-              [horizontal]: frameData.renderDimensions[horizontal],
-              // backgroundImage: `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`,
-              backgroundColor: '#fff',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              zIndex: 10,
-            }}
-          >
-            <h2
-              style={{
-                // color: '#fff',
-                margin: 10,
-                fontFamily: "'Bungee', 'Arial'",
-              }}
+          {frameData.showTextBox && (
+            <div
+              id='custom-text-box'
+              className={classes.textBox}
+              style={textBox}
             >
-              {primaryText}
-            </h2>
-            <h3
-              style={{
-                // color: '#fff',
-                margin: 10,
-                marginTop: 0,
-                fontFamily: "'Bungee', 'Arial'",
-              }}
-            >
-              {secondaryText}
-            </h3>
-          </div>
+              <h2 className={classes.primaryText}>{primaryText}</h2>
+              <h3 className={classes.secondaryText}>{secondaryText}</h3>
+            </div>
+          )}
+
           <img src={frame} alt='frame' className={classes.frameImage} />
+
           <Cropper
             image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
             crop={crop}
@@ -145,37 +168,20 @@ const Item: React.FC<Props> = (props) => {
             restrictPosition={false}
             cropSize={{ width: 512, height: 512 }}
             onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
-            onCropComplete={onCrop}
             onZoomChange={(zoom: number) => setZoom(zoom)}
+            onCropComplete={(croppedArea, croppedAreaPixels) => {
+              setCroppedAreaPixels(croppedAreaPixels);
+              // setFrame(frameData);
+            }}
             classes={{
               containerClassName: `${classes.cropperContainer}`,
               mediaClassName: `${classes.cropperMedia}`,
               cropAreaClassName: `${classes.cropArea}`,
             }}
-            style={{
-              containerStyle:
-                windowSize.width <= 1230
-                  ? {
-                      width:
-                        windowSize.width < 600
-                          ? windowSize.width - 200
-                          : windowSize.width / 2,
-                      height:
-                        windowSize.width < 600
-                          ? windowSize.width - 200
-                          : windowSize.width / 2,
-                      top: mobileDimensions.top,
-                      left: mobileDimensions.left,
-                    }
-                  : {
-                      width: 512,
-                      height: 512,
-                      top: frameData.renderDimensions.top,
-                      left: frameData.renderDimensions.left,
-                    },
-            }}
+            style={{ containerStyle: cropperContainerStyle }}
           />
         </div>
+
         <i
           style={{ color: '#fff', marginLeft: 40 }}
           onClick={onNextClick}
@@ -241,5 +247,26 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       alignItems: 'center',
     },
+  },
+  textBox: {
+    minWidth: 200,
+    height: 80,
+    position: 'absolute',
+    backgroundColor: '#fff',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+  },
+  primaryText: {
+    margin: 10,
+    fontFamily: "'Bungee', 'Arial'",
+  },
+  secondaryText: {
+    margin: 10,
+    marginTop: 0,
+    fontFamily: "'Poppins', 'Arial'",
+    fontWeight: 500,
   },
 }));

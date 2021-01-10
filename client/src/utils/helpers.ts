@@ -26,3 +26,22 @@ export const determineRenderDimensions = (
     right: cropContainerRight,
   };
 };
+
+type Dimensions = {
+  width: number;
+  height: number;
+  emptyWidth: number;
+  emptyHeight: number;
+};
+
+export const determineTextboxDimensions = (
+  width: number,
+  height: number,
+  emptyWidth: number,
+  emptyHeight: number
+): { width: number; height: number } => {
+  return {
+    height: (height * emptyHeight) / 512 - 50,
+    width: (width * emptyWidth) / 512,
+  };
+};

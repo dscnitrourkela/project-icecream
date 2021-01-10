@@ -13,13 +13,19 @@ import {
 import ImageUploader from 'react-images-upload';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import jimp from 'jimp';
+import download from 'downloadjs';
+import html2canvas from 'html2canvas';
 
 // Components
 import FrameCarousel from '../components/carousel/Carousel';
 import CustomTextField from '../components/shared/TextField';
 
+// Utils
+import getCroppedImage from '../utils/cropImage';
+import { determineTextboxDimensions } from '../utils/helpers';
+
 // Assets
-// import { data } from '../utils/placeholder';
 import { FrameData } from '../utils/types';
 
 const App: React.FC = () => {
@@ -27,6 +33,11 @@ const App: React.FC = () => {
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState<number>(1);
   const [aspect] = useState<number>(1 / 1);
+
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
+  const [frame, setFrame] = useState<FrameData | null>(null);
+  const [greyscale, setGreyScale] = useState<boolean>(false);
+  const [textBoxDimensions, setTextBoxDimensions] = useState<any>();
 
   const [primaryText, setPrimaryText] = useState<string>('Primary Text');
   const [secondaryText, setSecondaryText] = useState<string>('Secondary Text');
@@ -48,16 +59,103 @@ const App: React.FC = () => {
           frames.push(frame.data());
         });
         setData(frames);
+        setFrame(frames[0]);
       });
   }, []);
 
   const handlePositionChange = (event: React.ChangeEvent<{ value: unknown }>) =>
     setPosition(event.target.value as string);
 
+  const handleGreyscaleChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setGreyScale(event.target.checked);
+  };
+
+  const overlayImage = async () => {
+    if (frame) {
+      console.log('start');
+      const {
+        dimensions: { width, height, top, bottom, right, left },
+      } = frame;
+
+      const cropImage = await getCroppedImage(
+        URL.createObjectURL(uploadImage),
+        croppedAreaPixels
+      );
+
+      const image1 = await jimp.read(frame.frame);
+      const frameImage = image1.resize(width, height);
+
+      const image2 = await jimp.read(cropImage);
+      const profile = image2.resize(
+        width - right - left,
+        height - top - bottom
+      );
+
+      if (greyscale) profile.greyscale();
+
+      // @ts-ignore
+      html2canvas(document.querySelector('#custom-text-box')).then(
+        async (canvas) => {
+          const url = canvas.toDataURL();
+
+          const {
+            width: textBoxWidth,
+            height: textBoxHeight,
+          } = determineTextboxDimensions(
+            textBoxDimensions.width,
+            textBoxDimensions.height,
+            width - right - left,
+            height - top - bottom
+          );
+
+          const textbox = await jimp.read(url);
+          const textBox = textbox.resize(textBoxWidth, textBoxHeight);
+
+          let x, y;
+          if (position === 'top-right') {
+            y = top;
+            x = width - right - textBoxWidth;
+          } else if (position === 'top-left') {
+            y = top;
+            x = left;
+          } else if (position === 'bottom-right') {
+            y = height - bottom - textBoxHeight;
+            x = width - right - textBoxWidth;
+          } else if (position === 'bottom-left') {
+            y = height - bottom - textBoxHeight;
+            x = left;
+          }
+
+          frameImage
+            .composite(profile, top, left)
+            // @ts-ignore
+            .composite(textBox, x, y)
+            // @ts-ignore
+            .getBase64(jimp.AUTO, async (err: any, src: any) => {
+              download(src, 'profile-frame.png', 'image/png');
+              console.log('end');
+            });
+        }
+      );
+    }
+  };
+
   return (
     <div style={{ minHeight: window.innerHeight }}>
       <Box className={classes.features}>
-        <FormControlLabel control={<Switch />} label='Grayscale' />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={greyscale}
+              onChange={handleGreyscaleChange}
+              name='greyscale'
+              color='primary'
+            />
+          }
+          label='Grayscale'
+        />
 
         <CustomTextField
           value={primaryText}
@@ -107,7 +205,7 @@ const App: React.FC = () => {
           }}
         />
 
-        <Button variant='contained' color='secondary'>
+        <Button onClick={overlayImage} variant='contained' color='secondary'>
           Download
         </Button>
       </Box>
@@ -125,6 +223,9 @@ const App: React.FC = () => {
             primaryText={primaryText}
             secondaryText={secondaryText}
             position={position}
+            setCroppedAreaPixels={setCroppedAreaPixels}
+            setFrame={setFrame}
+            setTextBoxDimenstions={setTextBoxDimensions}
           />
         ) : (
           <h2>Loading...</h2>
