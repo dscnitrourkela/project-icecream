@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,6 +23,7 @@ interface Props {
   setZoom: (param: number) => void;
   setCroppedAreaPixels: (param: any) => void;
   setFrame: (param: any) => void;
+  setTextBoxDimenstions: (param: any) => void;
   onPreviousClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
@@ -51,9 +52,24 @@ const Item: React.FC<Props> = (props) => {
     position,
     setCroppedAreaPixels,
     setFrame,
+    setTextBoxDimenstions,
   } = props;
+
+  // Hooks + States
   const windowSize = useWindow();
   const classes = useStyles();
+
+  useEffect(() => {
+    const textBox = document.querySelector('#custom-text-box');
+    if (textBox) {
+      setTextBoxDimenstions({
+        // @ts-ignore
+        width: textBox?.offsetWidth,
+        // @ts-ignore
+        height: textBox?.offsetHeight,
+      });
+    }
+  }, [primaryText, secondaryText]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -125,9 +141,17 @@ const Item: React.FC<Props> = (props) => {
           }x`}
         />
 
-        <div className={classes.cropperDiv} style={cropperDiv}>
+        <div
+          id='entire-frame-div'
+          className={classes.cropperDiv}
+          style={cropperDiv}
+        >
           {frameData.showTextBox && (
-            <div className={classes.textBox} style={textBox}>
+            <div
+              id='custom-text-box'
+              className={classes.textBox}
+              style={textBox}
+            >
               <h2 className={classes.primaryText}>{primaryText}</h2>
               <h3 className={classes.secondaryText}>{secondaryText}</h3>
             </div>
@@ -147,7 +171,7 @@ const Item: React.FC<Props> = (props) => {
             onZoomChange={(zoom: number) => setZoom(zoom)}
             onCropComplete={(croppedArea, croppedAreaPixels) => {
               setCroppedAreaPixels(croppedAreaPixels);
-              setFrame(frameData);
+              // setFrame(frameData);
             }}
             classes={{
               containerClassName: `${classes.cropperContainer}`,

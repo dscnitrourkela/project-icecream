@@ -19,6 +19,7 @@ interface Props {
   setZoom: (param: number) => void;
   setCroppedAreaPixels: (param: any) => void;
   setFrame: (param: any) => void;
+  setTextBoxDimenstions: (param: any) => void;
   primaryText: string;
   secondaryText: string;
   position: string;
@@ -39,6 +40,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
     position,
     setCroppedAreaPixels,
     setFrame,
+    setTextBoxDimenstions,
   } = props;
   const [carouselSlide, setCarouselSlider] = useState<number>(0);
 
@@ -76,6 +78,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
             position={position}
             setCroppedAreaPixels={setCroppedAreaPixels}
             setFrame={setFrame}
+            setTextBoxDimenstions={setTextBoxDimenstions}
           />
         ))}
       </NukaCarousel>
