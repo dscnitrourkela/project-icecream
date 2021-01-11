@@ -38,3 +38,33 @@ export const determineTextboxDimensions = (
     width: (width * emptyWidth) / 512,
   };
 };
+
+export const determineTextBoxPosition = (
+  width: number,
+  height: number,
+  top: number,
+  right: number,
+  bottom: number,
+  left: number,
+  textBoxWidth: number,
+  textBoxHeight: number,
+  position: string
+): { x: number; y: number } => {
+  let x: number, y: number;
+  if (position === 'top-right') {
+    y = top;
+    x = width - right - textBoxWidth;
+  } else if (position === 'top-left') {
+    y = top;
+    x = left;
+  } else if (position === 'bottom-right') {
+    y = height - bottom - textBoxHeight;
+    x = width - right - textBoxWidth;
+  } else if (position === 'bottom-left') {
+    y = height - bottom - textBoxHeight;
+    x = left;
+  }
+
+  // @ts-ignore
+  return { x, y };
+};

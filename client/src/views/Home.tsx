@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { Box, makeStyles } from '@material-ui/core';
-import jimp from 'jimp';
-import download from 'downloadjs';
-import html2canvas from 'html2canvas';
-
-// Firebase
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -14,11 +9,8 @@ import 'firebase/firestore';
 import FrameCarousel from '../components/carousel/Carousel';
 import EditBox from '../components/homepage/EditBox';
 
-// Utils
-import getCroppedImage from '../utils/cropImage';
-import { determineTextboxDimensions } from '../utils/helpers';
-
-// Assets
+// Utils + Assets
+import { overlayImage } from '../utils/overlayImage';
 import { FrameData } from '../utils/types';
 
 const App: React.FC = () => {
@@ -56,74 +48,6 @@ const App: React.FC = () => {
       });
   }, []);
 
-  // Generate Frame
-  const overlayImage = async () => {
-    if (frame) {
-      console.log('start');
-      const {
-        dimensions: { width, height, top, bottom, right, left },
-      } = frame;
-
-      const cropImage = await getCroppedImage(uploadImage, croppedAreaPixels);
-
-      const image1 = await jimp.read(frame.frame);
-      const frameImage = image1.resize(width, height);
-
-      const image2 = await jimp.read(cropImage);
-      const profile = image2.resize(
-        width - right - left,
-        height - top - bottom
-      );
-
-      if (greyscale) profile.greyscale();
-
-      // @ts-ignore
-      html2canvas(document.querySelector('#custom-text-box')).then(
-        async (canvas) => {
-          const url = canvas.toDataURL();
-
-          const {
-            width: textBoxWidth,
-            height: textBoxHeight,
-          } = determineTextboxDimensions(
-            textBoxDimensions.width,
-            textBoxDimensions.height,
-            width - right - left,
-            height - top - bottom
-          );
-
-          const textbox = await jimp.read(url);
-          const textBox = textbox.resize(textBoxWidth, textBoxHeight);
-
-          let x, y;
-          if (position === 'top-right') {
-            y = top;
-            x = width - right - textBoxWidth;
-          } else if (position === 'top-left') {
-            y = top;
-            x = left;
-          } else if (position === 'bottom-right') {
-            y = height - bottom - textBoxHeight;
-            x = width - right - textBoxWidth;
-          } else if (position === 'bottom-left') {
-            y = height - bottom - textBoxHeight;
-            x = left;
-          }
-
-          frameImage
-            .composite(profile, top, left)
-            // @ts-ignore
-            .composite(textBox, x, y)
-            // @ts-ignore
-            .getBase64(jimp.AUTO, async (err: any, src: any) => {
-              download(src, 'profile-frame.png', 'image/png');
-              console.log('end');
-            });
-        }
-      );
-    }
-  };
-
   return (
     <div style={{ minHeight: window.innerHeight }}>
       <EditBox
@@ -136,7 +60,16 @@ const App: React.FC = () => {
         setPosition={setPosition}
         setGreyscale={setGreyscale}
         setUploadImage={setUploadImage}
-        overlayImage={overlayImage}
+        overlayImage={() =>
+          overlayImage(
+            frame,
+            uploadImage,
+            croppedAreaPixels,
+            greyscale,
+            textBoxDimensions,
+            position
+          )
+        }
       />
 
       <Box className={classes.frame}>
