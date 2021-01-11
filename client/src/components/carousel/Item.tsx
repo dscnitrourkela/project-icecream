@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,7 +15,7 @@ import { determineRenderDimensions } from '../../utils/helpers';
 import useWindow from '../../hooks/useWindow';
 
 interface Props {
-  uploadImage: null | File;
+  uploadImage: any;
   crop: Crop;
   zoom: number;
   aspect: number;
@@ -57,6 +57,10 @@ const Item: React.FC<Props> = (props) => {
   // Hooks + States
   const windowSize = useWindow();
   const classes = useStyles();
+  const [uploadedImage, setUploadedImage] = useState<any>(uploadImage);
+  const [crop2, setCrop2] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [zoom2, setZoom2] = useState<number>(1);
+  const [aspect2] = useState<number>(1 / 1);
 
   useEffect(() => {
     const textBox = document.querySelector('#custom-text-box');
@@ -69,6 +73,10 @@ const Item: React.FC<Props> = (props) => {
       });
     }
   }, [primaryText, secondaryText, setTextBoxDimenstions]);
+
+  useEffect(() => {
+    setUploadedImage(uploadImage);
+  }, [uploadImage]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -165,7 +173,7 @@ const Item: React.FC<Props> = (props) => {
           <img src={frame} alt='frame' className={classes.frameImage} />
 
           <Cropper
-            image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
+            image={uploadImage}
             crop={crop}
             zoom={zoom}
             aspect={aspect}

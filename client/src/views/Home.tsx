@@ -28,6 +28,15 @@ import { determineTextboxDimensions } from '../utils/helpers';
 // Assets
 import { FrameData } from '../utils/types';
 
+// @ts-ignore
+function readFile(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => resolve(reader.result), false);
+    reader.readAsDataURL(file);
+  });
+}
+
 const App: React.FC = () => {
   const [uploadImage, setUploadImage] = useState<null | File>(null);
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -73,6 +82,16 @@ const App: React.FC = () => {
     setGreyScale(event.target.checked);
   };
 
+  const handleImageUpload = async (e: any) => {
+    // const selected = e.target.files[0];
+    const selected = e[0];
+    if (selected) {
+      let imageDataUrl = await readFile(selected);
+      // @ts-ignore
+      setUploadImage(imageDataUrl);
+    }
+  };
+
   // Generate Frame
   const overlayImage = async () => {
     if (frame) {
@@ -81,10 +100,7 @@ const App: React.FC = () => {
         dimensions: { width, height, top, bottom, right, left },
       } = frame;
 
-      const cropImage = await getCroppedImage(
-        URL.createObjectURL(uploadImage),
-        croppedAreaPixels
-      );
+      const cropImage = await getCroppedImage(uploadImage, croppedAreaPixels);
 
       const image1 = await jimp.read(frame.frame);
       const frameImage = image1.resize(width, height);
@@ -202,9 +218,16 @@ const App: React.FC = () => {
             backgroundColor: 'transparent',
           }}
           buttonClassName={classes.buttonStyles}
-          onChange={(picture: File[]) => {
-            setUploadImage(picture[0]);
-          }}
+          onChange={handleImageUpload}
+        />
+
+        <input
+          id='input'
+          type='file'
+          accept='image/png image/jpeg image/jpg'
+          alt='Image'
+          placeholder='Upload Image'
+          onChange={handleImageUpload}
         />
 
         <Button onClick={overlayImage} variant='contained' color='secondary'>

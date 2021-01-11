@@ -11,7 +11,7 @@ import Item from './Item';
 import { FrameData, Crop } from '../../utils/types';
 interface Props {
   data: FrameData[];
-  uploadImage: null | File;
+  uploadImage: any;
   crop: Crop;
   zoom: number;
   aspect: number;
