@@ -102,7 +102,7 @@ export default App;
 const useStyles = makeStyles((theme) => ({
   frame: {
     width: '100%',
-    minHeight: window.innerHeight + 50,
+    minHeight: window.innerHeight,
     zIndex: 0,
   },
 }));

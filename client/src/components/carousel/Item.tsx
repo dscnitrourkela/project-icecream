@@ -57,10 +57,6 @@ const Item: React.FC<Props> = (props) => {
   // Hooks + States
   const windowSize = useWindow();
   const classes = useStyles();
-  const [uploadedImage, setUploadedImage] = useState<any>(uploadImage);
-  const [crop2, setCrop2] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [zoom2, setZoom2] = useState<number>(1);
-  const [aspect2] = useState<number>(1 / 1);
 
   useEffect(() => {
     const textBox = document.querySelector('#custom-text-box');
@@ -73,10 +69,6 @@ const Item: React.FC<Props> = (props) => {
       });
     }
   }, [primaryText, secondaryText, setTextBoxDimenstions]);
-
-  useEffect(() => {
-    setUploadedImage(uploadImage);
-  }, [uploadImage]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -102,18 +94,7 @@ const Item: React.FC<Props> = (props) => {
     width: cropperDivDimensions?.width,
     height: cropperDivDimensions?.height,
   };
-  // const cropperDiv =
-  //   windowSize.width <= 1230
-  //     ? {
-  //         backgroundImage: `url(${frame})`,
-  //         width: mobileDimensions.width,
-  //         height: mobileDimensions.height,
-  //       }
-  //     : {
-  //         backgroundImage: `url(${frame})`,
-  //         width: frameData.renderDimensions.width,
-  //         height: frameData.renderDimensions.height,
-  //       };
+
   const textBox = {
     // @ts-ignore
     [vertical]: frameData.renderDimensions[vertical],
@@ -179,7 +160,20 @@ const Item: React.FC<Props> = (props) => {
             aspect={aspect}
             minZoom={1}
             restrictPosition={false}
-            cropSize={{ width: 512, height: 512 }}
+            cropSize={{
+              width:
+                windowSize.width <= 1230
+                  ? windowSize.width < 600
+                    ? windowSize.width - 200
+                    : windowSize.width / 2
+                  : 512,
+              height:
+                windowSize.width <= 1230
+                  ? windowSize.width < 600
+                    ? windowSize.width - 200
+                    : windowSize.width / 2
+                  : 512,
+            }}
             onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
             onZoomChange={(zoom: number) => setZoom(zoom)}
             onCropComplete={(croppedArea, croppedAreaPixels) =>
@@ -254,14 +248,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
     },
   },
   textBox: {
-    minWidth: 200,
+    // minWidth: 200,
     maxWidth: 400,
     height: 80,
     padding: '0px 10px',
@@ -273,16 +267,26 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 10,
+    [theme.breakpoints.down('sm')]: {
+      width: '45%',
+      height: 'auto',
+    },
   },
   primaryText: {
     margin: 0,
     padding: 0,
     fontFamily: "'Bungee', 'Arial'",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
   secondaryText: {
     margin: 0,
     padding: 0,
     fontFamily: "'Poppins', 'Arial'",
     fontWeight: 500,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
 }));

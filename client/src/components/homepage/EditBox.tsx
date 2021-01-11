@@ -76,83 +76,109 @@ const EditBox: React.FC<Props> = (props) => {
   };
 
   return (
-    <Box className={classes.features}>
-      <FormControlLabel
-        control={
-          <Switch
-            checked={greyscale}
-            onChange={handleGreyscaleChange}
-            name='greyscale'
-            color='primary'
-          />
-        }
-        label='Grayscale'
-      />
+    <div className={classes.container}>
+      <Box className={classes.features}>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={greyscale}
+              onChange={handleGreyscaleChange}
+              name='greyscale'
+              color='primary'
+            />
+          }
+          label='Grayscale'
+        />
 
-      <CustomTextField
-        value={primaryText}
-        setValue={setPrimaryText}
-        label='Primary Text'
-        type='text'
-        className={classes.textInput}
-      />
+        <CustomTextField
+          value={primaryText}
+          setValue={setPrimaryText}
+          label='Primary Text'
+          type='text'
+          className={classes.textInput}
+        />
 
-      <CustomTextField
-        value={secondaryText}
-        setValue={setSecondaryText}
-        label='Secondary Text'
-        type='text'
-        className={classes.textInput}
-      />
+        <CustomTextField
+          value={secondaryText}
+          setValue={setSecondaryText}
+          label='Secondary Text'
+          type='text'
+          className={classes.textInput}
+        />
 
-      <Select
-        label='Frame Shape'
-        onChange={handlePositionChange}
-        value={position}
-        variant='outlined'
-        style={{ width: '100%', marginTop: 20 }}
-      >
-        <MenuItem value='top-right'>Top Right</MenuItem>
-        <MenuItem value='top-left'>Top Left</MenuItem>
-        <MenuItem value='bottom-right'>Bottom Right</MenuItem>
-        <MenuItem value='bottom-left'>Bottom Left</MenuItem>
-      </Select>
+        <Select
+          label='Frame Shape'
+          onChange={handlePositionChange}
+          value={position}
+          variant='outlined'
+          style={{ width: '100%', marginTop: 20 }}
+        >
+          <MenuItem value='top-right'>Top Right</MenuItem>
+          <MenuItem value='top-left'>Top Left</MenuItem>
+          <MenuItem value='bottom-right'>Bottom Right</MenuItem>
+          <MenuItem value='bottom-left'>Bottom Left</MenuItem>
+        </Select>
 
-      <ImageUploader
-        className={classes.upload}
-        withIcon={false}
-        withLabel={false}
-        buttonText='CHOOSE IMAGE'
-        imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
-        maxFileSize={5242880 * 2}
-        singleImage={true}
-        fileContainerStyle={{
-          height: 'fit-content',
-          boxShadow: 'none',
-          backgroundColor: 'transparent',
-        }}
-        buttonClassName={classes.buttonStyles}
-        onChange={handleImageUpload}
-      />
+        <ImageUploader
+          className={classes.upload}
+          withIcon={false}
+          withLabel={false}
+          buttonText='CHOOSE IMAGE'
+          imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
+          maxFileSize={5242880 * 2}
+          singleImage={true}
+          fileContainerStyle={{
+            height: 'fit-content',
+            boxShadow: 'none',
+            backgroundColor: 'transparent',
+          }}
+          buttonClassName={classes.buttonStyles}
+          onChange={handleImageUpload}
+        />
 
-      <Button onClick={overlayImage} variant='contained' color='secondary'>
-        Download
-      </Button>
-    </Box>
+        <Button onClick={overlayImage} variant='contained' color='secondary'>
+          Download
+        </Button>
+      </Box>
+    </div>
   );
 };
 
 export default EditBox;
 
 const useStyles = makeStyles((theme) => ({
-  features: {
-    transform: 'translate(-50%,-50%)',
+  container: {
+    width: '30%',
+    height: '500px',
+    transform: 'translate(0,-50%)',
     position: 'absolute',
-    right: '5%',
     top: '50%',
+    right: 0,
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'center',
     zIndex: 10,
-    height: '60%',
-    width: '350px',
+    // [theme.breakpoints.down('md')]: {
+    //   transform: 'translate(-50%, 0)',
+    //   top: '90%',
+    //   left: '50%',
+    //   width: '50%',
+    //   justifyContent: 'center',
+    // },
+    [theme.breakpoints.down('sm')]: {
+      transform: 'translate(-50%, 0)',
+      top: '45%',
+      left: '50%',
+      width: '50%',
+      justifyContent: 'center',
+      height: '450px',
+    },
+  },
+  features: {
+    zIndex: 10,
+    height: '100%',
+    width: '60%',
+    minWidth: 300,
     backgroundImage: '#334d50',
     background: 'linear-gradient(to right, #FDC830, #F37335)',
     padding: '1rem',
@@ -161,11 +187,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginBottom: 20,
-    [theme.breakpoints.down('sm')]: {
-      left: '50%',
-      top: '70%',
-      width: '320px',
-    },
   },
   frame: {
     width: '100%',
