@@ -33,6 +33,7 @@ interface Props {
   primaryText: string;
   secondaryText: string;
   position: string;
+  greyscale: boolean;
 }
 
 const Item: React.FC<Props> = (props) => {
@@ -52,6 +53,7 @@ const Item: React.FC<Props> = (props) => {
     position,
     setCroppedAreaPixels,
     setTextBoxDimenstions,
+    greyscale,
   } = props;
 
   // Hooks + States
@@ -146,8 +148,12 @@ const Item: React.FC<Props> = (props) => {
               className={classes.textBox}
               style={textBox}
             >
-              <h2 className={classes.primaryText}>{primaryText}</h2>
-              <h3 className={classes.secondaryText}>{secondaryText}</h3>
+              <h2 id='custom-text-box-h2' className={classes.primaryText}>
+                {primaryText}
+              </h2>
+              <h3 id='custom-text-box-h3' className={classes.secondaryText}>
+                {secondaryText}
+              </h3>
             </div>
           )}
 
@@ -160,23 +166,10 @@ const Item: React.FC<Props> = (props) => {
             aspect={aspect}
             minZoom={1}
             restrictPosition={false}
-            cropSize={{
-              width:
-                windowSize.width <= 1230
-                  ? windowSize.width < 600
-                    ? windowSize.width - 200
-                    : windowSize.width / 2
-                  : 512,
-              height:
-                windowSize.width <= 1230
-                  ? windowSize.width < 600
-                    ? windowSize.width - 200
-                    : windowSize.width / 2
-                  : 512,
-            }}
+            cropSize={cropperContainerStyle}
             onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
             onZoomChange={(zoom: number) => setZoom(zoom)}
-            onCropComplete={(croppedArea, croppedAreaPixels) =>
+            onCropComplete={(_, croppedAreaPixels) =>
               setCroppedAreaPixels(croppedAreaPixels)
             }
             classes={{
@@ -184,7 +177,16 @@ const Item: React.FC<Props> = (props) => {
               mediaClassName: `${classes.cropperMedia}`,
               cropAreaClassName: `${classes.cropArea}`,
             }}
-            style={{ containerStyle: cropperContainerStyle }}
+            style={{
+              containerStyle: cropperContainerStyle,
+              // @ts-ignore
+              mediaStyle: greyscale
+                ? {
+                    WebkitFilter: 'grayscale(100%)',
+                    filter: 'grayscale(100%)',
+                  }
+                : null,
+            }}
           />
         </div>
 

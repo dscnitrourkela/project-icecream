@@ -23,6 +23,7 @@ interface Props {
   primaryText: string;
   secondaryText: string;
   position: string;
+  greyscale: boolean;
 }
 
 const FrameCarousel: React.FC<Props> = (props) => {
@@ -40,6 +41,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
     setCroppedAreaPixels,
     setFrame,
     setTextBoxDimenstions,
+    greyscale,
   } = props;
 
   const [carouselSlide, setCarouselSlider] = useState<number>(0);
@@ -86,6 +88,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
             setCroppedAreaPixels={setCroppedAreaPixels}
             setFrame={setFrame}
             setTextBoxDimenstions={setTextBoxDimenstions}
+            greyscale={greyscale}
           />
         ))}
       </NukaCarousel>

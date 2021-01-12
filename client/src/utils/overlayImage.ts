@@ -21,7 +21,6 @@ export const overlayImage = async (
   textboxDimensions: { width: number; height: number },
   position: string
 ) => {
-  // import('jimp').then(async (jimp) => {
   // Error Handling for no parameters
   if (
     !frame ||
@@ -72,6 +71,19 @@ export const overlayImage = async (
   const customTextBoxElement: HTMLElement | null = document.querySelector(
     '#custom-text-box'
   );
+  // const customTextBoxElementH2: HTMLElement | null = document.querySelector(
+  //   '#custom-text-box-h2'
+  // );
+  // const customTextBoxElementH3: HTMLElement | null = document.querySelector(
+  //   '#custom-text-box-h3'
+  // );
+  // customTextBoxElement?.setAttribute(
+  //   'style',
+  //   `width:${width / 2.5}px;height:80px`
+  // );
+  // customTextBoxElementH2?.setAttribute('style', 'font-size:35%;');
+  // customTextBoxElementH3?.setAttribute('style', 'font-size:25%;');
+
   if (customTextBoxElement) {
     const canvas = await html2canvas(customTextBoxElement);
 
@@ -92,5 +104,4 @@ export const overlayImage = async (
         });
     }
   }
-  // });
 };

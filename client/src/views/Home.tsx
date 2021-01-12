@@ -88,6 +88,7 @@ const App: React.FC = () => {
             setCroppedAreaPixels={setCroppedAreaPixels}
             setFrame={setFrame}
             setTextBoxDimenstions={setTextBoxDimensions}
+            greyscale={greyscale}
           />
         ) : (
           <h2>Loading...</h2>
