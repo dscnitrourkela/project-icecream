@@ -91,7 +91,7 @@ const App: React.FC = () => {
             position={position}
             setCroppedAreaPixels={setCroppedAreaPixels}
             setFrame={setFrame}
-            setTextBoxDimenstions={setTextBoxDimensions}
+            setTextBoxDimensions={setTextBoxDimensions}
             greyscale={greyscale}
             showCustomTextbox={showCustomText}
           />
