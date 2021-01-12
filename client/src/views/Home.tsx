@@ -24,6 +24,7 @@ const App: React.FC = () => {
   const [greyscale, setGreyscale] = useState<boolean>(false);
   const [textBoxDimensions, setTextBoxDimensions] = useState<any>();
 
+  const [showCustomText, setShowCustomText] = useState<boolean>(true);
   const [primaryText, setPrimaryText] = useState<string>('Primary Text');
   const [secondaryText, setSecondaryText] = useState<string>('Secondary Text');
   const [position, setPosition] = useState<string>('top-right');
@@ -60,6 +61,8 @@ const App: React.FC = () => {
         setPosition={setPosition}
         setGreyscale={setGreyscale}
         setUploadImage={setUploadImage}
+        showCustomText={showCustomText}
+        setShowCustomText={setShowCustomText}
         overlayImage={() =>
           overlayImage(
             frame,
@@ -67,7 +70,8 @@ const App: React.FC = () => {
             croppedAreaPixels,
             greyscale,
             textBoxDimensions,
-            position
+            position,
+            showCustomText
           )
         }
       />
@@ -89,6 +93,7 @@ const App: React.FC = () => {
             setFrame={setFrame}
             setTextBoxDimenstions={setTextBoxDimensions}
             greyscale={greyscale}
+            showCustomTextbox={showCustomText}
           />
         ) : (
           <h2>Loading...</h2>

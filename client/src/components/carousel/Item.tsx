@@ -34,6 +34,7 @@ interface Props {
   secondaryText: string;
   position: string;
   greyscale: boolean;
+  showCustomTextbox: boolean;
 }
 
 const Item: React.FC<Props> = (props) => {
@@ -54,6 +55,7 @@ const Item: React.FC<Props> = (props) => {
     setCroppedAreaPixels,
     setTextBoxDimenstions,
     greyscale,
+    showCustomTextbox,
   } = props;
 
   // Hooks + States
@@ -142,7 +144,7 @@ const Item: React.FC<Props> = (props) => {
           className={classes.cropperDiv}
           style={cropperDiv}
         >
-          {frameData.showTextBox && (
+          {showCustomTextbox && (
             <div
               id='custom-text-box'
               className={classes.textBox}

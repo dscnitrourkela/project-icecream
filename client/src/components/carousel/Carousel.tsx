@@ -24,6 +24,7 @@ interface Props {
   secondaryText: string;
   position: string;
   greyscale: boolean;
+  showCustomTextbox: boolean;
 }
 
 const FrameCarousel: React.FC<Props> = (props) => {
@@ -42,6 +43,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
     setFrame,
     setTextBoxDimenstions,
     greyscale,
+    showCustomTextbox,
   } = props;
 
   const [carouselSlide, setCarouselSlider] = useState<number>(0);
@@ -89,6 +91,7 @@ const FrameCarousel: React.FC<Props> = (props) => {
             setFrame={setFrame}
             setTextBoxDimenstions={setTextBoxDimenstions}
             greyscale={greyscale}
+            showCustomTextbox={showCustomTextbox}
           />
         ))}
       </NukaCarousel>

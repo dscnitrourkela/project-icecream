@@ -19,7 +19,8 @@ export const overlayImage = async (
   croppedAreaPixels: any,
   greyscale: boolean,
   textboxDimensions: { width: number; height: number },
-  position: string
+  position: string,
+  showCustomText: boolean
 ) => {
   // Error Handling for no parameters
   if (
@@ -103,5 +104,13 @@ export const overlayImage = async (
           console.log('end');
         });
     }
+  } else {
+    frameImage
+      .composite(profile, top, left)
+      // @ts-ignore
+      .getBase64(jimp.AUTO, async (err: any, src: any) => {
+        download(src, 'profile-frame.png', 'image/png');
+        console.log('end');
+      });
   }
 };

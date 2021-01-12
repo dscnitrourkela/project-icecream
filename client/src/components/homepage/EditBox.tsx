@@ -35,6 +35,8 @@ interface Props {
   setGreyscale: (param: boolean) => void;
   setUploadImage: (param: string) => void;
   overlayImage: () => void;
+  showCustomText: boolean;
+  setShowCustomText: (param: boolean) => void;
 }
 
 const EditBox: React.FC<Props> = (props) => {
@@ -53,6 +55,8 @@ const EditBox: React.FC<Props> = (props) => {
     setGreyscale,
     setUploadImage,
     overlayImage,
+    showCustomText,
+    setShowCustomText,
   } = props;
 
   // Event Handlers
@@ -63,6 +67,12 @@ const EditBox: React.FC<Props> = (props) => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setGreyscale(event.target.checked);
+  };
+
+  const handleShowCustomTextbox = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setShowCustomText(event.target.checked);
   };
 
   const handleImageUpload = async (e: any) => {
@@ -81,43 +91,59 @@ const EditBox: React.FC<Props> = (props) => {
         <FormControlLabel
           control={
             <Switch
+              checked={showCustomText}
+              onChange={handleShowCustomTextbox}
+              name='Show Custom Textbox'
+              color='primary'
+            />
+          }
+          label='Show Custom Textbox'
+        />
+
+        {showCustomText && (
+          <>
+            <CustomTextField
+              value={primaryText}
+              setValue={setPrimaryText}
+              label='Primary Text'
+              type='text'
+              className={classes.textInput}
+            />
+
+            <CustomTextField
+              value={secondaryText}
+              setValue={setSecondaryText}
+              label='Secondary Text'
+              type='text'
+              className={classes.textInput}
+            />
+
+            <Select
+              label='Textbox Position'
+              onChange={handlePositionChange}
+              value={position}
+              variant='outlined'
+              style={{ width: '100%', marginTop: 20 }}
+            >
+              <MenuItem value='top-right'>Top Right</MenuItem>
+              <MenuItem value='top-left'>Top Left</MenuItem>
+              <MenuItem value='bottom-right'>Bottom Right</MenuItem>
+              <MenuItem value='bottom-left'>Bottom Left</MenuItem>
+            </Select>
+          </>
+        )}
+
+        <FormControlLabel
+          control={
+            <Switch
               checked={greyscale}
               onChange={handleGreyscaleChange}
               name='greyscale'
               color='primary'
             />
           }
-          label='Grayscale'
+          label='Greyscale'
         />
-
-        <CustomTextField
-          value={primaryText}
-          setValue={setPrimaryText}
-          label='Primary Text'
-          type='text'
-          className={classes.textInput}
-        />
-
-        <CustomTextField
-          value={secondaryText}
-          setValue={setSecondaryText}
-          label='Secondary Text'
-          type='text'
-          className={classes.textInput}
-        />
-
-        <Select
-          label='Frame Shape'
-          onChange={handlePositionChange}
-          value={position}
-          variant='outlined'
-          style={{ width: '100%', marginTop: 20 }}
-        >
-          <MenuItem value='top-right'>Top Right</MenuItem>
-          <MenuItem value='top-left'>Top Left</MenuItem>
-          <MenuItem value='bottom-right'>Bottom Right</MenuItem>
-          <MenuItem value='bottom-left'>Bottom Left</MenuItem>
-        </Select>
 
         <ImageUploader
           className={classes.upload}
@@ -128,7 +154,7 @@ const EditBox: React.FC<Props> = (props) => {
           maxFileSize={5242880 * 2}
           singleImage={true}
           fileContainerStyle={{
-            height: 'fit-content',
+            height: '50px',
             boxShadow: 'none',
             backgroundColor: 'transparent',
           }}
@@ -158,13 +184,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'left',
     alignItems: 'center',
     zIndex: 10,
-    // [theme.breakpoints.down('md')]: {
-    //   transform: 'translate(-50%, 0)',
-    //   top: '90%',
-    //   left: '50%',
-    //   width: '50%',
-    //   justifyContent: 'center',
-    // },
+    [theme.breakpoints.between('sm', 'md')]: {
+      transform: 'translate(-50%, 0)',
+      top: '90%',
+      left: '50%',
+      width: '50%',
+      justifyContent: 'center',
+    },
     [theme.breakpoints.down('sm')]: {
       transform: 'translate(-50%, 0)',
       top: '45%',
