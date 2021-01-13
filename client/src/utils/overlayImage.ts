@@ -5,10 +5,6 @@ import download from 'downloadjs';
 
 // Utilities
 import getCroppedImg from './cropImage';
-import {
-  determineTextboxDimensions,
-  determineTextBoxPosition,
-} from './helpers';
 
 // Types
 import { FrameData } from './types';
@@ -33,80 +29,49 @@ export const overlayImage = async (
     throw new Error('Required Parameters not found');
   }
 
-  // Destructuring required variables
   const {
     dimensions: { width, height, top, bottom, right, left },
   } = frame;
-  const {
-    width: textBoxWidth,
-    height: textBoxHeight,
-  } = determineTextboxDimensions(
-    textboxDimensions.width,
-    textboxDimensions.height,
-    width - right - left,
-    height - top - bottom
-  );
-  const { x, y } = determineTextBoxPosition(
-    width,
-    height,
-    top,
-    right,
-    bottom,
-    left,
-    textBoxWidth,
-    textBoxHeight,
-    position
-  );
+
+  const resizedTop = (1000 * top) / height;
+  const resizedBottom = (1000 * bottom) / height;
+  const resizedRight = (1000 * right) / width;
+  const resizedLeft = (1000 * left) / width;
 
   // Crop the user profile image as per the crop and zoom
   const cropProfile = await getCroppedImg(uploadImage, croppedAreaPixels);
-
   // Read the profile frame and cropped image by jimp and resize it.
-  const frameImage = (await jimp.read(frame.frame)).resize(width, height);
+  const frameImage = (await jimp.read(frame.frame)).resize(1000, 1000);
   const profile = (await jimp.read(cropProfile)).resize(
-    width - right - left,
-    height - top - bottom
+    1000 - resizedRight - resizedLeft,
+    1000 - resizedBottom - resizedTop
   );
   if (greyscale) profile.greyscale();
 
-  const customTextBoxElement: HTMLElement | null = document.querySelector(
-    '#custom-text-box'
-  );
-  // const customTextBoxElementH2: HTMLElement | null = document.querySelector(
-  //   '#custom-text-box-h2'
-  // );
-  // const customTextBoxElementH3: HTMLElement | null = document.querySelector(
-  //   '#custom-text-box-h3'
-  // );
-  // customTextBoxElement?.setAttribute(
-  //   'style',
-  //   `width:${width / 2.5}px;height:80px`
-  // );
-  // customTextBoxElementH2?.setAttribute('style', 'font-size:35%;');
-  // customTextBoxElementH3?.setAttribute('style', 'font-size:25%;');
+  if (showCustomText) {
+    const customTextBox: HTMLElement | null = document.querySelector(
+      '#custom-text-box'
+    );
 
-  if (customTextBoxElement) {
-    const canvas = await html2canvas(customTextBoxElement);
+    if (customTextBox) {
+      const canvas = await html2canvas(customTextBox);
+      if (canvas) {
+        const url = canvas.toDataURL();
+        const customTextBoxImage = (await jimp.read(url)).resize(300, 100);
 
-    if (canvas) {
-      const url = canvas.toDataURL();
-      const customTextBox = (await jimp.read(url)).resize(
-        textBoxWidth,
-        textBoxHeight
-      );
-
-      frameImage
-        .composite(profile, top, left)
-        .composite(customTextBox, x, y)
-        // @ts-ignore
-        .getBase64(jimp.AUTO, async (err: any, src: any) => {
-          download(src, 'profile-frame.png', 'image/png');
-          console.log('end');
-        });
+        frameImage
+          .composite(profile, resizedTop, resizedLeft)
+          .composite(customTextBoxImage, resizedLeft, resizedTop)
+          // @ts-ignore
+          .getBase64(jimp.AUTO, async (err: any, src: any) => {
+            download(src, 'profile-frame.png', 'image/png');
+            console.log('end');
+          });
+      }
     }
   } else {
     frameImage
-      .composite(profile, top, left)
+      .composite(profile, resizedTop, resizedLeft)
       // @ts-ignore
       .getBase64(jimp.AUTO, async (err: any, src: any) => {
         download(src, 'profile-frame.png', 'image/png');
