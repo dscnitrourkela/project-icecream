@@ -11,6 +11,7 @@ import {
   Button,
   makeStyles,
 } from '@material-ui/core';
+import ClipLoader from 'react-spinners/BeatLoader';
 
 // Components
 import CustomTextField from '../shared/TextField';
@@ -30,6 +31,7 @@ interface Props {
   position: string;
   greyscale: boolean;
   uploadImage: string;
+  loading: boolean;
   setPrimaryText: (param: string) => void;
   setSecondaryText: (param: string) => void;
   setPosition: (param: string) => void;
@@ -51,6 +53,7 @@ const EditBox: React.FC<Props> = (props) => {
     position,
     greyscale,
     uploadImage,
+    loading,
     setPrimaryText,
     setSecondaryText,
     setPosition,
@@ -180,8 +183,17 @@ const EditBox: React.FC<Props> = (props) => {
           onClick={handleDownloadClick}
           variant='contained'
           color='secondary'
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
-          Download
+          {loading ? (
+            <ClipLoader color='#000' loading={loading} size={15} />
+          ) : (
+            'Download'
+          )}
         </Button>
       </Box>
     </div>

@@ -16,7 +16,8 @@ export const overlayImage = async (
   greyscale: boolean,
   textboxDimensions: { width: number; height: number },
   position: string,
-  showCustomText: boolean
+  showCustomText: boolean,
+  setLoading: (param: boolean) => void
 ) => {
   // Error Handling for no parameters
   if (
@@ -28,6 +29,8 @@ export const overlayImage = async (
   ) {
     throw new Error('Required Parameters not found');
   }
+
+  setLoading(true);
 
   const {
     dimensions: { width, height, top, bottom, right, left },
@@ -65,7 +68,7 @@ export const overlayImage = async (
           // @ts-ignore
           .getBase64(jimp.AUTO, async (err: any, src: any) => {
             download(src, 'profile-frame.png', 'image/png');
-            console.log('end');
+            setLoading(false);
           });
       }
     }
@@ -75,7 +78,7 @@ export const overlayImage = async (
       // @ts-ignore
       .getBase64(jimp.AUTO, async (err: any, src: any) => {
         download(src, 'profile-frame.png', 'image/png');
-        console.log('end');
+        setLoading(false);
       });
   }
 };

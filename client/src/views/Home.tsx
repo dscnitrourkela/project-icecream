@@ -29,6 +29,8 @@ const App: React.FC = () => {
   const [secondaryText, setSecondaryText] = useState<string>('Secondary Text');
   const [position, setPosition] = useState<string>('top-right');
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const [data, setData] = useState<FrameData[] | null>(null);
   const classes = useStyles();
 
@@ -57,6 +59,7 @@ const App: React.FC = () => {
         position={position}
         greyscale={greyscale}
         uploadImage={uploadImage}
+        loading={loading}
         setPrimaryText={setPrimaryText}
         setSecondaryText={setSecondaryText}
         setPosition={setPosition}
@@ -72,7 +75,8 @@ const App: React.FC = () => {
             greyscale,
             textBoxDimensions,
             position,
-            showCustomText
+            showCustomText,
+            setLoading
           )
         }
       />

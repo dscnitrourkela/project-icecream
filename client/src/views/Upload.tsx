@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 // Libraries
 import ImageUploader from 'react-images-upload';
+import ClipLoader from 'react-spinners/BeatLoader';
 import {
   Grid,
   makeStyles,
@@ -12,6 +13,8 @@ import {
   Checkbox,
   FormControlLabel,
 } from '@material-ui/core';
+
+// Firebase
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -25,6 +28,7 @@ import CustomTextField from '../components/shared/TextField';
 function Upload() {
   const classes = useStyles();
 
+  const [loading, setLoading] = useState<boolean>(false);
   const [uploadFrame, setUploadFrame] = useState<string | File>('');
 
   const [frameName, setFrameName] = useState<string>('');
@@ -71,6 +75,7 @@ function Upload() {
     } else {
       const frameURL = await uploadImage(uploadFrame);
 
+      setLoading(true);
       firebase
         .firestore()
         .collection('frames')
@@ -102,7 +107,7 @@ function Upload() {
           approved: false,
           showTextBox,
         })
-        .then(() => console.log('done'));
+        .then(() => setLoading(false));
     }
   };
 
@@ -265,7 +270,11 @@ function Upload() {
               className={classes.uploadButton}
               onClick={submitImageUpload}
             >
-              Upload Frame
+              {loading ? (
+                <ClipLoader color='#000' loading={loading} size={15} />
+              ) : (
+                'Upload Frame'
+              )}
             </button>
           </div>
         </Grid>
