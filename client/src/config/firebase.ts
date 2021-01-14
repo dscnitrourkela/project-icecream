@@ -16,12 +16,14 @@ export declare var process: {
 };
 
 const configureFirebase = async (): Promise<void> => {
-  if (process.env.NODE_ENV === 'development') {
-    firebase.initializeApp(firebaseDevConfig);
-  } else if (process.env.NODE_ENV === 'production') {
-    const response = await fetch('/__/firebase/init.json');
-    const config = await response.json();
-    firebase.initializeApp(config);
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   firebase.initializeApp(firebaseDevConfig);
+  // } else if (process.env.NODE_ENV === 'production') {
+  //   const response = await fetch('/__/firebase/init.json');
+  //   const config = await response.json();
+  //   firebase.initializeApp(config);
+  // }
+
+  firebase.initializeApp(firebaseDevConfig);
 };
 export default configureFirebase;
