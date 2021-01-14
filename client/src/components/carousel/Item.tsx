@@ -244,7 +244,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
       alignItems: 'flex-start',
-      paddingTop: 30,
+      paddingTop: 70,
     },
   },
   cropperDiv: {

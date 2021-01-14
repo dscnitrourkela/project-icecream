@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { Box, makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -12,6 +13,8 @@ import EditBox from '../components/homepage/EditBox';
 // Utils + Assets
 import { overlayImage } from '../utils/overlayImage';
 import { FrameData } from '../utils/types';
+import { fontSize } from '@material-ui/system';
+import { FontIcon } from 'material-ui';
 
 const App: React.FC = () => {
   const [uploadImage, setUploadImage] = useState<string>('');
@@ -104,6 +107,10 @@ const App: React.FC = () => {
           <h2>Loading...</h2>
         )}
       </Box>
+
+      <Link to='/upload-frame' className={classes.uploadFrame}>
+        Upload Custom Frame
+      </Link>
     </div>
   );
 };
@@ -115,5 +122,24 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     minHeight: window.innerHeight,
     zIndex: 0,
+  },
+  uploadFrame: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    backgroundColor: '#48cae4',
+    fontSize: 20,
+    fontFamily: 'Arial',
+    color: '#fff',
+    textDecoration: 'none',
+    padding: 10,
+    paddingRight: 20,
+    marginTop: 10,
+    borderTopLeftRadius: 7,
+    borderBottomLeftRadius: 7,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 15,
+      padding: 7,
+    },
   },
 }));
