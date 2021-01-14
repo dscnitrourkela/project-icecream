@@ -159,7 +159,7 @@ const EditBox: React.FC<Props> = (props) => {
               color='primary'
             />
           }
-          label='Greyscale'
+          label='Grayscale'
         />
 
         <ImageUploader

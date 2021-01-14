@@ -90,7 +90,7 @@ export const overlayImage = async (
     }
   } else {
     frameImage
-      .composite(profile, x, y)
+      .composite(profile, resizedLeft, resizedTop)
       // @ts-ignore
       .getBase64(jimp.AUTO, async (err: any, src: any) => {
         download(src, 'profile-frame.png', 'image/png');
