@@ -1,0 +1,4 @@
+{
+  "root": "client/build/",
+  "https_only": true
+}
