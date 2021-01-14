@@ -244,7 +244,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
       alignItems: 'flex-start',
-      paddingTop: 30,
+      paddingTop: 70,
     },
   },
   cropperDiv: {
@@ -302,6 +302,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '45%',
       height: 'auto',
+      padding: '7px 4px',
+      // padding: 7,
     },
   },
   primaryText: {
@@ -309,7 +311,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     fontFamily: "'Bungee', 'Arial'",
     [theme.breakpoints.down('sm')]: {
-      fontSize: 10,
+      fontSize: 8,
     },
   },
   secondaryText: {
@@ -318,7 +320,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Poppins', 'Arial'",
     fontWeight: 500,
     [theme.breakpoints.down('sm')]: {
-      fontSize: 10,
+      fontSize: 7,
     },
   },
 }));

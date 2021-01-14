@@ -11,6 +11,7 @@ import {
   Button,
   makeStyles,
 } from '@material-ui/core';
+import ClipLoader from 'react-spinners/BeatLoader';
 
 // Components
 import CustomTextField from '../shared/TextField';
@@ -30,6 +31,7 @@ interface Props {
   position: string;
   greyscale: boolean;
   uploadImage: string;
+  loading: boolean;
   setPrimaryText: (param: string) => void;
   setSecondaryText: (param: string) => void;
   setPosition: (param: string) => void;
@@ -51,6 +53,7 @@ const EditBox: React.FC<Props> = (props) => {
     position,
     greyscale,
     uploadImage,
+    loading,
     setPrimaryText,
     setSecondaryText,
     setPosition,
@@ -180,8 +183,17 @@ const EditBox: React.FC<Props> = (props) => {
           onClick={handleDownloadClick}
           variant='contained'
           color='secondary'
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
-          Download
+          {loading ? (
+            <ClipLoader color='#000' loading={loading} size={15} />
+          ) : (
+            'Download'
+          )}
         </Button>
       </Box>
     </div>
@@ -211,7 +223,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.between('xs', 'sm')]: {
       transform: 'translate(-50%, 0)',
-      top: '80%',
+      top: '85%',
       left: '50%',
       width: '50%',
       justifyContent: 'center',
@@ -219,7 +231,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       transform: 'translate(-50%, 0)',
-      top: '45%',
+      top: '48%',
       left: '50%',
       width: '50%',
       justifyContent: 'center',
