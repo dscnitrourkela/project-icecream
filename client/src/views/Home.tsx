@@ -13,8 +13,6 @@ import EditBox from '../components/homepage/EditBox';
 // Utils + Assets
 import { overlayImage } from '../utils/overlayImage';
 import { FrameData } from '../utils/types';
-import { fontSize } from '@material-ui/system';
-import { FontIcon } from 'material-ui';
 
 const App: React.FC = () => {
   const [uploadImage, setUploadImage] = useState<string>('');
