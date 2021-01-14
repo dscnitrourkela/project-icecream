@@ -15,7 +15,7 @@ import { determineRenderDimensions } from '../../utils/helpers';
 import useWindow from '../../hooks/useWindow';
 
 interface Props {
-  uploadImage: null | File;
+  uploadImage: any;
   crop: Crop;
   zoom: number;
   aspect: number;
@@ -23,7 +23,7 @@ interface Props {
   setZoom: (param: number) => void;
   setCroppedAreaPixels: (param: any) => void;
   setFrame: (param: any) => void;
-  setTextBoxDimenstions: (param: any) => void;
+  setTextBoxDimensions: (param: any) => void;
   onPreviousClick: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
@@ -33,6 +33,8 @@ interface Props {
   primaryText: string;
   secondaryText: string;
   position: string;
+  greyscale: boolean;
+  showCustomTextbox: boolean;
 }
 
 const Item: React.FC<Props> = (props) => {
@@ -51,25 +53,42 @@ const Item: React.FC<Props> = (props) => {
     secondaryText,
     position,
     setCroppedAreaPixels,
-    setFrame,
-    setTextBoxDimenstions,
+    setTextBoxDimensions,
+    greyscale,
+    showCustomTextbox,
   } = props;
 
   // Hooks + States
   const windowSize = useWindow();
   const classes = useStyles();
+  const [cropperDimensions, setCropperDimensions] = useState<{
+    width: number;
+    height: number;
+  }>({ width: 0, height: 0 });
 
   useEffect(() => {
     const textBox = document.querySelector('#custom-text-box');
     if (textBox) {
-      setTextBoxDimenstions({
+      setTextBoxDimensions({
         // @ts-ignore
         width: textBox?.offsetWidth,
         // @ts-ignore
         height: textBox?.offsetHeight,
       });
     }
-  }, [primaryText, secondaryText]);
+  }, [primaryText, secondaryText, setTextBoxDimensions]);
+
+  useEffect(() => {
+    const cropper = document.querySelector('#entire-frame-div');
+    if (cropper) {
+      setCropperDimensions({
+        // @ts-ignore
+        width: cropper?.offsetWidth,
+        // @ts-ignore
+        height: cropper?.offsetHeight,
+      });
+    }
+  }, [windowSize.width]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -81,31 +100,38 @@ const Item: React.FC<Props> = (props) => {
     left,
     windowSize.width < 600 ? windowSize.width - 200 : windowSize.width / 2
   );
-  const onCrop = () => {};
 
   // ================== Constants ==================
   const vertical = position.split('-')[0];
   const horizontal = position.split('-')[1];
+  const cropperDivDimensions =
+    windowSize.width <= 1230 ? mobileDimensions : frameData.renderDimensions;
   const backgroundColor = `${frameData.backgroundColor.type}-gradient(to right, ${frameData.backgroundColor.color1} , ${frameData.backgroundColor.color2})`;
 
   // ================== Styles ==================
-  const cropperDiv =
-    windowSize.width <= 1230
-      ? {
-          backgroundImage: `url(${frame})`,
-          width: mobileDimensions.width,
-          height: mobileDimensions.height,
-        }
-      : {
-          backgroundImage: `url(${frame})`,
-          width: frameData.renderDimensions.width,
-          height: frameData.renderDimensions.height,
-        };
+  const cropperDiv = {
+    backgroundImage: `url(${frame})`,
+    width: cropperDivDimensions?.width,
+    height: cropperDivDimensions?.height,
+  };
+
   const textBox = {
     // @ts-ignore
-    [vertical]: frameData.renderDimensions[vertical],
+    [vertical]:
+      windowSize.width <= 1230
+        ? // @ts-ignore
+          (frameData.dimensions[vertical] * cropperDimensions.height) /
+          frameData.dimensions.height
+        : // @ts-ignore
+          frameData.renderDimensions[vertical],
     // @ts-ignore
-    [horizontal]: frameData.renderDimensions[horizontal],
+    [horizontal]:
+      windowSize.width <= 1230
+        ? // @ts-ignore
+          (frameData.dimensions[vertical] * cropperDimensions.height) /
+          frameData.dimensions.height
+        : // @ts-ignore
+          frameData.renderDimensions[horizontal],
     // backgroundImage: backgroundColor,
   };
   const cropperContainerStyle =
@@ -146,39 +172,51 @@ const Item: React.FC<Props> = (props) => {
           className={classes.cropperDiv}
           style={cropperDiv}
         >
-          {frameData.showTextBox && (
+          {showCustomTextbox && (
             <div
               id='custom-text-box'
               className={classes.textBox}
               style={textBox}
             >
-              <h2 className={classes.primaryText}>{primaryText}</h2>
-              <h3 className={classes.secondaryText}>{secondaryText}</h3>
+              <h2 id='custom-text-box-h2' className={classes.primaryText}>
+                {primaryText}
+              </h2>
+              <h3 id='custom-text-box-h3' className={classes.secondaryText}>
+                {secondaryText}
+              </h3>
             </div>
           )}
 
           <img src={frame} alt='frame' className={classes.frameImage} />
 
           <Cropper
-            image={uploadImage ? URL.createObjectURL(uploadImage) : ''}
+            image={uploadImage}
             crop={crop}
             zoom={zoom}
             aspect={aspect}
             minZoom={1}
             restrictPosition={false}
-            cropSize={{ width: 512, height: 512 }}
+            cropSize={cropperContainerStyle}
             onCropChange={(crop: { x: number; y: number }) => setCrop(crop)}
             onZoomChange={(zoom: number) => setZoom(zoom)}
-            onCropComplete={(croppedArea, croppedAreaPixels) => {
-              setCroppedAreaPixels(croppedAreaPixels);
-              // setFrame(frameData);
-            }}
+            onCropComplete={(_, croppedAreaPixels) =>
+              setCroppedAreaPixels(croppedAreaPixels)
+            }
             classes={{
               containerClassName: `${classes.cropperContainer}`,
               mediaClassName: `${classes.cropperMedia}`,
               cropAreaClassName: `${classes.cropArea}`,
             }}
-            style={{ containerStyle: cropperContainerStyle }}
+            style={{
+              containerStyle: cropperContainerStyle,
+              // @ts-ignore
+              mediaStyle: greyscale
+                ? {
+                    WebkitFilter: 'grayscale(100%)',
+                    filter: 'grayscale(100%)',
+                  }
+                : null,
+            }}
           />
         </div>
 
@@ -202,7 +240,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     minHeight: window.innerHeight,
-    height: 'auto',
+    height: '100%',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
       alignItems: 'flex-start',
@@ -242,15 +280,18 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
       justifyContent: 'center',
       alignItems: 'center',
     },
   },
   textBox: {
-    minWidth: 200,
+    // minWidth: 200,
+    maxWidth: 400,
     height: 80,
+    padding: '0px 10px',
+    margin: 0,
     position: 'absolute',
     backgroundColor: '#fff',
     display: 'flex',
@@ -258,15 +299,26 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 10,
+    [theme.breakpoints.down('sm')]: {
+      width: '45%',
+      height: 'auto',
+    },
   },
   primaryText: {
-    margin: 10,
+    margin: 0,
+    padding: 0,
     fontFamily: "'Bungee', 'Arial'",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
   secondaryText: {
-    margin: 10,
-    marginTop: 0,
+    margin: 0,
+    padding: 0,
     fontFamily: "'Poppins', 'Arial'",
     fontWeight: 500,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
 }));

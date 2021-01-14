@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core';
@@ -11,7 +11,7 @@ import Item from './Item';
 import { FrameData, Crop } from '../../utils/types';
 interface Props {
   data: FrameData[];
-  uploadImage: null | File;
+  uploadImage: any;
   crop: Crop;
   zoom: number;
   aspect: number;
@@ -19,14 +19,15 @@ interface Props {
   setZoom: (param: number) => void;
   setCroppedAreaPixels: (param: any) => void;
   setFrame: (param: any) => void;
-  setTextBoxDimenstions: (param: any) => void;
+  setTextBoxDimensions: (param: any) => void;
   primaryText: string;
   secondaryText: string;
   position: string;
+  greyscale: boolean;
+  showCustomTextbox: boolean;
 }
 
 const FrameCarousel: React.FC<Props> = (props) => {
-  const classes = useStyles();
   const {
     data,
     uploadImage,
@@ -40,12 +41,22 @@ const FrameCarousel: React.FC<Props> = (props) => {
     position,
     setCroppedAreaPixels,
     setFrame,
-    setTextBoxDimenstions,
+    setTextBoxDimensions,
+    greyscale,
+    showCustomTextbox,
   } = props;
+
   const [carouselSlide, setCarouselSlider] = useState<number>(0);
+  const classes = useStyles();
 
   const onPreviousClick = () => setCarouselSlider(carouselSlide - 1);
   const onNextClick = () => setCarouselSlider(carouselSlide + 1);
+
+  useEffect(() => {
+    if (carouselSlide > -1 && carouselSlide < data.length) {
+      setFrame(data[carouselSlide]);
+    }
+  }, [carouselSlide, data, setFrame]);
 
   return (
     <div className={classes.root}>
@@ -78,7 +89,9 @@ const FrameCarousel: React.FC<Props> = (props) => {
             position={position}
             setCroppedAreaPixels={setCroppedAreaPixels}
             setFrame={setFrame}
-            setTextBoxDimenstions={setTextBoxDimenstions}
+            setTextBoxDimensions={setTextBoxDimensions}
+            greyscale={greyscale}
+            showCustomTextbox={showCustomTextbox}
           />
         ))}
       </NukaCarousel>
@@ -93,7 +106,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '100%',
+    minHeight: window.innerHeight,
     width: '100%',
   },
 }));
