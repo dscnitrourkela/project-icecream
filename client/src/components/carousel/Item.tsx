@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import { makeStyles } from '@material-ui/core/styles';
@@ -61,6 +61,10 @@ const Item: React.FC<Props> = (props) => {
   // Hooks + States
   const windowSize = useWindow();
   const classes = useStyles();
+  const [cropperDimensions, setCropperDimensions] = useState<{
+    width: number;
+    height: number;
+  }>({ width: 0, height: 0 });
 
   useEffect(() => {
     const textBox = document.querySelector('#custom-text-box');
@@ -73,6 +77,18 @@ const Item: React.FC<Props> = (props) => {
       });
     }
   }, [primaryText, secondaryText, setTextBoxDimensions]);
+
+  useEffect(() => {
+    const cropper = document.querySelector('#entire-frame-div');
+    if (cropper) {
+      setCropperDimensions({
+        // @ts-ignore
+        width: cropper?.offsetWidth,
+        // @ts-ignore
+        height: cropper?.offsetHeight,
+      });
+    }
+  }, [windowSize.width]);
 
   const { width, height, top, right, bottom, left } = frameData.dimensions;
   const mobileDimensions = determineRenderDimensions(
@@ -101,9 +117,21 @@ const Item: React.FC<Props> = (props) => {
 
   const textBox = {
     // @ts-ignore
-    [vertical]: frameData.renderDimensions[vertical],
+    [vertical]:
+      windowSize.width <= 1230
+        ? // @ts-ignore
+          (frameData.dimensions[vertical] * cropperDimensions.height) /
+          frameData.dimensions.height
+        : // @ts-ignore
+          frameData.renderDimensions[vertical],
     // @ts-ignore
-    [horizontal]: frameData.renderDimensions[horizontal],
+    [horizontal]:
+      windowSize.width <= 1230
+        ? // @ts-ignore
+          (frameData.dimensions[horizontal] * cropperDimensions.width) /
+          frameData.dimensions.width
+        : // @ts-ignore
+          frameData.renderDimensions[horizontal],
     // backgroundImage: backgroundColor,
   };
   const cropperContainerStyle =

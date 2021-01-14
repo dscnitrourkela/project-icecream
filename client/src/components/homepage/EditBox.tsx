@@ -191,7 +191,15 @@ const useStyles = makeStyles((theme) => ({
       width: '50%',
       justifyContent: 'center',
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.between('xs', 'sm')]: {
+      transform: 'translate(-50%, 0)',
+      top: '80%',
+      left: '50%',
+      width: '50%',
+      justifyContent: 'center',
+      height: '450px',
+    },
+    [theme.breakpoints.down('xs')]: {
       transform: 'translate(-50%, 0)',
       top: '45%',
       left: '50%',
