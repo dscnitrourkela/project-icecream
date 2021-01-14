@@ -148,6 +148,21 @@ function Upload() {
           <div>
             <Typography variant='h3'>Frame Details</Typography>
 
+            <Typography
+              variant='body2'
+              style={{
+                color: '#888888',
+                backgroundColor: '#F0F0F0',
+                padding: 10,
+                borderRadius: 5,
+                marginLeft: 5,
+                marginRight: 5,
+              }}
+            >
+              After the frame is uploaded, we will verify and approve it after
+              which it will be displayed on the site.
+            </Typography>
+
             <CustomTextField
               value={frameName}
               setValue={setFrameName}
