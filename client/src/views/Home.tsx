@@ -56,6 +56,7 @@ const App: React.FC = () => {
         secondaryText={secondaryText}
         position={position}
         greyscale={greyscale}
+        uploadImage={uploadImage}
         setPrimaryText={setPrimaryText}
         setSecondaryText={setSecondaryText}
         setPosition={setPosition}

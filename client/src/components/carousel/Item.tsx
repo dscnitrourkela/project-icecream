@@ -128,8 +128,8 @@ const Item: React.FC<Props> = (props) => {
     [horizontal]:
       windowSize.width <= 1230
         ? // @ts-ignore
-          (frameData.dimensions[horizontal] * cropperDimensions.width) /
-          frameData.dimensions.width
+          (frameData.dimensions[vertical] * cropperDimensions.height) /
+          frameData.dimensions.height
         : // @ts-ignore
           frameData.renderDimensions[horizontal],
     // backgroundImage: backgroundColor,

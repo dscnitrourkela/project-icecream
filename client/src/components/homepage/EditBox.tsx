@@ -29,6 +29,7 @@ interface Props {
   secondaryText: string;
   position: string;
   greyscale: boolean;
+  uploadImage: string;
   setPrimaryText: (param: string) => void;
   setSecondaryText: (param: string) => void;
   setPosition: (param: string) => void;
@@ -49,6 +50,7 @@ const EditBox: React.FC<Props> = (props) => {
     secondaryText,
     position,
     greyscale,
+    uploadImage,
     setPrimaryText,
     setSecondaryText,
     setPosition,
@@ -76,12 +78,24 @@ const EditBox: React.FC<Props> = (props) => {
   };
 
   const handleImageUpload = async (e: any) => {
-    // const selected = e.target.files[0];
     const selected = e[0];
     if (selected) {
       let imageDataUrl = await readFile(selected);
       // @ts-ignore
       setUploadImage(imageDataUrl);
+    }
+  };
+
+  const handleDownloadClick = (): void => {
+    if (showCustomText) {
+      if (primaryText === 'Primary Text')
+        window.alert('Please enter the Primary Text');
+      else if (secondaryText === 'Secondary Text')
+        window.alert('Please enter the Secondary Text');
+      else if (!uploadImage) window.alert('Please upload an image');
+      else overlayImage();
+    } else {
+      overlayImage();
     }
   };
 
@@ -162,7 +176,11 @@ const EditBox: React.FC<Props> = (props) => {
           onChange={handleImageUpload}
         />
 
-        <Button onClick={overlayImage} variant='contained' color='secondary'>
+        <Button
+          onClick={handleDownloadClick}
+          variant='contained'
+          color='secondary'
+        >
           Download
         </Button>
       </Box>
