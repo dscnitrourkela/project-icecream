@@ -41,6 +41,22 @@ export const overlayImage = async (
   const resizedRight = (1000 * right) / width;
   const resizedLeft = (1000 * left) / width;
 
+  let x = 0,
+    y = 0;
+  if (position === 'top-left') {
+    x = resizedLeft;
+    y = resizedTop;
+  } else if (position === 'top-right') {
+    x = 1000 - resizedRight - 300;
+    y = resizedTop;
+  } else if (position === 'bottom-left') {
+    x = resizedLeft;
+    y = 1000 - resizedBottom - 100;
+  } else if (position === 'bottom-right') {
+    x = 1000 - resizedRight - 300;
+    y = 1000 - resizedBottom - 100;
+  }
+
   // Crop the user profile image as per the crop and zoom
   const cropProfile = await getCroppedImg(uploadImage, croppedAreaPixels);
   // Read the profile frame and cropped image by jimp and resize it.
@@ -64,7 +80,7 @@ export const overlayImage = async (
 
         frameImage
           .composite(profile, resizedTop, resizedLeft)
-          .composite(customTextBoxImage, resizedLeft, resizedTop)
+          .composite(customTextBoxImage, x, y)
           // @ts-ignore
           .getBase64(jimp.AUTO, async (err: any, src: any) => {
             download(src, 'profile-frame.png', 'image/png');
@@ -74,7 +90,7 @@ export const overlayImage = async (
     }
   } else {
     frameImage
-      .composite(profile, resizedTop, resizedLeft)
+      .composite(profile, x, y)
       // @ts-ignore
       .getBase64(jimp.AUTO, async (err: any, src: any) => {
         download(src, 'profile-frame.png', 'image/png');

@@ -288,7 +288,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     // minWidth: 200,
-    maxWidth: 400,
+    maxWidth: 300,
     height: 80,
     padding: '0px 10px',
     margin: 0,
