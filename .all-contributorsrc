@@ -34,6 +34,15 @@
         "maintenance",
         "projectManagement"
       ]
+    },
+    {
+      "login": "CIPHERTron",
+      "name": "Pritish Samal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56754747?v=4",
+      "profile": "https://github.com/CIPHERTron",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
