@@ -33,9 +33,10 @@ const App: React.FC = () => {
 	const [textBoxDimensions, setTextBoxDimensions] = useState<any>()
 
 	const [showCustomText, setShowCustomText] = useState<boolean>(true)
-	const [primaryText, setPrimaryText] = useState<string>("Primary Text")
+	const [primaryText, setPrimaryText] =
+		useState<string>("Your Hacker Name")
 	const [secondaryText, setSecondaryText] =
-		useState<string>("Secondary Text")
+		useState<string>("Your Guild Name")
 	const [position, setPosition] = useState<string>("top-right")
 
 	const [loading, setLoading] = useState<boolean>(false)
