@@ -70,7 +70,7 @@ export const frameData = [
 			top: 470,
 			width: 4501,
 		},
-		frame: "https://res.cloudinary.com/dalqfvowk/image/upload/v1610220397/icecream_frames/hd9zlgcsw9zjppn0lw9x.png",
+		frame: "https://res.cloudinary.com/dscnitrourkela/image/upload/v1610220397/icecream_frames/hd9zlgcsw9zjppn0lw9x.png",
 		name: "DSC NIT Rourkela",
 		renderDimensions: {
 			bottom: 71.27272727272727,
@@ -98,7 +98,7 @@ export const frameData = [
 			top: 245,
 			width: 2250,
 		},
-		frame: "https://res.cloudinary.com/dalqfvowk/image/upload/v1610215173/icecream_frames/fvbpjkljamqjaq7kzy7q.png",
+		frame: "https://res.cloudinary.com/dscnitrourkela/image/upload/v1610215173/icecream_frames/fvbpjkljamqjaq7kzy7q.png",
 		name: "MLH Locak Hack Day 2",
 		renderDimensions: {
 			bottom: 71.27272727272727,
@@ -126,7 +126,7 @@ export const frameData = [
 			top: 245,
 			width: 2250,
 		},
-		frame: "https://res.cloudinary.com/dalqfvowk/image/upload/v1610126660/icecream_frames/gkkrhtvcvrv0jrdaaiyx.png",
+		frame: "https://res.cloudinary.com/dscnitrourkela/image/upload/v1610126660/icecream_frames/gkkrhtvcvrv0jrdaaiyx.png",
 		name: "MLH Local Hack Day",
 		renderDimensions: {
 			bottom: 71.27272727272727,
