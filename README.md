@@ -171,7 +171,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## DSC NIT Rourkela
 
-[![DSC NIT Rourkela][dsc-nitrourkela]](https://dscnitrourkela.org)
+Project developed and maintained by [DSC NIT Rourkela](https://dscnitrourkela.org/)
+![DSC NIT Rourkela Cover Image](..images/repoCover.png)(https://dscnitrourkela.org/)
 
 ## Starware
 
