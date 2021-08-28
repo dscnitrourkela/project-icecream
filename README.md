@@ -172,7 +172,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## DSC NIT Rourkela
 
 Project developed and maintained by [DSC NIT Rourkela](https://dscnitrourkela.org/)
-![DSC NIT Rourkela Cover Image](..images/repoCover.png)(https://dscnitrourkela.org/)
+![DSC NIT Rourkela Cover Image](images/repoCover.png)
 
 ## Starware
 
