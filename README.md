@@ -3,11 +3,11 @@
 <!-- [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url] -->
+[![MIT License][license-shield]][license-url]  -->
 
 <br />
 <p align="center">
-  <a href="https://github.com/dscnitrourkela/project-oregano">
+  <a href="https://github.com/dscnitrourkela/project-icecream">
     <img src="images/logo.png" alt="Logo" width="130">
   </a>
 
@@ -19,9 +19,9 @@
     <br />
     <a href="https://dev.hacknitr.tech">View Live</a>
     ·
-    <a href="https://github.com/dscnitrourkela/project-oregano/issues">Report Bugs</a>
+    <a href="https://github.com/dscnitrourkela/project-icecream/issues">Report Bugs</a>
     .
-    <a href="https://github.com/dscnitrourkela/project-oregano/issues">Add Features</a>
+    <a href="https://github.com/dscnitrourkela/project-icecream/issues">Add Features</a>
   </p>
 </p>
 
@@ -47,7 +47,6 @@
     <li><a href="#license">License</a></li>
     <li><a href="#dsc-nit-rourkela">DSC NIT Rourkela</a></li>
     <li><a href="#starware">Starware</a></li>
-    <li><a href="#contributors">Contributors</a></li>
   </ol>
 </details>
 
