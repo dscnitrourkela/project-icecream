@@ -11,13 +11,13 @@
     <img src="images/logo.png" alt="Logo" width="130">
   </a>
 
-  <h3 align="center">HackNITR 3.0</h3>
+  <h3 align="center">Frameboi</h3>
 
   <p align="center">
-    The official repository for the website of HackNITR 3.0
+    Profile Picture Frame Generator for HackNITR 3.0 
     <br />
     <br />
-    <a href="https://dev.hacknitr.tech">View Live</a>
+    <a href="https://frame.dscnitrourkela.org/">View Live</a>
     ·
     <a href="https://github.com/dscnitrourkela/project-icecream/issues">Report Bugs</a>
     .
@@ -34,12 +34,13 @@
       <ul>
       </ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#hackNITR">HackNITR 3.0</a></li>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#contribution-guidlines">Contribution guidlines</a></li>
+        <li><a href="#contribution-guidelines">Contribution guidelines</a></li>
         <li><a href="#local-repository-setup">Local Repository Setup</a></li>
         <li><a href="#running-the-project">Running the project</a></li>
       </ul>
@@ -52,17 +53,26 @@
 
 ## About The Project
 
-HackNITR, one of the largest hackathons in India's eastern region, is a kind of hackathon that endeavours to bring and integrate talent, innovation, and creativity under one roof to build solutions for real-world problems using the latest technologies. It is organized by a bunch of tech enthusiasts from Developer Student Clubs (DSC) NIT Rourkela in collaboration with OpenCode, Opensource community, registered under the technical society of Student Activity Centre (SAC), NIT Rourkela.
+A digital and customisable frame generator for all the participants of the hackathon
+
+- The web application allows you to customise your frames with wide-range of shapes and colors.
+- On completion of the frame, upload your profile picture. 
+- Download the customised frame and feel free to share it with others.
 
 ## Built With
 
 Following technologies and libraries are used for the development of this website
 
-- [React]()
-- [Gatsby]()
-- [Tailwind]()
-- [Cloudflare]()
-- [Netlify]()
+- [React](https://reactjs.org/)
+- [React-Konva](https://konvajs.org/)
+- [Gatsby](https://www.gatsbyjs.com/)
+- [Tailwind](https://tailwindcss.com/)
+- [Cloudflare](https://www.cloudflare.com/)
+- [Netlify](https://www.netlify.com/)
+
+## HackNITR 3.0
+
+HackNITR, one of the largest hackathons in India's eastern region, is a kind of hackathon that endeavours to bring and integrate talent, innovation, and creativity under one roof to build solutions for real-world problems using the latest technologies. It is organized by a bunch of tech enthusiasts from Developer Student Clubs (DSC) NIT Rourkela in collaboration with OpenCode, Opensource community, registered under the technical society of Student Activity Centre (SAC), NIT Rourkela.
 
 ## Getting Started
 
@@ -113,7 +123,7 @@ To setup the project locally the steps below.
 
 ```
 
-### Contribution guidlines 🎃
+### Contribution guidelines 🎃
 
 ---
 
