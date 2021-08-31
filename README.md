@@ -31,10 +31,8 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-      </ul>
         <li><a href="#built-with">Built With</a></li>
-        <li><a href="#hackNITR">HackNITR 3.0</a></li>
+        <li><a href="#hacknitr">HackNITR</a></li>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -70,7 +68,7 @@ Following technologies and libraries are used for the development of this websit
 - [Cloudflare](https://www.cloudflare.com/)
 - [Netlify](https://www.netlify.com/)
 
-## HackNITR 3.0
+## HackNITR
 
 HackNITR, one of the largest hackathons in India's eastern region, is a kind of hackathon that endeavours to bring and integrate talent, innovation, and creativity under one roof to build solutions for real-world problems using the latest technologies. It is organized by a bunch of tech enthusiasts from Developer Student Clubs (DSC) NIT Rourkela in collaboration with OpenCode, Opensource community, registered under the technical society of Student Activity Centre (SAC), NIT Rourkela.
 
@@ -123,7 +121,7 @@ To setup the project locally the steps below.
 
 ```
 
-### Contribution guidelines 🎃
+### Contribution guidelines
 
 ---
 
