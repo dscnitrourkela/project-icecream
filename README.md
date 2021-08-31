@@ -1,9 +1,9 @@
 [![Starware](https://img.shields.io/badge/Starware-⭐-black?labelColor=f9b00d)](https://github.com/zepfietje/starware)
 
-<!-- [![Forks][forks-shield]][forks-url]
+[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]  -->
+[![MIT License][license-shield]][license-url] 
 
 <br />
 <p align="center">
@@ -57,7 +57,7 @@ A digital and customisable frame generator for all the participants of the hacka
 
 - The web application allows you to customise your frames with wide-range of shapes and colors.
 - On completion of the frame, upload your profile picture. 
-- Download the customised frame and feel free to share it with others.
+- Download the customised frame and share it with others.
 
 ## Built With
 
