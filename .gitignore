@@ -143,5 +143,4 @@ dist
 # and uncomment the following lines
 # .pnp.*
 
-# Mac files
-.DS_Store
+public
