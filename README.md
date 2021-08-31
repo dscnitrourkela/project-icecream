@@ -14,7 +14,7 @@
   <h3 align="center">Frameboi</h3>
 
   <p align="center">
-    Profile Picture Frame Generator for HackNITR 3.0 
+    Profile Picture Frame Generator for HackNITR 3.0
     <br />
     <br />
     <a href="https://frame.dscnitrourkela.org/">View Live</a>
@@ -54,7 +54,7 @@
 A digital and customisable frame generator for all the participants of the hackathon
 
 - The web application allows you to customise your frames with wide-range of shapes and colors.
-- On completion of the frame, upload your profile picture. 
+- On completion of the frame, upload your profile picture.
 - Download the customised frame and share it with others.
 
 ## Built With
@@ -139,17 +139,15 @@ Please refer to the project's style and contribution guidelines for submitting p
 4.  **Push** your work back up to your fork
 5.  Submit a **Pull request** so that we can review your changes
 
-NOTE 1: Please abide by the [Contributing Guidelines](https://github.com/dscnitrourkela/project-guava-web/blob/master/CONTRIBUTING.md).
+NOTE 1: Please abide by the [Contributing Guidelines](https://github.com/dscnitrourkela/project-icecream/blob/main/CONTRIBUTING.md).
 
-NOTE 2: Please abide by the [Code of Conduct](https://github.com/dscnitrourkela/project-guava-web/blob/master/CODE_OF_CONDUCT.md).
+NOTE 2: Please abide by the [Code of Conduct](https://github.com/Sonakshi1901/project-icecream/blob/main/CODE_OF_CONDUCT.md).
 
 ### Running the project.
 
 The project uses Yarn and not NPM. It is strictly advised to stick with Yarn so as to avoid dependency conflicts down the line.
 
 ```
-## Checkout into the project client directory
-cd client
 
 ## Install Dependencies
 yarn install
