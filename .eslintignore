@@ -1,3 +1,6 @@
+# Created by https://www.toptal.com/developers/gitignore/api/node,yarn,firebase
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,yarn,firebase
+
 ### Firebase ###
 .idea
 **/node_modules/*
@@ -97,6 +100,10 @@ typings/
 .nuxt
 dist
 
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
 
 # rollup.js default build output
 dist/
@@ -144,3 +151,5 @@ temp/
 
 # and uncomment the following lines
 # .pnp.*
+
+# End of https://www.toptal.com/developers/gitignore/api/node,yarn,firebase
