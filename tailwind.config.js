@@ -30,6 +30,12 @@ theme: {
       'color-secondary': 'var(--text-color-secondary)',
       'background-dark': 'var(--background-dark)',
       'background-darker': 'var(--background-darker)',
+      'frame-yellow': '#F9C131',
+      'frame-red': '#E04637',
+      'frame-blue': '#565DA7',
+      'frame-dark-green': '#2A504B',
+      'frame-green': '#9FA431',
+      'frame-gray': '#808080',
     },
     fontFamily: {
       roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
