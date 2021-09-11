@@ -22,7 +22,6 @@ const Container = styled.div`
   min-width: 100vw;
   min-height: 100vh;
 `;
-
 const Heading = styled.div`
   ${tw`
     row-span-2
@@ -54,7 +53,6 @@ const Description = styled.p`
     text-frame-gray
     `}
 `;
-
 const Yellow = styled.span`
   ${tw`
     text-frame-yellow
@@ -91,6 +89,7 @@ function HomePanel() {
       <Head />
       <FrameImg src={home.frame.src} alt={home.frame.alt} />
       <SubHeading>{home.subheading}</SubHeading>
+
       <Heading>
         <h1>
           <Yellow>F</Yellow>
