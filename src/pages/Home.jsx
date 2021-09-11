@@ -118,13 +118,13 @@ function HomePanel() {
     <Container>
       <Head>
         <Logo
-          src='https://res.cloudinary.com/dscnitrourkela/image/upload/v1631296364/icecream_frames/landing%20page/bzohucxsncjlllm2hx26.png'
+          src='https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/landing%20page/bzohucxsncjlllm2hx26.png'
           alt='logo'
         />
         <p>HackNITR 3.0</p>
       </Head>
       <FrameImg
-        src='https://res.cloudinary.com/dscnitrourkela/image/upload/v1631211497/icecream_frames/landing%20page/kc34v2ls33bw8koeklb2.png'
+        src='https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/landing%20page/kc34v2ls33bw8koeklb2.png'
         alt='frame image'
       />
       <SubHeading>HackNITR 3.0 Presents</SubHeading>
