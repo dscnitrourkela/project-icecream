@@ -1,5 +1,10 @@
 import React from 'react';
+import HomePanel from './Home';
 
 export default function Home() {
-  return <h1>Project-Icecream😋</h1>;
+  return (
+    <div>
+      <HomePanel />
+    </div>
+  );
 }
