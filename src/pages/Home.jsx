@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import home from '../../config/home';
+import Button from '../components/shared/Button';
+import Head from '../components/shared/Head';
 
 const Container = styled.div`
   ${tw`
@@ -18,21 +21,6 @@ const Container = styled.div`
   grid-template-rows: repeat(14, minmax(0, 1fr));
   min-width: 100vw;
   min-height: 100vh;
-`;
-const Head = styled.div`
-  ${tw`
-    text-center
-    text-lg
-    flex
-    gap-2
-    items-center
-    `}
-`;
-const Logo = styled.img`
-  ${tw`
-    h-10
-    w-10
-    `}
 `;
 const Heading = styled.div`
   ${tw`
@@ -65,24 +53,6 @@ const Description = styled.p`
     text-frame-gray
     `}
 `;
-const ButtonContainer = styled.div`
-  ${tw`
-    row-span-2
-    p-5
-    `}
-`;
-const Button = styled.button`
-  ${tw`
-    uppercase
-    rounded-full
-    bg-black
-    text-white
-    pr-10
-    pl-10
-    pt-4
-    pb-4
-    `}
-`;
 const Yellow = styled.span`
   ${tw`
     text-frame-yellow
@@ -112,22 +82,14 @@ const SlimText = styled.span`
   ${tw`
     font-light
     `}
-`
+`;
 function HomePanel() {
   return (
     <Container>
-      <Head>
-        <Logo
-          src='https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/landing%20page/bzohucxsncjlllm2hx26.png'
-          alt='logo'
-        />
-        <p>HackNITR 3.0</p>
-      </Head>
-      <FrameImg
-        src='https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/landing%20page/kc34v2ls33bw8koeklb2.png'
-        alt='frame image'
-      />
-      <SubHeading>HackNITR 3.0 Presents</SubHeading>
+      <Head />
+      <FrameImg src={home.frame.src} alt={home.frame.alt} />
+      <SubHeading>{home.subheading}</SubHeading>
+
       <Heading>
         <h1>
           <Yellow>F</Yellow>
@@ -138,13 +100,8 @@ function HomePanel() {
         </h1>
         <SlimText>BOI</SlimText>
       </Heading>
-      <Description>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est nemo nisi blanditiis officia
-        tempora. Voluptate molestiae dolorum vel velit quaerat.
-      </Description>
-      <ButtonContainer>
-        <Button>continue</Button>
-      </ButtonContainer>
+      <Description>{home.description}</Description>
+      <Button>{home.button}</Button>
     </Container>
   );
 }
