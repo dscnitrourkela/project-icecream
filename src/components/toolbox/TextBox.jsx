@@ -2,19 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from "react-switch";
-
-const Container = styled.div`
-  ${tw`
-    font-roboto
-    pt-2
-    grid
-    grid-rows-1
-    grid-cols-1
-    border-solid border-2 border-background-darker
-    bg-background-darker
-    rounded-lg
-  `}
-`;
+import Container from '../shared/Container';
 
 const Heading1 = styled.h1`
   ${tw`
