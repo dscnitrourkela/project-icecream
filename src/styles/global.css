@@ -150,13 +150,17 @@ table {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #5f676e;
+  background: #fff;
   border-radius: 5px;
 }
 
 :root {
   --text-color-primary: #fff;
-  --text-color-secondary: rgba(255, 255, 255, 0.4);
+  --text-color-secondary: #000;
+
+  --background-dark: #fff;
+  --background-darker: #F9F9F9;
+  --background-darkest: #000;
 
   --max-width: 83.5em;
   --max-width-bleed: 90%;
