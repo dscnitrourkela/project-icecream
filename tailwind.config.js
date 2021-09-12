@@ -30,12 +30,25 @@ theme: {
       'color-secondary': 'var(--text-color-secondary)',
       'background-dark': 'var(--background-dark)',
       'background-darker': 'var(--background-darker)',
+      'background-darkest': 'var(--background-darkest)',
       'frame-yellow': '#F9C131',
       'frame-red': '#E04637',
       'frame-blue': '#565DA7',
       'frame-dark-green': '#2A504B',
       'frame-green': '#9FA431',
       'frame-gray': '#808080',
+    },
+    boxShadow: {
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)'
+    },
+    borderRadius: {
+      'none': '0',
+      'sm': '0.125rem',
+      'md': '0.375rem',
+      'lg': '0.5rem',
+      'full': '9999px',
+      'large': '12px',
     },
     fontFamily: {
       roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
