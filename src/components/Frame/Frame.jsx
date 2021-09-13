@@ -85,7 +85,6 @@ export default function App() {
           </Layer>
         </Stage>
         <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-        {/* <Inputs uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} /> */}
         <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
         <CustomText
           username={username}
