@@ -23,11 +23,11 @@ const Button = styled.button`
     uppercase
     rounded-full
     bg-black
-    text-white
-    pr-12
-    pl-12
-    pt-6
-    pb-6
+    px-16
+    py-6
+    text-color-bright
+    border-none
+    outline-none
     `}
 `;
 
@@ -43,7 +43,7 @@ const downloadURI = ({ uri, name }) => {
 export default function Download({ stageRef }) {
   const handleDownload = () => {
     const dataURL = stageRef.current.toDataURL();
-    downloadURI('https://www.google.com/images/srpr/logo3w.png', 'Frameboi.png');
+    downloadURI(dataURL, 'Frameboi.png');
   };
 
   return (
