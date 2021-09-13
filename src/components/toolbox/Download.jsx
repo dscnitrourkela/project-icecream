@@ -28,7 +28,6 @@ const Button = styled.button`
     text-color-bright
     border-none
     outline-none
-    m-auto
     `}
 `;
 
