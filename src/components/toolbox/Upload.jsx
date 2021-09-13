@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import Container from '../shared/Container';
+import ImageUpload from './ImageUpload';
 
 const Section1 = styled.div`
   ${tw`
@@ -42,23 +43,28 @@ const Button = styled.button`
     rounded-full
     h-16 w-16 
     justify-center
-    bg-background-darkest
+    /* bg-background-darkest */
   `}
 `;
 
-export default function Upload() {
-    return(
-       <Container>
-         <Heading1>Upload Image</Heading1>
-        <Section1>
-         <Description>Click on the upload icon to upload image. You can repeat
-             this step to choose another image.
-         </Description>        
-         <ButtonContainer>
-          {/* <FontAwesomeIcon icon={["fas", "upload"]} /> */}         
-          <Button><FontAwesomeIcon icon={faUpload} size="2x" style={{ color: "#fff" }} /></Button>
-         </ButtonContainer> 
-        </Section1>
-       </Container>
-    )
-};
+export default function Upload({
+  name,
+  setName,
+  guildName,
+  setGuildName,
+  uploadedImage,
+  setUploadedImage,
+}) {
+  return (
+    <Container>
+      <Heading1>Upload Image</Heading1>
+      <Section1>
+        <Description>
+          Click on the upload icon to upload image. You can repeat this step to choose another
+          image.
+        </Description>
+        <ImageUpload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
+      </Section1>
+    </Container>
+  );
+}

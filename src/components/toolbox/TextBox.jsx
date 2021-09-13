@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import Switch from "react-switch";
+import Switch from 'react-switch';
 import Container from '../shared/Container';
 
 const Heading1 = styled.h1`
@@ -41,60 +41,55 @@ const FormFillup = styled.input`
   `}
 `;
 
-
-export default function CustomText({ 
-   username,
-   guildname, 
-   setYourName, 
-   setGuildname, 
-  }) {
-
+export default function CustomText({ username, guildname, setYourName, setGuildname }) {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
-    setChecked({ checked });
-  }
+    // setChecked({ checked });
+    setChecked((prevCheck) => !prevCheck);
+  };
 
-  return(
-      <Container>
-        <Section1>
-          <Heading1>Custom Text</Heading1>
-          <label htmlFor="material-switch">
-            <Toggle>
-              {/* <button type="button" onClick={handleToggle}>Check</button> */}
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                onColor="#666666"
-                onHandleColor="#17171D"
-                handleDiameter={30}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                height={20}
-                width={48}
-                className="react-switch"
-                id="material-switch"
-               />
-            </Toggle>
-          </label>
-        </Section1>
-        { checked &&
-         <Section2>
-            <FormFillup
-              type='text'
-              value={username}
-              name='username'
-              placeholder='Your Name'
-              onChange={(e) => setYourName(e.target.value)}
+  return (
+    <Container>
+      <Section1>
+        <Heading1>Custom Text</Heading1>
+        <label htmlFor='material-switch'>
+          <Toggle>
+            {/* <button type="button" onClick={handleToggle}>Check</button> */}
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              onColor='#666666'
+              onHandleColor='#17171D'
+              handleDiameter={30}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              height={20}
+              width={48}
+              className='react-switch'
+              id='material-switch'
             />
-            <FormFillup
-              type='text'
-              value={guildname}
-              name='guildname'
-              placeholder='Guild Name'
-              onChange={(e) => setGuildname(e.target.value)}
-            />
-        </Section2> }
-      </Container>
-  )
+          </Toggle>
+        </label>
+      </Section1>
+      {checked && (
+        <Section2>
+          <FormFillup
+            type='text'
+            value={username}
+            name='username'
+            placeholder='Your Name'
+            onChange={(e) => setYourName(e.target.value)}
+          />
+          <FormFillup
+            type='text'
+            value={guildname}
+            name='guildname'
+            placeholder='Guild Name'
+            onChange={(e) => setGuildname(e.target.value)}
+          />
+        </Section2>
+      )}
+    </Container>
+  );
 }

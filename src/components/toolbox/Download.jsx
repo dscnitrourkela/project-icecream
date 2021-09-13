@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
@@ -38,19 +38,19 @@ const downloadURI = ({ uri, name }) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}
+};
 
 export default function Download({ stageRef }) {
-    const handleDownload = () => {
-      const dataURL = stageRef.current.toDataURL();
-      downloadURI(dataURL, 'Frameboi.png');
-    }
+  const handleDownload = () => {
+    const dataURL = stageRef.current.toDataURL();
+    downloadURI('https://www.google.com/images/srpr/logo3w.png', 'Frameboi.png');
+  };
 
-    return(
-        <Container>
-            <DownloadContainer>
-              <Button onClick={handleDownload}>Download</Button>
-            </DownloadContainer>
-        </Container>
-    )
+  return (
+    <Container>
+      <DownloadContainer>
+        <Button onClick={handleDownload}>Download</Button>
+      </DownloadContainer>
+    </Container>
+  );
 }
