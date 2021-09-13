@@ -23,7 +23,7 @@ const Button = styled.button`
   `}
 `;
 
-export default ({ uploadedImage, setUploadedImage }) => (
+export default ({ setUploadedImage }) => (
   <div>
     <ButtonContainer>
       {/* <FontAwesomeIcon icon={["fas", "upload"]} /> */}

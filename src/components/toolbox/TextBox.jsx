@@ -60,7 +60,6 @@ export default function CustomText({ username, guildname, setYourName, setGuildn
         <Heading1>Custom Text</Heading1>
         <label htmlFor='material-switch'>
           <Toggle>
-            {/* <button type="button" onClick={handleToggle}>Check</button> */}
             <Switch
               checked={checked}
               onChange={handleChange}

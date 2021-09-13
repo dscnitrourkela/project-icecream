@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
-import { Stage, Layer, Image, Text, Label, Rect } from 'react-konva';
+import { Stage, Layer, Image, Text } from 'react-konva';
 import useImage from 'use-image';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Carousel from '../carousel/Carousel';
-// import Inputs from '../toolbox/Input';
 import Head from '../shared/Head';
 import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/TextBox';
 import Download from '../toolbox/Download';
+import frameData from '../../../config/frameData';
 
 const Container = styled.div`
   ${tw`
@@ -28,26 +28,21 @@ const Container = styled.div`
 `;
 
 const FRAMES = {
-  // eslint-disable-next-line max-len
-  ONE: 'https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/siap9qgjxblbkg1ubmsq.png',
-  // eslint-disable-next-line max-len
-  TWO: 'https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/fvbpjkljamqjaq7kzy7q.png',
-  THREE:
-    // eslint-disable-next-line max-len
-    'https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/p15pic06ielx741wdmh1.png',
-  // eslint-disable-next-line max-len
-  FOUR: 'https://res.cloudinary.com/dscnitrourkela/image/upload/v1610220397/icecream_frames/hd9zlgcsw9zjppn0lw9x.png',
+  ONE: frameData.frames.ONE,
+  TWO: frameData.frames.TWO,
+  THREE: frameData.frames.THREE,
+  FOUR: frameData.frames.FOUR,
 };
 
 export default function App() {
   const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
-  const [username, setYourName] = useState('Your Name');
-  const [guildname, setGuildname] = useState('Guild Name');
+  const [userName, setUserName] = useState('Your Name');
+  const [guildName, setGuildName] = useState('Guild Name');
   const stageRef = useRef(null);
 
-  const [image] = useImage(selectedFrame);
-  const [image2] = useImage(uploadedImage);
+  const [frameImg] = useImage(selectedFrame);
+  const [image] = useImage(uploadedImage);
 
   return (
     <Container>
@@ -56,14 +51,14 @@ export default function App() {
         <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
           <Layer>
             <Image
-              image={image}
+              image={frameImg}
               width={350}
               height={350}
               style={{ zIndex: '100', position: 'absolute' }}
             />
-            <Image image={image2} width={281} height={280} x={34} y={35} draggable='true' />
+            <Image image={image} width={281} height={280} x={34} y={35} draggable='true' />
             <Text
-              text={username}
+              text={userName}
               x={45}
               y={45}
               fontSize={22}
@@ -73,7 +68,7 @@ export default function App() {
             />
 
             <Text
-              text={guildname}
+              text={guildName}
               x={4}
               y={68}
               fontSize={22}
@@ -87,10 +82,10 @@ export default function App() {
         <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
         <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
         <CustomText
-          username={username}
-          guildname={guildname}
-          setYourName={setYourName}
-          setGuildname={setGuildname}
+          username={userName}
+          guildname={guildName}
+          setYourName={setUserName}
+          setGuildname={setGuildName}
         />
 
         <Download stageRef={stageRef} />
