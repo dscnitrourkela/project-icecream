@@ -12,7 +12,7 @@ const Heading1 = styled.h1`
 
 const Section1 = styled.div`
   ${tw`
-    pl-2
+    pl-0
     md:grid grid-cols-2 auto-cols-max
   `}
 `;
@@ -20,7 +20,7 @@ const Section1 = styled.div`
 const Section2 = styled.div`
   ${tw`
     pt-4
-    p-2
+    p-0
     md:grid grid-cols-1 auto-cols-max
   `}
 `;

@@ -2,22 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const ButtonContainer = styled.span`
   ${tw`
-    pl-6
+    pl-0
   `}
 `;
 
 const Button = styled.button`
   ${tw`
     font-normal
-    p-2
+    mb-2
     rounded-full
-    h-16 w-16 
+    h-12 w-12
     justify-center
     bg-background-darkest
+    border-none
+    outline-none
   `}
 `;
 
@@ -28,7 +30,7 @@ export default ({ uploadedImage, setUploadedImage }) => (
 
       <Button>
         <label htmlFor='contained-button-file'>
-          <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
+          <FontAwesomeIcon icon={faArrowUp} size='2x' style={{ color: '#fff' }} />
         </label>
       </Button>
     </ButtonContainer>

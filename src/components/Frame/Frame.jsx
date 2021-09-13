@@ -61,7 +61,7 @@ export default function App() {
               height={350}
               style={{ zIndex: '100', position: 'absolute' }}
             />
-            <Image image={image2} width={322} height={321} x={39} y={39} draggable='true' />
+            <Image image={image2} width={281} height={280} x={34} y={35} draggable='true' />
             <Text
               text={username}
               x={45}

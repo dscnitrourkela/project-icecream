@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import Container from '../shared/Container';
 import ImageUpload from './ImageUpload';
 
@@ -14,47 +12,25 @@ const Section1 = styled.div`
 
 const Heading1 = styled.h1`
   ${tw`
-  text-2xl
   font-normal
-  pl-2
+  pl-4
+  text-left
  `}
+  font-size: 1.5rem;
 `;
 
 const Description = styled.div`
   ${tw`
-  text-lg
+  text-sm
   text-frame-gray
   font-normal
   col-span-2
-  p-2
+  pl-4
+  text-left
   `}
 `;
 
-const ButtonContainer = styled.div`
-  ${tw`
-    pl-6
-  `}
-`;
-
-const Button = styled.button`
-  ${tw`
-    font-normal
-    p-2
-    rounded-full
-    h-16 w-16 
-    justify-center
-    /* bg-background-darkest */
-  `}
-`;
-
-export default function Upload({
-  name,
-  setName,
-  guildName,
-  setGuildName,
-  uploadedImage,
-  setUploadedImage,
-}) {
+export default function Upload({ uploadedImage, setUploadedImage }) {
   return (
     <Container>
       <Heading1>Upload Image</Heading1>
