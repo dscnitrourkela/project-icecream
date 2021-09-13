@@ -5,10 +5,9 @@ import Switch from 'react-switch';
 import Container from '../shared/Container';
 
 const Heading1 = styled.h1`
-  ${tw`
-  text-2xl
-  font-normal
-  `}
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 8%;
 `;
 
 const Section1 = styled.div`
@@ -31,14 +30,20 @@ const Toggle = styled.div`
      pl-20
   `}
 `;
+
 const FormFillup = styled.input`
-  ${tw`
-   border rounded w-full 
-   border-gray-50
-   py-3 px-3 text-black
-   mb-4
-   text-xl 
-  `}
+  width: 90%;
+  padding: 12px 32px;
+  padding-left: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  color: black;
+  font-size: 1rem;
 `;
 
 export default function CustomText({ username, guildname, setYourName, setGuildname }) {
@@ -61,11 +66,11 @@ export default function CustomText({ username, guildname, setYourName, setGuildn
               onChange={handleChange}
               onColor='#666666'
               onHandleColor='#17171D'
-              handleDiameter={30}
+              handleDiameter={20}
               uncheckedIcon={false}
               checkedIcon={false}
-              height={20}
-              width={48}
+              height={13}
+              width={30}
               className='react-switch'
               id='material-switch'
             />

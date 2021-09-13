@@ -40,7 +40,7 @@ const FRAMES = {
 };
 
 export default function App() {
-  const [selectedFrame, setSelectedFrame] = useState(FRAMES.THREE);
+  const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
   const [username, setYourName] = useState('Your Name');
   const [guildname, setGuildname] = useState('Guild Name');
@@ -53,12 +53,12 @@ export default function App() {
     <Container>
       <Head />
       <div className='App' style={{ display: 'grid', margin: '20px' }}>
-        <Stage ref={stageRef} width={400} height={400} x={0} style={{ margin: 'auto' }}>
+        <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
           <Layer>
             <Image
               image={image}
-              width={400}
-              height={400}
+              width={350}
+              height={350}
               style={{ zIndex: '100', position: 'absolute' }}
             />
             <Image image={image2} width={322} height={321} x={39} y={39} draggable='true' />
@@ -66,7 +66,7 @@ export default function App() {
               text={username}
               x={45}
               y={45}
-              fontSize={25}
+              fontSize={22}
               draggable='true'
               width={200}
               fill='black'
@@ -74,9 +74,9 @@ export default function App() {
 
             <Text
               text={guildname}
-              x={10}
+              x={4}
               y={68}
-              fontSize={25}
+              fontSize={22}
               draggable='true'
               width={200}
               wrap='char'

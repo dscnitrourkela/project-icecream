@@ -15,7 +15,7 @@ export default ({ frames, setSelectedFrame }) => (
         onClick={() => setSelectedFrame(frames[key])}
         src={frames[key]}
         alt='some alt text'
-        style={{ width: '70px', height: '70px', margin: '10px' }}
+        style={{ width: '50px', height: '50px', margin: '10px' }}
       />
     ))}
   </div>
