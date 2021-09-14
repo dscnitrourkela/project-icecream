@@ -4,8 +4,13 @@ export default ({ frames, setSelectedFrame }) => (
   <div
     style={{
       display: 'flex',
+      width: '280px',
+      whiteSpace: 'nowrap',
+      flexWrap: 'nowrap',
+      overflow: 'auto',
       justifyContent: 'center',
       alignItems: 'center',
+      margin: 'auto',
     }}
   >
     {Object.keys(frames).map((key) => (

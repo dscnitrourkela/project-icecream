@@ -32,8 +32,8 @@ const Description = styled.div`
 
 export default function Upload({ uploadedImage, setUploadedImage }) {
   return (
-    <Container>
-      <Heading1 style={{ marginTop: '25px' }}>Upload Image</Heading1>
+    <Container style={{ marginTop: '25px' }}>
+      <Heading1>Upload Image</Heading1>
       <Section1>
         <Description>
           Click on the upload icon to upload image. You can repeat this step to choose another

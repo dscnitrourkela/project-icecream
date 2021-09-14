@@ -32,6 +32,8 @@ const FRAMES = {
   TWO: frameData.frames.TWO,
   THREE: frameData.frames.THREE,
   FOUR: frameData.frames.FOUR,
+  FIVE: frameData.frames.FIVE,
+  SIX: frameData.frames.SIX,
 };
 
 export default function App() {

@@ -50,7 +50,6 @@ export default function CustomText({ username, guildname, setYourName, setGuildn
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
-    // setChecked({ checked });
     setChecked((prevCheck) => !prevCheck);
   };
 
