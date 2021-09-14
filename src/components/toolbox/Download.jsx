@@ -31,7 +31,7 @@ const Button = styled.button`
     `}
 `;
 
-const downloadURI = ({ uri, name }) => {
+const downloadURI = (uri, name) => {
   const link = document.createElement('a');
   link.download = name;
   link.href = uri;

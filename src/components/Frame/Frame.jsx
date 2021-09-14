@@ -22,9 +22,7 @@ const Container = styled.div`
     p-5
     overflow-x-hidden
     overflow-y-hidden
-    `}/* grid-template-rows: repeat(14, minmax(0, 1fr));
-  min-width: 100vw;
-  min-height: 100vh; */
+    `}
 `;
 
 const FRAMES = {
@@ -43,8 +41,8 @@ export default function App() {
   const [guildName, setGuildName] = useState('Guild Name');
   const stageRef = useRef(null);
 
-  const [frameImg] = useImage(selectedFrame);
-  const [image] = useImage(uploadedImage);
+  const [frameImg] = useImage(selectedFrame, 'Anonymous');
+  const [image] = useImage(uploadedImage, 'Anonymous');
 
   return (
     <Container>
