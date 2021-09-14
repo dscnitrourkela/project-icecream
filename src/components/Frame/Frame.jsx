@@ -29,11 +29,11 @@ const Container = styled.div`
 
 const FRAMES = {
   ONE: frameData.frames.ONE,
-  TWO: frameData.frames.TWO,
-  THREE: frameData.frames.THREE,
-  FOUR: frameData.frames.FOUR,
-  FIVE: frameData.frames.FIVE,
-  SIX: frameData.frames.SIX,
+  TWO: frameData.frames.ONE,
+  THREE: frameData.frames.TWO,
+  FOUR: frameData.frames.THREE,
+  FIVE: frameData.frames.FOUR,
+  SIX: frameData.frames.FIVE,
 };
 
 export default function App() {
