@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import Container from '../shared/Container';
+import ImageUpload from './ImageUpload';
 
 const Section1 = styled.div`
   ${tw`
@@ -13,52 +12,35 @@ const Section1 = styled.div`
 
 const Heading1 = styled.h1`
   ${tw`
-  text-2xl
   font-normal
-  pl-2
+  pl-4
+  text-left
  `}
+  font-size: 1.5rem;
 `;
 
 const Description = styled.div`
   ${tw`
-  text-lg
+  text-sm
   text-frame-gray
   font-normal
   col-span-2
-  p-2
+  pl-4
+  text-left
   `}
 `;
 
-const ButtonContainer = styled.div`
-  ${tw`
-    pl-6
-  `}
-`;
-
-const Button = styled.button`
-  ${tw`
-    font-normal
-    p-2
-    rounded-full
-    h-16 w-16 
-    justify-center
-    bg-background-darkest
-  `}
-`;
-
-export default function Upload() {
-    return(
-       <Container>
-         <Heading1>Upload Image</Heading1>
-        <Section1>
-         <Description>Click on the upload icon to upload image. You can repeat
-             this step to choose another image.
-         </Description>        
-         <ButtonContainer>
-          {/* <FontAwesomeIcon icon={["fas", "upload"]} /> */}         
-          <Button><FontAwesomeIcon icon={faUpload} size="2x" style={{ color: "#fff" }} /></Button>
-         </ButtonContainer> 
-        </Section1>
-       </Container>
-    )
-};
+export default function Upload({ uploadedImage, setUploadedImage }) {
+  return (
+    <Container style={{ marginTop: '25px' }}>
+      <Heading1>Upload Image</Heading1>
+      <Section1>
+        <Description>
+          Click on the upload icon to upload image. You can repeat this step to choose another
+          image.
+        </Description>
+        <ImageUpload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
+      </Section1>
+    </Container>
+  );
+}

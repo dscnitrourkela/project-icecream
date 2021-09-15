@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
@@ -23,34 +23,34 @@ const Button = styled.button`
     uppercase
     rounded-full
     bg-black
-    text-white
-    pr-12
-    pl-12
-    pt-6
-    pb-6
+    px-12
+    py-6
+    text-color-bright
+    border-none
+    outline-none
     `}
 `;
 
-const downloadURI = ({ uri, name }) => {
+const downloadURI = (uri, name) => {
   const link = document.createElement('a');
   link.download = name;
   link.href = uri;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}
+};
 
 export default function Download({ stageRef }) {
-    const handleDownload = () => {
-      const dataURL = stageRef.current.toDataURL();
-      downloadURI(dataURL, 'Frameboi.png');
-    }
+  const handleDownload = () => {
+    const dataURL = stageRef.current.toDataURL();
+    downloadURI(dataURL, 'Frameboi.png');
+  };
 
-    return(
-        <Container>
-            <DownloadContainer>
-              <Button onClick={handleDownload}>Download</Button>
-            </DownloadContainer>
-        </Container>
-    )
+  return (
+    <Container>
+      <DownloadContainer>
+        <Button onClick={handleDownload}>Download</Button>
+      </DownloadContainer>
+    </Container>
+  );
 }

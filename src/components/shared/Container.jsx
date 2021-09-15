@@ -13,13 +13,10 @@ const Wrapper = styled.div`
     border-solid border-2 border-gray-50
     mb-4
     rounded-xl
+    mt-5
   `}
 `;
 
 export default function Container({ children }) {
-  return (
-    <Wrapper>
-      {children}
-    </Wrapper>
-  );
+  return <Wrapper>{children}</Wrapper>;
 }
