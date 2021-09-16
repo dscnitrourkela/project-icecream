@@ -5,17 +5,17 @@ import CustomText from '../toolbox/textinput';
 const Inputs = ({ 
   uploadedImage, 
   setUploadedImage, 
-  username, 
+  userName, 
   setUsername, 
-  guildname, 
+  guildName, 
   setGuildname }) => (
     
   <div>
     <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
     <CustomText 
-      username={username}
+      userName={userName}
       setUsername={setUsername}
-      guildname={guildname}
+      guildName={guildName}
       setGuildname={setGuildname}
     />
   </div>
