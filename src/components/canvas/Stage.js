@@ -2,7 +2,7 @@ import React from 'react';
 import { Stage, Layer, Image, Text } from 'react-konva';
 // eslint-disable-next-line import/no-unresolved 
 
-export default function Satge({ stageRef, userName, guildName, frameImg, image }){
+function Canvas({ stageRef, userName, guildName, frameImg, image }) {
     return(
      <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
           <Layer>
@@ -35,5 +35,7 @@ export default function Satge({ stageRef, userName, guildName, frameImg, image }
             />
           </Layer>
     </Stage>
-  );
-}
+   );
+};
+
+export default Canvas;

@@ -1,15 +1,16 @@
 import React from 'react';
-import Upload from '../toolbox/upload';
+import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/textinput';
 
-const Inputs = ({ 
+function Inputs({ 
   uploadedImage, 
   setUploadedImage, 
   userName, 
   setUsername, 
   guildName, 
-  setGuildname }) => (
-    
+  setGuildname }) {
+
+  return(  
   <div>
     <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
     <CustomText 
@@ -19,6 +20,7 @@ const Inputs = ({
       setGuildname={setGuildname}
     />
   </div>
-);
+  );
+};
 
 export default Inputs;

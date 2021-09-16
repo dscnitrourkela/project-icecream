@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import useImage from 'use-image'; 
-// import HomePanel from './Home';
+// import HomePanel from './home';
 import Frame from './frame';
 import frameData from '../../config/frameData';
 

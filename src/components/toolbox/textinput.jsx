@@ -47,7 +47,7 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-export default ({ userName, guildName, setUsername, setGuildname }) => {
+export default function CustomText({ userName, guildName, setUsername, setGuildname }) {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {

@@ -4,8 +4,8 @@ import tw from 'twin.macro';
 import Carousel from '../components/frameControllers/carousel';
 import Head from '../components/shared/Head';
 import Inputs from '../components/frameControllers/input';
-import Download from '../components/toolbox/download';
-import Stage from '../components/canvas/Stage';
+import Download from '../components/toolbox/Download';
+import Canvas  from '../components/canvas/stage';
 
 const Container = styled.div`
   ${tw`
@@ -22,7 +22,7 @@ const Container = styled.div`
     `}
 `;
 
-function Frame ({ 
+function Frame({ 
   stageRef, 
   userName, 
   setUserName, 
@@ -35,11 +35,11 @@ function Frame ({
   setUploadedImage,
   FRAMES }) {
 
-  return( 
+   return(
     <Container>
       <Head />
       <div className='App' style={{ display: 'grid', margin: '20px' }}>
-        <Stage
+        <Canvas
          stageRef={stageRef}
          userName={userName}
          guildName={guildName}
@@ -50,16 +50,16 @@ function Frame ({
         <Inputs
          uploadedImage={uploadedImage}
          setUploadedImage={setUploadedImage}
-         username={userName}
+         userName={userName}
          setUsername={setUserName}
-         guildname={guildName}
+         guildName={guildName}
          setGuildname={setGuildName}
          />
 
         <Download stageRef={stageRef} />
       </div>
     </Container>
-  );
+   );
 };
 
 export default Frame;

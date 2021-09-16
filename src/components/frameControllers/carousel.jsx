@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
-export default function Carousel({ frames, setSelectedFrame }) {
+function Carousel({ frames, setSelectedFrame }) {
   return(
   <div
     style={{
@@ -28,4 +28,6 @@ export default function Carousel({ frames, setSelectedFrame }) {
     ))}
   </div>
   );
-};
+}
+
+export default Carousel;
