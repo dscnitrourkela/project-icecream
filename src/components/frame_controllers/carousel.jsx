@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
 export default ({ frames, setSelectedFrame }) => (
@@ -15,6 +16,7 @@ export default ({ frames, setSelectedFrame }) => (
   >
     {Object.keys(frames).map((key) => (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <img
         key={key}
         onClick={() => setSelectedFrame(frames[key])}

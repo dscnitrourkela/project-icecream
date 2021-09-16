@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const ButtonContainer = styled.span`
   ${tw`
@@ -24,14 +24,15 @@ const Button = styled.button`
   `}
 `;
 
-export default ({ setUploadedImage }) => (
+export default function ImageUpload({ setUploadedImage }) {
+  return(
   <div>
     <ButtonContainer>
       {/* <FontAwesomeIcon icon={["fas", "upload"]} /> */}
 
       <Button>
         <label htmlFor='contained-button-file'>
-          <FontAwesomeIcon icon={faArrowUp} size='2x' style={{ color: '#fff' }} />
+          <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
         </label>
       </Button>
     </ButtonContainer>
@@ -50,4 +51,5 @@ export default ({ setUploadedImage }) => (
         </button>
       </label> */}
   </div>
-);
+  );
+};

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -46,7 +47,7 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-export default function CustomText({ username, guildname, setYourName, setGuildname }) {
+export default ({ userName, guildName, setUsername, setGuildname }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
@@ -79,14 +80,14 @@ export default function CustomText({ username, guildname, setYourName, setGuildn
         <Section2>
           <FormFillup
             type='text'
-            value={username}
+            value={userName}
             name='username'
             placeholder='Your Name'
-            onChange={(e) => setYourName(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <FormFillup
             type='text'
-            value={guildname}
+            value={guildName}
             name='guildname'
             placeholder='Guild Name'
             onChange={(e) => setGuildname(e.target.value)}

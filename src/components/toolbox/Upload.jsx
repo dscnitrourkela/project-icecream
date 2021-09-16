@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Container from '../shared/Container';
-import ImageUpload from './ImageUpload';
+import ImageUpload from './uploadImage';
 
 const Section1 = styled.div`
   ${tw`
@@ -25,6 +25,8 @@ const Description = styled.div`
   text-frame-gray
   font-normal
   col-span-2
+  pt-2
+  pb-2
   pl-4
   text-left
   `}
