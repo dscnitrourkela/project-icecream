@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import Carousel from '../components/frame_controllers/carousel';
+import Carousel from '../components/frameControllers/carousel';
 import Head from '../components/shared/Head';
-import Inputs from '../components/frame_controllers/Input';
+import Inputs from '../components/frameControllers/input';
 import Download from '../components/toolbox/download';
 import Stage from '../components/canvas/Stage';
 

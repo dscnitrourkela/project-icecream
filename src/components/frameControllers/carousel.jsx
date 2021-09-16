@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 
-export default ({ frames, setSelectedFrame }) => (
+export default function Carousel({ frames, setSelectedFrame }) {
+  return(
   <div
     style={{
       display: 'flex',
@@ -26,4 +27,5 @@ export default ({ frames, setSelectedFrame }) => (
       />
     ))}
   </div>
-);
+  );
+};
