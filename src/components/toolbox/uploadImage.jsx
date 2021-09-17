@@ -25,25 +25,25 @@ const Button = styled.button`
 `;
 
 export default function ImageUpload({ setUploadedImage }) {
-  return(
-  <div>
-    <ButtonContainer>
-      {/* <FontAwesomeIcon icon={["fas", "upload"]} /> */}
+  return (
+    <div>
+      <ButtonContainer>
+        {/* <FontAwesomeIcon icon={["fas", "upload"]} /> */}
 
-      <Button>
-        <label htmlFor='contained-button-file'>
-          <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
-        </label>
-      </Button>
-    </ButtonContainer>
+        <Button>
+          <label htmlFor='contained-button-file'>
+            <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
+          </label>
+        </Button>
+      </ButtonContainer>
 
-    <input
-      type='file'
-      accept='image/*'
-      style={{ display: 'none' }}
-      id='contained-button-file'
-      onChange={(e) => setUploadedImage(URL.createObjectURL(e.target.files[0]))}
-    />
-  </div>
+      <input
+        type='file'
+        accept='image/*'
+        style={{ display: 'none' }}
+        id='contained-button-file'
+        onChange={(e) => setUploadedImage(URL.createObjectURL(e.target.files[0]))}
+      />
+    </div>
   );
-};
+}

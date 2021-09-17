@@ -1,45 +1,115 @@
-import React, { useState, useRef } from 'react';
-// eslint-disable-next-line import/no-unresolved
-import useImage from 'use-image'; 
-// import HomePanel from './home';
-import Frame from './frame';
-import frameData from '../../config/frameData';
+import React from 'react';
 
-const FRAMES = {
-  ONE: frameData.frames.ONE,
-  TWO: frameData.frames.ONE,
-  THREE: frameData.frames.TWO,
-  FOUR: frameData.frames.THREE,
-  FIVE: frameData.frames.FOUR,
-  SIX: frameData.frames.FIVE,
-};
+// Libraries
+import styled from 'styled-components';
+import tw from 'twin.macro';
 
-export default function Home() {
-  const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
-  const [uploadedImage, setUploadedImage] = useState();
-  const [userName, setUserName] = useState('Your Name');
-  const [guildName, setGuildName] = useState('Guild Name');
-  const stageRef = useRef(null);
+// Components
+import Button from '../components/shared/Button';
+import Head from '../components/shared/Head';
 
-  const [frameImg] = useImage(selectedFrame, 'Anonymous');
-  const [image] = useImage(uploadedImage, 'Anonymous');
+// Assets
+import home from '../../config/home';
 
+const Container = styled.div`
+  ${tw`
+    bg-white
+    grid
+    font-roboto
+    justify-center
+    text-center
+    justify-items-center
+    items-center
+    p-5
+    overflow-x-hidden
+    overflow-y-hidden
+    `}
+  grid-template-rows: repeat(14, minmax(0, 1fr));
+  min-width: 100vw;
+  min-height: 100vh;
+`;
+const Heading = styled.div`
+  ${tw`
+    row-span-2
+    text-6xl
+    flex
+    justify-center
+    items-center
+    gap-4
+    `}
+`;
+const FrameImg = styled.img`
+  ${tw`
+    row-span-6
+    h-full
+    w-full
+    `}
+`;
+const SubHeading = styled.p`
+  ${tw`
+    row-span-1
+    text-lg
+    `}
+`;
+const Description = styled.p`
+  ${tw`
+    row-span-2
+    text-center
+    text-sm
+    text-frame-gray
+    `}
+`;
+const Yellow = styled.span`
+  ${tw`
+    text-frame-yellow
+    `}
+`;
+const Blue = styled.span`
+  ${tw`
+    text-frame-blue
+    `}
+`;
+const DarkGreen = styled.span`
+  ${tw`
+    text-frame-dark-green
+    `}
+`;
+const Green = styled.span`
+  ${tw`
+    text-frame-green
+    `}
+`;
+const Red = styled.span`
+  ${tw`
+    text-frame-red
+    `}
+`;
+const SlimText = styled.span`
+  ${tw`
+    font-light
+    `}
+`;
+function HomePanel() {
   return (
-    <div style={{ padding: '20px' }}>
-      {/* <HomePanel /> */}
-      <Frame 
-       stageRef={stageRef}
-       userName={userName}
-       setUserName={setUserName}
-       guildName={guildName}
-       setGuildName={setGuildName}
-       setSelectedFrame={setSelectedFrame}
-       setUploadedImage={setUploadedImage}
-       uploadedImage={uploadedImage}
-       frameImg={frameImg}
-       image={image}
-       FRAMES={FRAMES}
-       />
-    </div>
+    <Container>
+      <Head />
+      <FrameImg src={home.frame.src} alt={home.frame.alt} />
+      <SubHeading>{home.subheading}</SubHeading>
+
+      <Heading>
+        <h1>
+          <Yellow>F</Yellow>
+          <Blue>R</Blue>
+          <DarkGreen>A</DarkGreen>
+          <Red>M</Red>
+          <Green>E</Green>
+        </h1>
+        <SlimText>BOI</SlimText>
+      </Heading>
+      <Description>{home.description}</Description>
+      <Button>{home.button}</Button>
+    </Container>
   );
 }
+
+export default HomePanel;
