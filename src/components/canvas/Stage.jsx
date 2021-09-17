@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Components
 import { Stage, Layer, Image, Text } from 'react-konva';
 
 function Canvas({ stageRef, userName, guildName, frameImg, image }) {

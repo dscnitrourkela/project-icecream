@@ -1,8 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+
+// Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
+
+// Components
 import Container from '../shared/Container';
 
 const Heading1 = styled.h1`
@@ -50,9 +53,7 @@ const FormFillup = styled.input`
 export default function CustomText({ userName, guildName, setUsername, setGuildname }) {
   const [checked, setChecked] = useState(false);
 
-  const handleChange = () => {
-    setChecked((prevCheck) => !prevCheck);
-  };
+  const handleChange = () => setChecked((prevCheck) => !prevCheck);
 
   return (
     <Container>

@@ -1,6 +1,10 @@
 import React from 'react';
+
+// Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
+
+// Components
 import home from '../../../config/home';
 
 const Heading = styled.div`

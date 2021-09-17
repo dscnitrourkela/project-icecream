@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 // Components
-import Carousel from '../components/frameControllers/carousel';
+import Carousel from '../components/frameControllers/FrameCarousel';
 import Head from '../components/shared/Head';
-import Inputs from '../components/frameControllers/input';
+import Inputs from '../components/frameControllers/DetailsInput';
 import Download from '../components/toolbox/Download';
 import Canvas from '../components/canvas/Stage';
 
