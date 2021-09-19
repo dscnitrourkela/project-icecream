@@ -56,33 +56,36 @@ const Button = styled.button`
   `}
 `;
 
-export default function Upload({ setUploadedImage }) {
-  return (
-    <Container style={{ marginTop: '25px' }}>
-      <Heading1>Upload Image</Heading1>
-      <Section1>
-        <Description>
-          Click on the upload icon to upload image. You can repeat this step to choose another
-          image.
-        </Description>
-        <div>
-          <ButtonContainer>
-            <Button>
-              <label htmlFor='contained-button-file'>
-                <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
-              </label>
-            </Button>
-          </ButtonContainer>
+const Upload = ({ setUploadedImage }) => (
+  <Container style={{ marginTop: '25px' }}>
+    <Heading1>Upload Image</Heading1>
+    <Section1>
+      <Description>
+        Click on the upload icon to upload image. You can repeat this step to choose another image.
+      </Description>
+      <div>
+        <ButtonContainer>
+          <Button>
+            <label htmlFor='contained-button-file'>
+              <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
+            </label>
+          </Button>
+        </ButtonContainer>
 
-          <input
-            type='file'
-            accept='image/*'
-            style={{ display: 'none' }}
-            id='contained-button-file'
-            onChange={(e) => setUploadedImage(URL.createObjectURL(e.target.files[0]))}
-          />
-        </div>
-      </Section1>
-    </Container>
-  );
-}
+        <input
+          type='file'
+          accept='image/*'
+          style={{ display: 'none' }}
+          id='contained-button-file'
+          onChange={(e) => {
+            if (e.target.files.length > 0) {
+              setUploadedImage(URL.createObjectURL(e.target.files[0]));
+            }
+          }}
+        />
+      </div>
+    </Section1>
+  </Container>
+);
+
+export default Upload;

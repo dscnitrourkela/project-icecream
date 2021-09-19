@@ -1,4 +1,3 @@
-
 module.exports = {
   pathPrefix: `/`,
   siteMetadata: {
@@ -8,15 +7,17 @@ module.exports = {
     canonicalUrl: `https://frame.dscnitrourkela.org`,
     author: {
       name: `Frameboi`,
-      description: `Profile Picture Frame Generator for HackNITR 3.0 `
+      description: `Profile Picture Frame Generator for HackNITR 3.0 `,
     },
     organisation: {
       name: `DSC NIT Rourkela`,
-      url: `https://frame.dscnitrourkela.org`
-    }
+      url: `https://frame.dscnitrourkela.org`,
+    },
   },
   plugins: [
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-robots-txt`
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-robots-txt`,
   ],
-}
+};

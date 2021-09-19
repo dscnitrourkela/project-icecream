@@ -50,7 +50,7 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-export default function CustomText({ userName, guildName, setUsername, setGuildname }) {
+const CustomText = ({ userName, guildName, setUsername, setGuildname }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChange = () => setChecked((prevCheck) => !prevCheck);
@@ -97,4 +97,6 @@ export default function CustomText({ userName, guildName, setUsername, setGuildn
       )}
     </Container>
   );
-}
+};
+
+export default CustomText;

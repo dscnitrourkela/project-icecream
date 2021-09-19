@@ -89,27 +89,26 @@ const SlimText = styled.span`
     font-light
     `}
 `;
-function HomePanel() {
-  return (
-    <Container>
-      <Head />
-      <FrameImg src={home.frame.src} alt={home.frame.alt} />
-      <SubHeading>{home.subheading}</SubHeading>
 
-      <Heading>
-        <h1>
-          <Yellow>F</Yellow>
-          <Blue>R</Blue>
-          <DarkGreen>A</DarkGreen>
-          <Red>M</Red>
-          <Green>E</Green>
-        </h1>
-        <SlimText>BOI</SlimText>
-      </Heading>
-      <Description>{home.description}</Description>
-      <Button>{home.button}</Button>
-    </Container>
-  );
-}
+const Home = () => (
+  <Container>
+    <Head />
+    <FrameImg src={home.frame.src} alt={home.frame.alt} />
+    <SubHeading>{home.subheading}</SubHeading>
 
-export default HomePanel;
+    <Heading>
+      <h1>
+        <Yellow>F</Yellow>
+        <Blue>R</Blue>
+        <DarkGreen>A</DarkGreen>
+        <Red>M</Red>
+        <Green>E</Green>
+      </h1>
+      <SlimText>BOI</SlimText>
+    </Heading>
+    <Description>{home.description}</Description>
+    <Button>{home.button}</Button>
+  </Container>
+);
+
+export default Home;

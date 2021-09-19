@@ -39,7 +39,7 @@ const FRAMES = {
   SIX: frameData.frames.FIVE,
 };
 
-export default function Home() {
+const Frame = () => {
   const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
   const [userName, setUserName] = useState('Your Name');
@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <Container>
       <Head />
-      <div className='App' style={{ display: 'grid', margin: '20px' }}>
+      {typeof window !== 'undefined' && (
         <Canvas
           stageRef={stageRef}
           userName={userName}
@@ -60,17 +60,19 @@ export default function Home() {
           frameImg={frameImg}
           image={image}
         />
-        <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-        <Inputs
-          uploadedImage={uploadedImage}
-          setUploadedImage={setUploadedImage}
-          userName={userName}
-          setUsername={setUserName}
-          guildName={guildName}
-          setGuildname={setGuildName}
-        />
-        <Download stageRef={stageRef} />
-      </div>
+      )}
+      <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
+      <Inputs
+        uploadedImage={uploadedImage}
+        setUploadedImage={setUploadedImage}
+        userName={userName}
+        setUsername={setUserName}
+        guildName={guildName}
+        setGuildname={setGuildName}
+      />
+      <Download stageRef={stageRef} />
     </Container>
   );
-}
+};
+
+export default Frame;

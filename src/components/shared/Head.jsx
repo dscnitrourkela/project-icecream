@@ -23,13 +23,11 @@ const Logo = styled.img`
     `}
 `;
 
-function Head() {
-  return (
-    <Heading>
-      <Logo src={home.logo.src} alt={home.logo.alt} />
-      <p>{home.head}</p>
-    </Heading>
-  );
-}
+const Head = () => (
+  <Heading>
+    <Logo src={home.logo.src} alt={home.logo.alt} />
+    <p>{home.head}</p>
+  </Heading>
+);
 
 export default Head;

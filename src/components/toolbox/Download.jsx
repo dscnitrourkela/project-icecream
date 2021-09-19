@@ -33,7 +33,7 @@ const Button = styled.button`
     `}
 `;
 
-export default function Download({ stageRef }) {
+const Download = ({ stageRef }) => {
   const downloadURI = (uri, name) => {
     const link = document.createElement('a');
     link.download = name;
@@ -55,4 +55,6 @@ export default function Download({ stageRef }) {
       </DownloadContainer>
     </Container>
   );
-}
+};
+
+export default Download;

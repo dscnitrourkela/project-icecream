@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 exports.onCreateWebpackConfig = ({ stage, rules, loaders, plugins, actions }) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({
