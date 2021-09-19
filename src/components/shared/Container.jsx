@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Libraries
 import tw from 'twin.macro';
 import styled from 'styled-components';
 
@@ -17,6 +19,6 @@ const Wrapper = styled.div`
   `}
 `;
 
-export default function Container({ children }) {
-  return <Wrapper>{children}</Wrapper>;
-}
+const Container = ({ children }) => <Wrapper>{children}</Wrapper>;
+
+export default Container;

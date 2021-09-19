@@ -38,6 +38,10 @@
     "no-static-element-interactions": 0,
     "prefer-destructuring": 1,
     "react/display-name": 0,
-    "func-names": 0
+    "func-names": 0,
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "controlComponents": ["Switch"],
+      "depth": 3
+    }]
   }
 }

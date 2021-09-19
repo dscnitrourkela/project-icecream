@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Libraries
 import tw from 'twin.macro';
 import styled from 'styled-components';
 
@@ -21,12 +23,10 @@ const ButtonDark = styled.button`
     `}
 `;
 
-function Button({ children }) {
-  return (
-    <ButtonContainer>
-      <ButtonDark>{children}</ButtonDark>
-    </ButtonContainer>
-  );
-}
+const Button = ({ children }) => (
+  <ButtonContainer>
+    <ButtonDark>{children}</ButtonDark>
+  </ButtonContainer>
+);
 
 export default Button;

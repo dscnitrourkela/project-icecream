@@ -4,4 +4,9 @@
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
 
-import './src/styles/global.css';
+require('./src/styles/global.css');
+
+exports.onClientEntry = () => {
+  // eslint-disable-next-line global-require
+  require('babel-polyfill');
+};

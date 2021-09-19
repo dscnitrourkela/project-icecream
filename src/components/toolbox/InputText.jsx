@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+
+// Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
+
+// Components
 import Container from '../shared/Container';
 
 const Heading1 = styled.h1`
@@ -46,12 +50,10 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-export default function CustomText({ username, guildname, setYourName, setGuildname }) {
+const CustomText = ({ userName, guildName, setUsername, setGuildname }) => {
   const [checked, setChecked] = useState(false);
 
-  const handleChange = () => {
-    setChecked((prevCheck) => !prevCheck);
-  };
+  const handleChange = () => setChecked((prevCheck) => !prevCheck);
 
   return (
     <Container>
@@ -79,14 +81,14 @@ export default function CustomText({ username, guildname, setYourName, setGuildn
         <Section2>
           <FormFillup
             type='text'
-            value={username}
+            value={userName}
             name='username'
             placeholder='Your Name'
-            onChange={(e) => setYourName(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <FormFillup
             type='text'
-            value={guildname}
+            value={guildName}
             name='guildname'
             placeholder='Guild Name'
             onChange={(e) => setGuildname(e.target.value)}
@@ -95,4 +97,6 @@ export default function CustomText({ username, guildname, setYourName, setGuildn
       )}
     </Container>
   );
-}
+};
+
+export default CustomText;

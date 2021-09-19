@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
@@ -31,18 +33,18 @@ const Button = styled.button`
     `}
 `;
 
-const downloadURI = (uri, name) => {
-  const link = document.createElement('a');
-  link.download = name;
-  link.href = uri;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+const Download = ({ stageRef }) => {
+  const downloadURI = (uri, name) => {
+    const link = document.createElement('a');
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-export default function Download({ stageRef }) {
   const handleDownload = () => {
-    const dataURL = stageRef.current.toDataURL();
+    const dataURL = stageRef.current.toDataURL({ pixelRatio: 4 });
     downloadURI(dataURL, 'Frameboi.png');
   };
 
@@ -53,4 +55,6 @@ export default function Download({ stageRef }) {
       </DownloadContainer>
     </Container>
   );
-}
+};
+
+export default Download;

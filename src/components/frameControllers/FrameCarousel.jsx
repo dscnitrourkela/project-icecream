@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ frames, setSelectedFrame }) => (
+const Carousel = ({ frames, setSelectedFrame }) => (
   <div
     style={{
       display: 'flex',
@@ -14,14 +14,21 @@ export default ({ frames, setSelectedFrame }) => (
     }}
   >
     {Object.keys(frames).map((key) => (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-      <img
+      <span
         key={key}
         onClick={() => setSelectedFrame(frames[key])}
-        src={frames[key]}
-        alt='some alt text'
-        style={{ width: '50px', height: '50px', margin: '10px' }}
-      />
+        onKeyDown={() => setSelectedFrame(frames[key])}
+        role='button'
+        tabIndex={0}
+      >
+        <img
+          src={frames[key]}
+          alt='some alt text'
+          style={{ width: '50px', height: '50px', margin: '10px' }}
+        />
+      </span>
     ))}
   </div>
 );
+
+export default Carousel;
