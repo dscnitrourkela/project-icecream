@@ -11,7 +11,7 @@ import Container from '../shared/Container';
 
 const Section1 = styled.div`
   ${tw`
-  md:grid grid-cols-3 auto-cols-max
+  md:grid grid-cols-3 auto-cols-max 
   `}
 `;
 
@@ -20,6 +20,7 @@ const Heading1 = styled.h1`
   font-normal
   pl-4
   text-left
+  mt-2
  `}
   font-size: 1.5rem;
 `;
@@ -34,6 +35,7 @@ const Description = styled.div`
   pb-2
   pl-4
   text-left
+  mb-2
   `}
 `;
 
@@ -57,7 +59,7 @@ const Button = styled.button`
 `;
 
 const Upload = ({ setUploadedImage }) => (
-  <Container style={{ marginTop: '25px' }}>
+  <Container>
     <Heading1>Upload Image</Heading1>
     <Section1>
       <Description>

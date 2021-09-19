@@ -1,18 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
+
+const CarouselContainer = styled.div`
+  ${tw`
+    flex
+    w-72
+    whitespace-nowrap
+    flex-nowrap
+    overflow-auto
+    justify-center
+    items-center
+    m-auto
+    `}
+`;
 
 const Carousel = ({ frames, setSelectedFrame }) => (
-  <div
-    style={{
-      display: 'flex',
-      width: '280px',
-      whiteSpace: 'nowrap',
-      flexWrap: 'nowrap',
-      overflow: 'auto',
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 'auto',
-    }}
-  >
+  <CarouselContainer>
     {Object.keys(frames).map((key) => (
       <span
         key={key}
@@ -28,7 +32,7 @@ const Carousel = ({ frames, setSelectedFrame }) => (
         />
       </span>
     ))}
-  </div>
+  </CarouselContainer>
 );
 
 export default Carousel;

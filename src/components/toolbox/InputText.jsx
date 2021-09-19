@@ -12,11 +12,13 @@ const Heading1 = styled.h1`
   font-size: 1.5rem;
   font-weight: normal;
   margin-bottom: 8%;
+  text-align: left;
+  margin-left: 17px;
 `;
 
 const Section1 = styled.div`
   ${tw`
-    pl-0
+    /* pl-0 */
     md:grid grid-cols-2 auto-cols-max
   `}
 `;
@@ -42,7 +44,7 @@ const FormFillup = styled.input`
   margin: auto;
   margin-bottom: 10px;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   background-color: #f9f9f9;

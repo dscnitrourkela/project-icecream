@@ -18,15 +18,13 @@ const Heading = styled.div`
 `;
 const Logo = styled.img`
   ${tw`
-    h-10
-    w-10
+    w-44
     `}
 `;
 
 const Head = () => (
-  <Heading>
+  <Heading style={{ marginBottom: '18px' }}>
     <Logo src={home.logo.src} alt={home.logo.alt} />
-    <p>{home.head}</p>
   </Heading>
 );
 

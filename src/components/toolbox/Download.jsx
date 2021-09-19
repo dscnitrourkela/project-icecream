@@ -25,7 +25,7 @@ const Button = styled.button`
     uppercase
     rounded-full
     bg-black
-    px-12
+    px-14
     py-6
     text-color-bright
     border-none
