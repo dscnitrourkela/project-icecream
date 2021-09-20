@@ -4,8 +4,8 @@ import tw from 'twin.macro';
 
 const CarouselContainer = styled.div`
   ${tw`
-    flex
-    /* w-72
+    /* flex
+    w-72
     whitespace-nowrap
     flex-nowrap
     overflow-auto

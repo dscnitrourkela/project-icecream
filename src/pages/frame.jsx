@@ -23,6 +23,20 @@ const Container3 = styled.h1`
 `}
 `;
 
+const CarouselC = styled.h1`
+  ${tw`
+    flex
+    w-72
+    whitespace-nowrap
+    flex-nowrap
+    overflow-auto
+    justify-center
+    items-center
+    m-auto
+    overflow-y-hidden
+`}
+`;
+
 const Container = styled.div`
   ${tw`
     bg-white
@@ -69,7 +83,9 @@ const Frame = () => {
           image={image}
         />
       )}
-      <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
+      <CarouselC>
+        <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
+      </CarouselC>
       <Container3>
         <Inputs
           uploadedImage={uploadedImage}
