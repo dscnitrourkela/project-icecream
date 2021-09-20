@@ -11,7 +11,8 @@ import Container from '../shared/Container';
 
 const Section1 = styled.div`
   ${tw`
-  md:grid grid-cols-3 auto-cols-max 
+    flex
+    gap-4
   `}
 `;
 
@@ -27,12 +28,12 @@ const Heading1 = styled.h1`
 
 const Description = styled.div`
   ${tw`
+  w-3/4
   text-sm
   text-frame-gray
   font-normal
   col-span-2
-  pt-2
-  pb-2
+  py-2
   pl-4
   text-left
   mb-2

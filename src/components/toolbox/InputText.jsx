@@ -9,17 +9,21 @@ import Switch from 'react-switch';
 import Container from '../shared/Container';
 
 const Heading1 = styled.h1`
-  font-size: 1.5rem;
-  font-weight: normal;
-  margin-bottom: 8%;
-  text-align: left;
-  margin-left: 17px;
+  ${tw`
+  w-3/4
+  text-2xl
+  font-normal
+  col-span-2
+  pb-2
+  pl-4
+  text-left
+  mb-2
+`}
 `;
 
 const Section1 = styled.div`
   ${tw`
-    /* pl-0 */
-    md:grid grid-cols-2 auto-cols-max
+  flex
   `}
 `;
 
@@ -33,7 +37,7 @@ const Section2 = styled.div`
 
 const Toggle = styled.div`
   ${tw`
-     pl-20
+     pl-5
   `}
 `;
 

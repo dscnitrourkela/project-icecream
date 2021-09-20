@@ -40,7 +40,7 @@ const FrameImg = styled.img`
   ${tw`
     /* row-span-6 */
     h-full
-    w-full
+    sm:w-full
     `}
 `;
 const SubHeading = styled.p`
@@ -56,6 +56,8 @@ const Description = styled.p`
     text-center
     text-sm
     text-frame-gray
+    w-1/2
+    sm:w-full
     `}
 `;
 const Yellow = styled.span`
