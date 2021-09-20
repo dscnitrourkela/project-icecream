@@ -15,6 +15,14 @@ import Canvas from '../components/canvas/Stage';
 // Assets
 import frameData from '../../config/frameData';
 
+const Container3 = styled.h1`
+  ${tw`
+   w-3/4
+   m-auto
+   /* sm: w-full */
+`}
+`;
+
 const Container = styled.div`
   ${tw`
     bg-white
@@ -62,14 +70,16 @@ const Frame = () => {
         />
       )}
       <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-      <Inputs
-        uploadedImage={uploadedImage}
-        setUploadedImage={setUploadedImage}
-        userName={userName}
-        setUsername={setUserName}
-        guildName={guildName}
-        setGuildname={setGuildName}
-      />
+      <Container3>
+        <Inputs
+          uploadedImage={uploadedImage}
+          setUploadedImage={setUploadedImage}
+          userName={userName}
+          setUsername={setUserName}
+          guildName={guildName}
+          setGuildname={setGuildName}
+        />
+      </Container3>
       <Download stageRef={stageRef} />
     </Container>
   );

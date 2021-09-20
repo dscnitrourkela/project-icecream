@@ -6,13 +6,9 @@ import tw from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-//
-import Container from '../shared/Container';
-
 const Container1 = styled.h1`
   ${tw`
-   w-3/4
-   m-auto
+  
 `}
 `;
 

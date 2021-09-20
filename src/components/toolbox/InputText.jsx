@@ -5,8 +5,11 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
 
-// Components
-import Container from '../shared/Container';
+const Container2 = styled.h1`
+  ${tw`
+  
+`}
+`;
 
 const Heading1 = styled.h1`
   ${tw`
@@ -62,7 +65,7 @@ const CustomText = ({ userName, guildName, setUsername, setGuildname }) => {
   const handleChange = () => setChecked((prevCheck) => !prevCheck);
 
   return (
-    <Container>
+    <Container2>
       <Section1>
         <Heading1>Custom Text</Heading1>
         <label htmlFor='material-switch'>
@@ -101,7 +104,7 @@ const CustomText = ({ userName, guildName, setUsername, setGuildname }) => {
           />
         </Section2>
       )}
-    </Container>
+    </Container2>
   );
 };
 
