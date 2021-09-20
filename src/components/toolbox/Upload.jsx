@@ -9,6 +9,13 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons';
 //
 import Container from '../shared/Container';
 
+const Container1 = styled.h1`
+  ${tw`
+   w-3/4
+   m-auto
+`}
+`;
+
 const Section1 = styled.div`
   ${tw`
     flex
@@ -60,7 +67,8 @@ const Button = styled.button`
 `;
 
 const Upload = ({ setUploadedImage }) => (
-  <Container>
+  // <div>
+  <Container1>
     <Heading1>Upload Image</Heading1>
     <Section1>
       <Description>
@@ -88,7 +96,7 @@ const Upload = ({ setUploadedImage }) => (
         />
       </div>
     </Section1>
-  </Container>
+  </Container1>
 );
 
 export default Upload;
