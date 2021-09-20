@@ -5,13 +5,13 @@ import tw from 'twin.macro';
 const CarouselContainer = styled.div`
   ${tw`
     flex
-    w-72
+    /* w-72
     whitespace-nowrap
     flex-nowrap
     overflow-auto
     justify-center
     items-center
-    m-auto
+    m-auto */
     `}
 `;
 
