@@ -17,9 +17,9 @@ import frameData from '../../config/frameData';
 
 const Container3 = styled.h1`
   ${tw`
-   w-3/4
+   w-3/5
    m-auto
-   /* sm: w-full */
+   sm:w-4/5
 `}
 `;
 
