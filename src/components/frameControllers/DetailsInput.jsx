@@ -5,6 +5,9 @@ import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/InputText';
 
 const Inputs = ({
+  checked,
+  setChecked,
+  handleChange,
   uploadedImage,
   setUploadedImage,
   userName,
@@ -15,6 +18,9 @@ const Inputs = ({
   <div>
     <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
     <CustomText
+      checked={checked}
+      setChecked={setChecked}
+      handleChange={handleChange}
       userName={userName}
       setUsername={setUsername}
       guildName={guildName}

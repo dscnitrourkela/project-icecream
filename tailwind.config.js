@@ -14,6 +14,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      width: {
+        94: '22rem',
+      },
       gridColumn: {
         'span-15': 'span 15 / span 15',
       },

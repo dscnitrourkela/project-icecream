@@ -17,16 +17,16 @@ import frameData from '../../config/frameData';
 
 const Container3 = styled.h1`
   ${tw`
-   w-3/5
+   w-7/12
    m-auto
-   sm:w-4/5
+   sm:w-10/12
 `}
 `;
 
 const CarouselC = styled.h1`
   ${tw`
     flex
-    w-72
+    w-94
     whitespace-nowrap
     flex-nowrap
     overflow-auto
@@ -66,6 +66,9 @@ const Frame = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [userName, setUserName] = useState('Your Name');
   const [guildName, setGuildName] = useState('Guild Name');
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => setChecked((prevCheck) => !prevCheck);
 
   const stageRef = useRef(null);
   const [frameImg] = useImage(selectedFrame, 'Anonymous');
@@ -81,6 +84,7 @@ const Frame = () => {
           guildName={guildName}
           frameImg={frameImg}
           image={image}
+          checked={checked}
         />
       )}
       <CarouselC>
@@ -88,6 +92,9 @@ const Frame = () => {
       </CarouselC>
       <Container3>
         <Inputs
+          handleChange={handleChange}
+          checked={checked}
+          setChecked={setChecked}
           uploadedImage={uploadedImage}
           setUploadedImage={setUploadedImage}
           userName={userName}

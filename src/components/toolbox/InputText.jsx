@@ -18,7 +18,7 @@ const Heading1 = styled.h1`
   font-normal
   col-span-2
   pb-2
-  pl-4
+  pl-3
   text-left
   mb-2
 `}
@@ -45,7 +45,7 @@ const Toggle = styled.div`
 `;
 
 const FormFillup = styled.input`
-  width: 90%;
+  width: 93%;
   padding: 12px 32px;
   padding-left: 10px;
   margin: auto;
@@ -59,53 +59,47 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-const CustomText = ({ userName, guildName, setUsername, setGuildname }) => {
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => setChecked((prevCheck) => !prevCheck);
-
-  return (
-    <Container2>
-      <Section1>
-        <Heading1>Custom Text</Heading1>
-        <label htmlFor='material-switch'>
-          <Toggle>
-            <Switch
-              checked={checked}
-              onChange={handleChange}
-              onColor='#666666'
-              onHandleColor='#17171D'
-              handleDiameter={20}
-              uncheckedIcon={false}
-              checkedIcon={false}
-              height={13}
-              width={30}
-              className='react-switch'
-              id='material-switch'
-            />
-          </Toggle>
-        </label>
-      </Section1>
-      {checked && (
-        <Section2>
-          <FormFillup
-            type='text'
-            value={userName}
-            name='username'
-            placeholder='Your Name'
-            onChange={(e) => setUsername(e.target.value)}
+const CustomText = ({ userName, guildName, setUsername, setGuildname, checked, handleChange }) => (
+  <Container2>
+    <Section1>
+      <Heading1>Custom Text</Heading1>
+      <label htmlFor='material-switch'>
+        <Toggle>
+          <Switch
+            checked={checked}
+            onChange={handleChange}
+            onColor='#666666'
+            onHandleColor='#17171D'
+            handleDiameter={20}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            height={13}
+            width={30}
+            className='react-switch'
+            id='material-switch'
           />
-          <FormFillup
-            type='text'
-            value={guildName}
-            name='guildname'
-            placeholder='Guild Name'
-            onChange={(e) => setGuildname(e.target.value)}
-          />
-        </Section2>
-      )}
-    </Container2>
-  );
-};
+        </Toggle>
+      </label>
+    </Section1>
+    {checked && (
+      <Section2>
+        <FormFillup
+          type='text'
+          value={userName}
+          name='username'
+          placeholder='Your Name'
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <FormFillup
+          type='text'
+          value={guildName}
+          name='guildname'
+          placeholder='Guild Name'
+          onChange={(e) => setGuildname(e.target.value)}
+        />
+      </Section2>
+    )}
+  </Container2>
+);
 
 export default CustomText;

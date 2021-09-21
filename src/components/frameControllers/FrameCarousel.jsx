@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 const CarouselContainer = styled.div`
   ${tw`
     /* flex
-    w-72
+    w-full
     whitespace-nowrap
     flex-nowrap
     overflow-auto
@@ -28,7 +28,7 @@ const Carousel = ({ frames, setSelectedFrame }) => (
         <img
           src={frames[key]}
           alt='some alt text'
-          style={{ width: '50px', height: '50px', margin: '10px' }}
+          style={{ width: '65px', height: '65px', margin: '14px' }}
         />
       </span>
     ))}
