@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Stage, Layer, Image } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour, setBgColour }) => {
+const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour }) => {
   const rect = [
     {
       x: 50,
@@ -57,9 +57,8 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour,
         fontSize={22}
         shapeProps={rect[0]}
         isSelected= {rect[0].id === selectedId}
-        onSelect={(e) => {
-          selectShape(rect[0].id);
-          setBgColour(e.target.value);
+        onSelect={() => {
+          selectShape(rect[0].id)
         }}
         onChange={(newAttrs) => {
           const rects = rectangles.slice();
@@ -76,9 +75,8 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour,
         fontSize={20}
         shapeProps={rect[1]}
         isSelected= {rect[1].id === selectedId}
-        onSelect={(e) => {
-          selectShape(rect[1].id);
-          setBgColour(e.target.value);
+        onSelect={() => {
+          selectShape(rect[1].id)
         }}
         onChange={(newAttrs) => {
           const rects = rectangles.slice();
