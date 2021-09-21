@@ -18,18 +18,16 @@ import frameData from '../../config/frameData';
 const Container3 = styled.h1`
   ${tw`
    pt-2
-   w-7/12
+   w-94
    m-auto
-   xmd:w-94
-   sm:w-10/12
+   sm:w-full
 `}
 `;
 
 const CarouselC = styled.h1`
   ${tw`
     w-94
-    xmd:w-3/4
-    sm:w-9/12
+    sm:w-full
     overflow-y-hidden
 `}
   margin: 0px, 0px;
