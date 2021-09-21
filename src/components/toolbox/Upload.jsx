@@ -36,6 +36,7 @@ const Description = styled.div`
   pl-4
   text-left
   mb-2
+  leading-4
   `}
 `;
 
@@ -59,7 +60,6 @@ const Button = styled.button`
 `;
 
 const Upload = ({ setUploadedImage }) => (
-  // <div>
   <Container1>
     <Heading1>Upload Image</Heading1>
     <Section1>

@@ -73,8 +73,9 @@ module.exports = {
       md: { max: '760px' },
       // => @media (max-width: 767px) { ... }
 
-      sm: { max: '639px' },
+      xmd: { max: '639px' },
       // => @media (max-width: 639px) { ... }
+      sm: { max: '520px' },
     },
   },
   variants: {

@@ -17,24 +17,25 @@ import frameData from '../../config/frameData';
 
 const Container3 = styled.h1`
   ${tw`
+   pt-2
    w-7/12
    m-auto
+   xmd:w-94
    sm:w-10/12
 `}
 `;
 
 const CarouselC = styled.h1`
   ${tw`
-    flex
     w-94
-    whitespace-nowrap
-    flex-nowrap
-    overflow-auto
-    justify-center
-    items-center
-    m-auto
+    xmd:w-3/4
+    sm:w-9/12
     overflow-y-hidden
 `}
+  margin: 0px, 0px;
+  padding: 1px;
+  overflow-x: auto;
+  white-space: nowrap;
 `;
 
 const Container = styled.div`
@@ -54,10 +55,10 @@ const Container = styled.div`
 
 const FRAMES = {
   ONE: frameData.frames.ONE,
-  TWO: frameData.frames.ONE,
-  THREE: frameData.frames.TWO,
-  FOUR: frameData.frames.THREE,
-  FIVE: frameData.frames.FOUR,
+  TWO: frameData.frames.TWO,
+  THREE: frameData.frames.THREE,
+  FOUR: frameData.frames.FOUR,
+  FIVE: frameData.frames.FIVE,
   SIX: frameData.frames.FIVE,
 };
 

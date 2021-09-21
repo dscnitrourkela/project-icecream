@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
 
-const Container2 = styled.h1`
-  ${tw`
-  
-`}
-`;
+const Container2 = styled.h1``;
 
 const Heading1 = styled.h1`
   ${tw`
@@ -18,7 +14,7 @@ const Heading1 = styled.h1`
   font-normal
   col-span-2
   pb-2
-  pl-3
+  pl-4
   text-left
   mb-2
 `}
@@ -33,7 +29,7 @@ const Section1 = styled.div`
 const Section2 = styled.div`
   ${tw`
     pt-4
-    p-0
+    px-1
     md:grid grid-cols-1 auto-cols-max
   `}
 `;
@@ -46,8 +42,7 @@ const Toggle = styled.div`
 
 const FormFillup = styled.input`
   width: 93%;
-  padding: 12px 32px;
-  padding-left: 10px;
+  padding: 12px 13px;
   margin: auto;
   margin-bottom: 10px;
   display: inline-block;

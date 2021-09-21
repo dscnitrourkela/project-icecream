@@ -1,19 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import tw from 'twin.macro';
 
-const CarouselContainer = styled.div`
-  ${tw`
-    /* flex
-    w-full
-    whitespace-nowrap
-    flex-nowrap
-    overflow-auto
-    justify-center
-    items-center
-    m-auto */
-    `}
-`;
+const CarouselContainer = styled.div``;
 
 const Carousel = ({ frames, setSelectedFrame }) => (
   <CarouselContainer>
@@ -28,7 +16,7 @@ const Carousel = ({ frames, setSelectedFrame }) => (
         <img
           src={frames[key]}
           alt='some alt text'
-          style={{ width: '65px', height: '65px', margin: '14px' }}
+          style={{ width: '50px', height: '50px', margin: '10px' }}
         />
       </span>
     ))}
