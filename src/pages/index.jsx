@@ -3,6 +3,7 @@ import React from 'react';
 // Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import { Link } from 'gatsby';
 
 // Components
 import Button from '../components/shared/Button';
@@ -107,7 +108,9 @@ const Home = () => (
       <SlimText>BOI</SlimText>
     </Heading>
     <Description>{home.description}</Description>
-    <Button>{home.button}</Button>
+    <Link to='/frame'>
+      <Button>{home.button}</Button>
+    </Link>
   </Container>
 );
 
