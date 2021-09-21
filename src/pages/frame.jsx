@@ -10,7 +10,7 @@ import Carousel from '../components/frameControllers/FrameCarousel';
 import Head from '../components/shared/Head';
 import Inputs from '../components/frameControllers/DetailsInput';
 import Download from '../components/toolbox/Download';
-import Canvas from '../components/canvas/Stage';
+import CanvasStage from '../components/canvas/Stage';
 
 // Assets
 import frameData from '../../config/frameData';
@@ -77,7 +77,7 @@ const Frame = () => {
     <Container>
       <Head />
       {typeof window !== 'undefined' && (
-        <Canvas
+        <CanvasStage
           stageRef={stageRef}
           userName={userName}
           guildName={guildName}
