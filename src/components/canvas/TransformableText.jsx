@@ -3,7 +3,16 @@ import React, { useRef, useEffect } from 'react';
 // Libraries
 import {Rect, Transformer, Text, Group} from 'react-konva';
 
-const TransformableText = ({ shapeProps, isSelected, onSelect, onChange, name, colour }) => {
+const TransformableText = ({ 
+  shapeProps, 
+  isSelected, 
+  onSelect, 
+  onChange, 
+  name, 
+  colour, 
+  fontFamily, 
+  fontStyle,
+  fontSize }) => {
   
     const shapeRef = useRef();
     const trRef = useRef();
@@ -55,7 +64,9 @@ const TransformableText = ({ shapeProps, isSelected, onSelect, onChange, name, c
             align="center"
             verticalAlign="middle"
             text={name}
-            fontSize={22}
+            fontSize={fontSize}
+            fontFamily={fontFamily}
+            fontStyle={fontStyle}
           />
         </Group>
         {isSelected && (

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Stage, Layer, Image } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
+const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour, setBgColour }) => {
   const rect = [
     {
       x: 50,
@@ -19,6 +19,7 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
   ];
   const [rectangles, setRectangles] = useState(rect);
   const [selectedId, selectShape] = useState(null);
+
 
   const checkDeselect = () => {
       selectShape(null);
@@ -50,11 +51,15 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
       <TransformableText
         // eslint-disable-next-line react/no-array-index-key
         name={userName}
-        colour="red"
+        colour={bgColour}
+        fontFamily="Roboto"
+        fontStyle="bold"
+        fontSize={22}
         shapeProps={rect[0]}
         isSelected= {rect[0].id === selectedId}
-        onSelect={() => {
+        onSelect={(e) => {
           selectShape(rect[0].id);
+          setBgColour(e.target.value);
         }}
         onChange={(newAttrs) => {
           const rects = rectangles.slice();
@@ -65,11 +70,15 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
       <TransformableText
         // eslint-disable-next-line react/no-array-index-key
         name={guildName}
-        colour="green"
+        colour={bgColour}
+        fontFamily="Roboto"
+        fontStyle="normal"
+        fontSize={20}
         shapeProps={rect[1]}
         isSelected= {rect[1].id === selectedId}
-        onSelect={() => {
+        onSelect={(e) => {
           selectShape(rect[1].id);
+          setBgColour(e.target.value);
         }}
         onChange={(newAttrs) => {
           const rects = rectangles.slice();
