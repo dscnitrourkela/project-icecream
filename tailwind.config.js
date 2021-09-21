@@ -14,6 +14,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      width: {
+        94: '22rem',
+      },
       gridColumn: {
         'span-15': 'span 15 / span 15',
       },
@@ -37,6 +40,7 @@ module.exports = {
         'frame-green': '#9FA431',
         'frame-gray': '#808080',
         'color-bright': '#FFFFFFFF',
+        'color-new': '#F9F9F9',
       },
       boxShadow: {
         sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -69,9 +73,7 @@ module.exports = {
 
       md: { max: '760px' },
       // => @media (max-width: 767px) { ... }
-
-      sm: { max: '639px' },
-      // => @media (max-width: 639px) { ... }
+      sm: { max: '380px' },
     },
   },
   variants: {

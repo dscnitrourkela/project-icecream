@@ -16,6 +16,8 @@ const Wrapper = styled.div`
     mb-4
     rounded-xl
     mt-5
+    w-3/4
+    m-auto 
   `}
 `;
 

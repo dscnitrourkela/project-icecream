@@ -15,6 +15,27 @@ import Canvas from '../components/canvas/Stage';
 // Assets
 import frameData from '../../config/frameData';
 
+const Container3 = styled.h1`
+  ${tw`
+   pt-2
+   w-94
+   m-auto
+   sm:w-full
+`}
+`;
+
+const CarouselC = styled.h1`
+  ${tw`
+    w-94
+    sm:w-full
+    overflow-y-hidden
+`}
+  margin: 0px, 0px;
+  padding: 1px;
+  overflow-x: auto;
+  white-space: nowrap;
+`;
+
 const Container = styled.div`
   ${tw`
     bg-white
@@ -32,10 +53,10 @@ const Container = styled.div`
 
 const FRAMES = {
   ONE: frameData.frames.ONE,
-  TWO: frameData.frames.ONE,
-  THREE: frameData.frames.TWO,
-  FOUR: frameData.frames.THREE,
-  FIVE: frameData.frames.FOUR,
+  TWO: frameData.frames.TWO,
+  THREE: frameData.frames.THREE,
+  FOUR: frameData.frames.FOUR,
+  FIVE: frameData.frames.FIVE,
   SIX: frameData.frames.FIVE,
 };
 
@@ -44,6 +65,9 @@ const Frame = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [userName, setUserName] = useState('Your Name');
   const [guildName, setGuildName] = useState('Guild Name');
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => setChecked((prevCheck) => !prevCheck);
 
   const stageRef = useRef(null);
   const [frameImg] = useImage(selectedFrame, 'Anonymous');
@@ -59,17 +83,25 @@ const Frame = () => {
           guildName={guildName}
           frameImg={frameImg}
           image={image}
+          checked={checked}
         />
       )}
-      <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-      <Inputs
-        uploadedImage={uploadedImage}
-        setUploadedImage={setUploadedImage}
-        userName={userName}
-        setUsername={setUserName}
-        guildName={guildName}
-        setGuildname={setGuildName}
-      />
+      <CarouselC>
+        <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
+      </CarouselC>
+      <Container3>
+        <Inputs
+          handleChange={handleChange}
+          checked={checked}
+          setChecked={setChecked}
+          uploadedImage={uploadedImage}
+          setUploadedImage={setUploadedImage}
+          userName={userName}
+          setUsername={setUserName}
+          guildName={guildName}
+          setGuildname={setGuildName}
+        />
+      </Container3>
       <Download stageRef={stageRef} />
     </Container>
   );
