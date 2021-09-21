@@ -18,16 +18,16 @@ const Heading = styled.div`
 `;
 const Logo = styled.img`
   ${tw`
-    h-10
-    w-10
+    w-44
     `}
 `;
 
 const Head = () => (
-  <Heading>
-    <Logo src={home.logo.src} alt={home.logo.alt} />
-    <p>{home.head}</p>
-  </Heading>
+  <a href={home.logo.web} target='_blank' rel='noopener noreferrer'>
+    <Heading style={{ marginBottom: '18px' }}>
+      <Logo src={home.logo.src} alt={home.logo.alt} />
+    </Heading>
+  </a>
 );
 
 export default Head;

@@ -3,6 +3,7 @@ import React from 'react';
 // Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import { Link } from 'gatsby';
 
 // Components
 import Button from '../components/shared/Button';
@@ -13,6 +14,7 @@ import home from '../../config/home';
 
 const Container = styled.div`
   ${tw`
+
     bg-white
     grid
     font-roboto
@@ -24,31 +26,29 @@ const Container = styled.div`
     overflow-x-hidden
     overflow-y-hidden
     `}
-  grid-template-rows: repeat(14, minmax(0, 1fr));
-  min-width: 100vw;
-  min-height: 100vh;
 `;
 const Heading = styled.div`
   ${tw`
-    row-span-2
     text-6xl
     flex
     justify-center
     items-center
     gap-4
+    m-4
     `}
 `;
 const FrameImg = styled.img`
   ${tw`
-    row-span-6
+    /* row-span-6 */
     h-full
-    w-full
+    sm:w-full
     `}
 `;
 const SubHeading = styled.p`
   ${tw`
-    row-span-1
+    /* row-span-1 */
     text-lg
+    mt-4
     `}
 `;
 const Description = styled.p`
@@ -57,6 +57,8 @@ const Description = styled.p`
     text-center
     text-sm
     text-frame-gray
+    w-1/2
+    sm:w-full
     `}
 `;
 const Yellow = styled.span`
@@ -95,7 +97,6 @@ const Home = () => (
     <Head />
     <FrameImg src={home.frame.src} alt={home.frame.alt} />
     <SubHeading>{home.subheading}</SubHeading>
-
     <Heading>
       <h1>
         <Yellow>F</Yellow>
@@ -107,7 +108,9 @@ const Home = () => (
       <SlimText>BOI</SlimText>
     </Heading>
     <Description>{home.description}</Description>
-    <Button>{home.button}</Button>
+    <Link to='/frame'>
+      <Button>{home.button}</Button>
+    </Link>
   </Container>
 );
 

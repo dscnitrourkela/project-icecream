@@ -6,20 +6,21 @@ import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
   ${tw`
-    row-span-2
+    m-auto
     p-5
     `}
 `;
 const ButtonDark = styled.button`
   ${tw`
-    uppercase
+   uppercase
     rounded-full
     bg-black
-    text-white
-    pr-10
-    pl-10
-    pt-4
-    pb-4
+    px-16
+    py-6
+    text-color-bright
+    border-none
+    outline-none
+    hover:bg-gray-800
     `}
 `;
 

@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { Stage, Layer, Image } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
+const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked }) => {
   const rect = [
     {
-      x: 50,
+      x: 50,    
       y: 50,
       id: "rect1"
     },
@@ -51,8 +51,8 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
         onMouseDown={checkDeselect}
         onTouchStart={checkDeselect}
       />
-
-      <TransformableText
+      {checked && (
+        <TransformableText
         // eslint-disable-next-line react/no-array-index-key
         name={userName}
         colour={bgColour}
@@ -70,7 +70,9 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
           setRectangles(rects);
         }}
       />
-      <TransformableText
+      )}
+      {checked && (
+        <TransformableText
         // eslint-disable-next-line react/no-array-index-key
         name={guildName}
         colour={bgColour}
@@ -87,7 +89,8 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
           rects[1] = newAttrs;
           setRectangles(rects);
         }}
-      />
+       />
+      )}
     </Layer>
   </Stage>
   );

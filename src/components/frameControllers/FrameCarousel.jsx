@@ -1,18 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const CarouselContainer = styled.div``;
 
 const Carousel = ({ frames, setSelectedFrame }) => (
-  <div
-    style={{
-      display: 'flex',
-      width: '280px',
-      whiteSpace: 'nowrap',
-      flexWrap: 'nowrap',
-      overflow: 'auto',
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 'auto',
-    }}
-  >
+  <CarouselContainer>
     {Object.keys(frames).map((key) => (
       <span
         key={key}
@@ -28,7 +20,7 @@ const Carousel = ({ frames, setSelectedFrame }) => (
         />
       </span>
     ))}
-  </div>
+  </CarouselContainer>
 );
 
 export default Carousel;
