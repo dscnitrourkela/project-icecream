@@ -3,6 +3,7 @@ export default {
   logo: {
     src: 'https://res.cloudinary.com/dscnitrourkela/image/upload/project-oregano/assets/p9kmvgjmibunuzhaywlx.png',
     alt: 'logo',
+    web: 'https://hacknitr.tech/',
   },
   frame: {
     src: 'https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/landing%20page/kc34v2ls33bw8koeklb2.png',

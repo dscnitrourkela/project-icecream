@@ -23,9 +23,11 @@ const Logo = styled.img`
 `;
 
 const Head = () => (
-  <Heading style={{ marginBottom: '18px' }}>
-    <Logo src={home.logo.src} alt={home.logo.alt} />
-  </Heading>
+  <a href={home.logo.web} target='_blank' rel='noopener noreferrer'>
+    <Heading style={{ marginBottom: '18px' }}>
+      <Logo src={home.logo.src} alt={home.logo.alt} />
+    </Heading>
+  </a>
 );
 
 export default Head;
