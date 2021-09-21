@@ -44,7 +44,6 @@ const Frame = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [userName, setUserName] = useState('Your Name');
   const [guildName, setGuildName] = useState('Guild Name');
-  // const [bgColour, setBgColour] = useState(null);
 
   const stageRef = useRef(null);
   const [frameImg] = useImage(selectedFrame, 'Anonymous');
@@ -60,7 +59,6 @@ const Frame = () => {
           guildName={guildName}
           frameImg={frameImg}
           image={image}
-          bgColour="red"
         />
       )}
       <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />

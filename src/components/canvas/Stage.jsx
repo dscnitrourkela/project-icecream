@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Components
 import { Stage, Layer, Image } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour }) => {
+const CanvasStage = ({ stageRef, userName, guildName, frameImg, image }) => {
   const rect = [
     {
       x: 50,
@@ -19,11 +19,15 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, bgColour 
   ];
   const [rectangles, setRectangles] = useState(rect);
   const [selectedId, selectShape] = useState(null);
-
+  const [bgColour, setBgColour] = useState(null);
 
   const checkDeselect = () => {
       selectShape(null);
   };
+
+  useEffect(() => {
+    setBgColour("lightgreen");
+  },[]);
 
   return(
   <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }} >
