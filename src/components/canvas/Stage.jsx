@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Components
-import { Stage, Layer, Image, Text } from 'react-konva';
+import { Stage, Layer, Image } from 'react-konva';
+import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked }) => (
-  <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
+const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked }) => {
+  const rect = [
+    {
+      x: 50,    
+      y: 50,
+      id: "rect1"
+    },
+    {
+      x: 100,
+      y: 100,
+      id: "rect2"
+    }
+  ];
+  const [rectangles, setRectangles] = useState(rect);
+  const [selectedId, selectShape] = useState(null);
+  const [bgColour, setBgColour] = useState(null);
+
+  const checkDeselect = () => {
+      selectShape(null);
+  };
+
+  useEffect(() => {
+    setBgColour("lightgreen");
+  },[]);
+
+  return(
+  <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }} >
     <Layer>
       <Image
         image={frameImg}
@@ -22,34 +48,52 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked }
         draggable='true'
         onDragEnd={() => {}}
         onDragMove={() => {}}
+        onMouseDown={checkDeselect}
+        onTouchStart={checkDeselect}
       />
       {checked && (
-        <Text
-          text={userName}
-          x={45}
-          y={45}
-          fontSize={22}
-          draggable='true'
-          onDragEnd={() => {}}
-          width={200}
-          fill='black'
-        />
+        <TransformableText
+        // eslint-disable-next-line react/no-array-index-key
+        name={userName}
+        colour={bgColour}
+        fontFamily="Roboto"
+        fontStyle="bold"
+        fontSize={22}
+        shapeProps={rect[0]}
+        isSelected= {rect[0].id === selectedId}
+        onSelect={() => {
+          selectShape(rect[0].id)
+        }}
+        onChange={(newAttrs) => {
+          const rects = rectangles.slice();
+          rects[0] = newAttrs;
+          setRectangles(rects);
+        }}
+      />
       )}
       {checked && (
-        <Text
-          text={guildName}
-          x={4}
-          y={68}
-          fontSize={22}
-          draggable='true'
-          width={200}
-          wrap='char'
-          align='center'
-          onDragEnd={() => {}}
-        />
+        <TransformableText
+        // eslint-disable-next-line react/no-array-index-key
+        name={guildName}
+        colour={bgColour}
+        fontFamily="Roboto"
+        fontStyle="normal"
+        fontSize={20}
+        shapeProps={rect[1]}
+        isSelected= {rect[1].id === selectedId}
+        onSelect={() => {
+          selectShape(rect[1].id)
+        }}
+        onChange={(newAttrs) => {
+          const rects = rectangles.slice();
+          rects[1] = newAttrs;
+          setRectangles(rects);
+        }}
+       />
       )}
     </Layer>
   </Stage>
-);
+  );
+};
 
 export default CanvasStage;
