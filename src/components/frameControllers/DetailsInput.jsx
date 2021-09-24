@@ -31,7 +31,11 @@ const Inputs = ({
 }) => (
   <>
     <Container>
-      <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
+      <Upload
+        style={{ width: '22rem' }}
+        uploadedImage={uploadedImage}
+        setUploadedImage={setUploadedImage}
+      />
     </Container>
     <Container>
       <CustomText
