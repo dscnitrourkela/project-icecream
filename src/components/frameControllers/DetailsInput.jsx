@@ -8,21 +8,12 @@ import tw from 'twin.macro';
 import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/InputText';
 
-const Container1 = styled.h1`
+const Container = styled.h1`
   ${tw`
  mt-3
  py-2
  bg-color-new
  rounded-lg
-`}
-`;
-
-const Container2 = styled.h1`
-  ${tw`
-  mt-3
-  bg-color-new
-  rounded-lg
-  pt-2
 `}
 `;
 
@@ -38,10 +29,10 @@ const Inputs = ({
   setGuildname,
 }) => (
   <div>
-    <Container1>
+    <Container>
       <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
-    </Container1>
-    <Container2>
+    </Container>
+    <Container>
       <CustomText
         checked={checked}
         setChecked={setChecked}
@@ -51,7 +42,7 @@ const Inputs = ({
         guildName={guildName}
         setGuildname={setGuildname}
       />
-    </Container2>
+    </Container>
   </div>
 );
 
