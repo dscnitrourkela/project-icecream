@@ -8,7 +8,7 @@ import tw from 'twin.macro';
 import Upload from '../toolbox/Upload';
 import CustomText from '../toolbox/InputText';
 
-const Container = styled.h1`
+const Container = styled.div`
   ${tw`
  mt-3
  py-2
@@ -28,20 +28,22 @@ const Inputs = ({
   guildName,
   setGuildname,
 }) => (
-  <div>
+  <>
     <Container>
       <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
     </Container>
-    <CustomText
-      checked={checked}
-      setChecked={setChecked}
-      handleChange={handleChange}
-      userName={userName}
-      setUsername={setUsername}
-      guildName={guildName}
-      setGuildname={setGuildname}
-    />
-  </div>
+    <Container>
+      <CustomText
+        checked={checked}
+        setChecked={setChecked}
+        handleChange={handleChange}
+        userName={userName}
+        setUsername={setUsername}
+        guildName={guildName}
+        setGuildname={setGuildname}
+      />
+    </Container>
+  </>
 );
 
 export default Inputs;

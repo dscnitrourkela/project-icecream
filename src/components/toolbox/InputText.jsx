@@ -5,14 +5,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
 
-const Container = styled.h1`
-  ${tw`
- mt-3
- py-2
- bg-color-new
- rounded-lg
-`}
-`;
+const Container = styled.div``;
 
 const Heading1 = styled.h1`
   ${tw`
