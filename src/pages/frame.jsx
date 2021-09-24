@@ -15,7 +15,7 @@ import CanvasStage from '../components/canvas/Stage';
 // Assets
 import frameData from '../../config/frameData';
 
-const Container3 = styled.h1`
+const Container3 = styled.div`
   ${tw`
    pt-2
    w-94
