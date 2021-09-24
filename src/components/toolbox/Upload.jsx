@@ -6,15 +6,6 @@ import tw from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-const Container1 = styled.h1`
-  ${tw`
- mt-3
- py-2
- bg-color-new
- rounded-lg
-`}
-`;
-
 const Section1 = styled.div`
   ${tw`
     flex
@@ -67,7 +58,7 @@ const Button = styled.button`
 `;
 
 const Upload = ({ setUploadedImage }) => (
-  <Container1>
+  <>
     <Heading1>Upload Image</Heading1>
     <Section1>
       <Description>
@@ -95,7 +86,7 @@ const Upload = ({ setUploadedImage }) => (
         />
       </div>
     </Section1>
-  </Container1>
+  </>
 );
 
 export default Upload;

@@ -5,15 +5,6 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
 
-const Container2 = styled.h1`
-  ${tw`
-  mt-3
-  bg-color-new
-  rounded-lg
-  pt-2
-`}
-`;
-
 const Heading1 = styled.h1`
   ${tw`
   w-3/4
@@ -62,7 +53,7 @@ const FormFillup = styled.input`
 `;
 
 const CustomText = ({ userName, guildName, setUsername, setGuildname, checked, handleChange }) => (
-  <Container2>
+  <>
     <Section1>
       <Heading1>Custom Text</Heading1>
       <label htmlFor='material-switch'>
@@ -101,7 +92,7 @@ const CustomText = ({ userName, guildName, setUsername, setGuildname, checked, h
         />
       </Section2>
     )}
-  </Container2>
+  </>
 );
 
 export default CustomText;
