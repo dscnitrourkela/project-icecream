@@ -10,6 +10,7 @@ import CustomText from '../toolbox/InputText';
 
 const Container = styled.div`
   ${tw`
+ w-94
  mt-3
  py-2
  bg-color-new
