@@ -32,17 +32,15 @@ const Inputs = ({
     <Container>
       <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
     </Container>
-    <Container>
-      <CustomText
-        checked={checked}
-        setChecked={setChecked}
-        handleChange={handleChange}
-        userName={userName}
-        setUsername={setUsername}
-        guildName={guildName}
-        setGuildname={setGuildname}
-      />
-    </Container>
+    <CustomText
+      checked={checked}
+      setChecked={setChecked}
+      handleChange={handleChange}
+      userName={userName}
+      setUsername={setUsername}
+      guildName={guildName}
+      setGuildname={setGuildname}
+    />
   </div>
 );
 
