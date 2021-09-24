@@ -19,15 +19,15 @@ const Container3 = styled.div`
   ${tw`
    /* pt-2 */
    w-94
-   /* m-auto */
-   /* sm:w-full */
+   m-auto 
+   sm:w-full
 `}
 `;
 
 const CarouselC = styled.h1`
   ${tw`
     w-94
-    /* sm:w-full */
+    sm:w-full
     overflow-y-hidden
 `}
   margin: 0px, 0px;
