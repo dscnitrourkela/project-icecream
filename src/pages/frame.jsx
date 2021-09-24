@@ -16,11 +16,10 @@ import CanvasStage from '../components/canvas/Stage';
 import frameData from '../../config/frameData';
 
 const Container3 = styled.div`
+  width: 22rem;
   ${tw`
-   w-94
-   m-auto 
-   
-`}
+   m-auto
+`};
 `;
 
 const CarouselC = styled.h1`
