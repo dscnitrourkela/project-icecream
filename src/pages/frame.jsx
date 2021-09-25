@@ -17,8 +17,8 @@ import frameData from '../../config/frameData';
 
 const Container3 = styled.h1`
   ${tw`
-   pt-2
    w-94
+   pt-2
    m-auto
    sm:w-full
 `}

@@ -6,7 +6,7 @@ import tw from 'twin.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-const Container1 = styled.h1`
+const Container1 = styled.div`
   ${tw`
  mt-3
  py-2
