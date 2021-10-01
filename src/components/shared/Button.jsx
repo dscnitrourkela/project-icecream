@@ -22,7 +22,7 @@ const ButtonDark = styled.button`
     font-medium
     border-none
     outline-none
-    hover:bg-gray-800
+    hover:bg-frame-gray
     `}
 `;
 

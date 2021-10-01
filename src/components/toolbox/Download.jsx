@@ -30,7 +30,7 @@ const Button = styled.button`
     text-black
     border-none
     outline-none
-    hover:bg-gray-800
+    hover:bg-frame-gray
     `}
 `;
 
