@@ -6,8 +6,11 @@ import CustomText from '../toolbox/InputText';
 
 const Inputs = ({
   checked,
-  setChecked,
+  setchecked,
+  checkedGuild,
+  setcheckedGuild,
   handleChange,
+  handleChangeGuild,
   uploadedImage,
   setUploadedImage,
   userName,
@@ -19,8 +22,11 @@ const Inputs = ({
     <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
     <CustomText
       checked={checked}
-      setChecked={setChecked}
+      checkedGuild={checkedGuild}
+      setchecked={setchecked}
+      setcheckedGuild={setcheckedGuild}
       handleChange={handleChange}
+      handleChangeGuild={handleChangeGuild}
       userName={userName}
       setUsername={setUsername}
       guildName={guildName}

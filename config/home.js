@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 export default {
   logo: {
-    src: 'https://res.cloudinary.com/dscnitrourkela/image/upload/project-oregano/assets/p9kmvgjmibunuzhaywlx.png',
+    src: 'https://res.cloudinary.com/dscnitrourkela/image/upload/icecream_frames/landing%20page/ia7qyxbl8j4jsfv4nymz.png',
     alt: 'logo',
     web: 'https://hacknitr.tech/',
   },

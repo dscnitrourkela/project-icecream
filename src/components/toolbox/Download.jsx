@@ -24,10 +24,10 @@ const Button = styled.button`
   ${tw`
     uppercase
     rounded-full
-    bg-black
+    bg-color-bright
     px-14
     py-6
-    text-color-bright
+    text-black
     border-none
     outline-none
     hover:bg-gray-800

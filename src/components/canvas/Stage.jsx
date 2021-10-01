@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Stage, Layer, Image, Group } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked }) => {
+const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, checkedGuild }) => {
   const rect = [
     {
       x: 50,
@@ -71,7 +71,7 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked }
               }}
             />
           )}
-          {checked && (
+          {checkedGuild && (
             <TransformableText
               // eslint-disable-next-line react/no-array-index-key
               name={guildName}
