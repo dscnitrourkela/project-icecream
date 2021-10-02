@@ -78,7 +78,7 @@ const Upload = ({ setUploadedImage }) => (
         <ButtonContainer>
           <Button>
             <label htmlFor='contained-button-file'>
-              <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#000' }} />
+              <FontAwesomeIcon icon={faUpload} style={{ color: '#000', fontSize: '23px' }} />
             </label>
           </Button>
         </ButtonContainer>
