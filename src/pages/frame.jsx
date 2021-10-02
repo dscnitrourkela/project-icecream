@@ -39,6 +39,7 @@ const CarouselC = styled.h1`
 const Container = styled.div`
   ${tw`
     bg-color-secondary
+    h-full
     grid
     font-roboto
     justify-center

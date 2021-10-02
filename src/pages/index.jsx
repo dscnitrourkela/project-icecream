@@ -17,6 +17,7 @@ const Container = styled.div`
 
     bg-color-secondary
     grid
+    h-full
     font-roboto
     justify-center
     text-center
