@@ -10,7 +10,7 @@ import Switch from 'react-switch';
 const Container2 = styled.div`
   ${tw`
   mt-3
-  bg-color-edark
+  bg-frame-xgray
   rounded-lg
   pt-2
 `}
@@ -59,7 +59,7 @@ const FormFillup = styled.input`
   border: 1px solid #666666;
   border-radius: 4px;
   box-sizing: border-box;
-  background-color: #17171d;
+  background-color: #333333;
   color: #666666;
   font-size: 1rem;
 `;

@@ -44,6 +44,7 @@ module.exports = {
         'frame-lgray': '#666666',
         'color-edark': '#17171D',
         platinum: '#848884',
+        'frame-xgray': '#333333',
       },
       boxShadow: {
         sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',

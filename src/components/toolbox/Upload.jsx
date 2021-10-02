@@ -10,7 +10,7 @@ const Container1 = styled.div`
   ${tw`
  mt-3
  py-2
- bg-color-edark
+ bg-frame-xgray
  rounded-lg
 `}
 `;
