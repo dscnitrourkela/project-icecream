@@ -114,7 +114,7 @@ section {
 }
 body {
   line-height: 1;
-  background: var(--background-dark);
+  background: #000;
   scroll-behavior: smooth;
 }
 ol,
