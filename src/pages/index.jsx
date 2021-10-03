@@ -15,15 +15,16 @@ import home from '../../config/home';
 const Container = styled.div`
   ${tw`
 
-    bg-white
+    bg-color-secondary
     grid
+    h-full
     font-roboto
     justify-center
     text-center
     justify-items-center
     items-center
     p-5
-    overflow-x-hidden
+    /* overflow-x-hidden */
     overflow-y-hidden
     `}
 `;
@@ -49,6 +50,7 @@ const SubHeading = styled.p`
     /* row-span-1 */
     text-lg
     mt-4
+    text-frame-lgray
     `}
 `;
 const Description = styled.p`
@@ -58,6 +60,7 @@ const Description = styled.p`
     text-sm
     text-frame-gray
     w-1/2
+    md:w-full
     sm:w-full
     `}
 `;
@@ -66,29 +69,11 @@ const Yellow = styled.span`
     text-frame-yellow
     `}
 `;
-const Blue = styled.span`
-  ${tw`
-    text-frame-blue
-    `}
-`;
-const DarkGreen = styled.span`
-  ${tw`
-    text-frame-dark-green
-    `}
-`;
-const Green = styled.span`
-  ${tw`
-    text-frame-green
-    `}
-`;
-const Red = styled.span`
-  ${tw`
-    text-frame-red
-    `}
-`;
+
 const SlimText = styled.span`
   ${tw`
     font-light
+    text-white
     `}
 `;
 
@@ -99,11 +84,7 @@ const Home = () => (
     <SubHeading>{home.subheading}</SubHeading>
     <Heading>
       <h1>
-        <Yellow>F</Yellow>
-        <Blue>R</Blue>
-        <DarkGreen>A</DarkGreen>
-        <Red>M</Red>
-        <Green>E</Green>
+        <Yellow>FRAME</Yellow>
       </h1>
       <SlimText>BOI</SlimText>
     </Heading>

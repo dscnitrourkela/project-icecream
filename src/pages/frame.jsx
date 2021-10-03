@@ -38,7 +38,8 @@ const CarouselC = styled.h1`
 
 const Container = styled.div`
   ${tw`
-    bg-white
+    bg-color-secondary
+    h-full
     grid
     font-roboto
     justify-center
@@ -46,7 +47,7 @@ const Container = styled.div`
     justify-items-center
     items-center
     p-5
-    overflow-x-hidden
+    /* overflow-x-hidden */
     overflow-y-hidden
     `}
 `;
@@ -65,9 +66,11 @@ const Frame = () => {
   const [uploadedImage, setUploadedImage] = useState();
   const [userName, setUserName] = useState('Your Name');
   const [guildName, setGuildName] = useState('Guild Name');
-  const [checked, setChecked] = useState(false);
+  const [checked, setchecked] = useState(false);
+  const [checkedGuild, setcheckedGuild] = useState(false);
 
-  const handleChange = () => setChecked((prevCheck) => !prevCheck);
+  const handleChange = () => setchecked((prevCheck) => !prevCheck);
+  const handleChangeGuild = () => setcheckedGuild((prevCheck) => !prevCheck);
 
   const stageRef = useRef(null);
   const [frameImg] = useImage(selectedFrame, 'Anonymous');
@@ -84,6 +87,7 @@ const Frame = () => {
           frameImg={frameImg}
           image={image}
           checked={checked}
+          checkedGuild={checkedGuild}
         />
       )}
       <CarouselC>
@@ -92,8 +96,11 @@ const Frame = () => {
       <Container3>
         <Inputs
           handleChange={handleChange}
+          handleChangeGuild={handleChangeGuild}
           checked={checked}
-          setChecked={setChecked}
+          checkedGuild={checkedGuild}
+          setchecked={setchecked}
+          setheckedGuild={setcheckedGuild}
           uploadedImage={uploadedImage}
           setUploadedImage={setUploadedImage}
           userName={userName}

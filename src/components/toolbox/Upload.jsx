@@ -10,7 +10,7 @@ const Container1 = styled.div`
   ${tw`
  mt-3
  py-2
- bg-color-new
+ bg-frame-xgray
  rounded-lg
 `}
 `;
@@ -28,6 +28,7 @@ const Heading1 = styled.h1`
   pl-4
   text-left
   mt-2
+  text-color-bright
  `}
   font-size: 1.5rem;
 `;
@@ -60,7 +61,7 @@ const Button = styled.button`
     rounded-full
     h-12 w-12
     justify-center
-    bg-background-darkest
+    bg-color-bright
     border-none
     outline-none
   `}
@@ -77,7 +78,7 @@ const Upload = ({ setUploadedImage }) => (
         <ButtonContainer>
           <Button>
             <label htmlFor='contained-button-file'>
-              <FontAwesomeIcon icon={faUpload} size='2x' style={{ color: '#fff' }} />
+              <FontAwesomeIcon icon={faUpload} style={{ color: '#000', fontSize: '23px' }} />
             </label>
           </Button>
         </ButtonContainer>

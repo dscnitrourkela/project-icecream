@@ -8,19 +8,21 @@ const ButtonContainer = styled.div`
   ${tw`
     m-auto
     p-5
+    
     `}
 `;
 const ButtonDark = styled.button`
   ${tw`
-   uppercase
-    rounded-full
-    bg-black
+    bg-color-bright
+    uppercase
+    rounded-full 
     px-16
     py-6
-    text-color-bright
+    text-black
+    font-medium
     border-none
     outline-none
-    hover:bg-gray-800
+    hover:bg-frame-gray
     `}
 `;
 
