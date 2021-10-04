@@ -67,7 +67,32 @@ const Button = styled.button`
   `}
 `;
 
-const Upload = ({ setUploadedImage }) => (
+const Upload = ({ setHeight, setWidth, setUploadedImage }) => (
+  //     acceptedFiles => {
+  //     // @ts-ignore
+  //     const file = acceptedFiles[0];
+  //     const i = new Image();
+  //     i.src = URL.createObjectURL(file);
+
+  //     i.onload = () => {
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL(file);
+  //       reader.onload = () => {
+  //         dispatch({
+  //           type: COMPOSE.ADD_IMAGE,
+  //           payload: {
+  //             src: i.src,
+  //             imageDimensions: {
+  //               width: i.width,
+  //               height: i.height,
+  //             },
+  //           },
+  //         });
+  //       };
+  //     };
+  //   },
+  //   [dispatch],
+  // );
   <Container1>
     <Heading1>Upload Image</Heading1>
     <Section1>
@@ -91,6 +116,19 @@ const Upload = ({ setUploadedImage }) => (
           onChange={(e) => {
             if (e.target.files.length > 0) {
               setUploadedImage(URL.createObjectURL(e.target.files[0]));
+              const i = new Image();
+              i.onload = function () {
+                const imageDimensions = [
+                  {
+                    height: i.height,
+                    width: i.width,
+                  },
+                ];
+                setHeight(imageDimensions[0].height);
+                setWidth(imageDimensions[0].width);
+              };
+
+              i.src = URL.createObjectURL(e.target.files[0]);
             }
           }}
         />

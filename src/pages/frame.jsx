@@ -64,6 +64,8 @@ const FRAMES = {
 const Frame = () => {
   const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
+  const [height, setHeight] = useState();
+  const [width, setWidth] = useState();
   const [userName, setUserName] = useState('Your Name');
   const [guildName, setGuildName] = useState('Guild Name');
   const [checked, setchecked] = useState(false);
@@ -88,6 +90,8 @@ const Frame = () => {
           image={image}
           checked={checked}
           checkedGuild={checkedGuild}
+          height={height}
+          width={width}
         />
       )}
       <CarouselC>
@@ -103,6 +107,8 @@ const Frame = () => {
           setheckedGuild={setcheckedGuild}
           uploadedImage={uploadedImage}
           setUploadedImage={setUploadedImage}
+          setHeight={setHeight}
+          setWidth={setWidth}
           userName={userName}
           setUsername={setUserName}
           guildName={guildName}
