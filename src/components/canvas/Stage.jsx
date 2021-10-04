@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 // Components
 import { Stage, Layer, Image, Group } from 'react-konva';
 import TransformableText from './TransformableText';
+import TransformableImage from './TransformableImage';
 
 const CanvasStage = ({
   stageRef,
@@ -37,12 +38,23 @@ const CanvasStage = ({
       id: 'rect2',
     },
   ];
+
+  const renderImg = [
+    {
+      x: imagePositionX,
+      y: imagePositionY,
+      id: 'renderImg1',
+    },
+  ];
+
+  const [tranImg, setTranImg] = useState(renderImg);
+  const [selectedId1, selectShape1] = useState(null);
   const [rectangles, setRectangles] = useState(rect);
   const [selectedId, selectShape] = useState(null);
   const [bgColour, setBgColour] = useState(null);
 
   const checkDeselect = () => {
-    selectShape(null);
+    selectShape1(null);
   };
 
   useEffect(() => {
@@ -57,6 +69,8 @@ const CanvasStage = ({
           width={350}
           height={350}
           style={{ zIndex: '100', position: 'absolute' }}
+          onMouseDown={checkDeselect}
+          onTouchStart={checkDeselect}
         />
         <Group
           clipX={imagePositionX}
@@ -64,17 +78,21 @@ const CanvasStage = ({
           clipWidth={groupDimensions.width}
           clipHeight={groupHeight}
         >
-          <Image
+          <TransformableImage
             image={image}
-            width={imageRenderWidth}
-            height={imageRenderHeight}
-            x={imagePositionX}
-            y={imagePositionY}
-            draggable='true'
-            onDragEnd={() => {}}
-            onDragMove={() => {}}
+            imageWidth={imageRenderWidth}
+            imageHeight={imageRenderHeight}
             onMouseDown={checkDeselect}
             onTouchStart={checkDeselect}
+            isSelected={renderImg[0].id === selectedId1}
+            onSelect={() => {
+              selectShape1(renderImg[0].id);
+            }}
+            onChange={(newAttrs) => {
+              const imgs = tranImg.slice();
+              imgs[0] = newAttrs;
+              setTranImg(imgs);
+            }}
           />
           {checked && (
             <TransformableText
