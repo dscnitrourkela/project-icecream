@@ -17,14 +17,14 @@ const CanvasStage = ({
 }) => {
   const groupDimensions = {
     height: 272,
-    width: 271,
+    width: 273,
   };
   const groupHeight = groupDimensions.height;
   const aspectRatio = width / height;
   const imageRenderWidth = aspectRatio * groupDimensions.height;
   const imageRenderHeight = groupDimensions.height;
-  const imagePositionX = 34;
-  const imagePositionY = 35;
+  const imagePositionX = 38.5;
+  const imagePositionY = 38;
   const rect = [
     {
       x: 50,
@@ -58,7 +58,12 @@ const CanvasStage = ({
           height={350}
           style={{ zIndex: '100', position: 'absolute' }}
         />
-        <Group clipX={39} clipY={39} clipWidth={groupDimensions.width} clipHeight={groupHeight}>
+        <Group
+          clipX={imagePositionX}
+          clipY={imagePositionY}
+          clipWidth={groupDimensions.width}
+          clipHeight={groupHeight}
+        >
           <Image
             image={image}
             width={imageRenderWidth}
