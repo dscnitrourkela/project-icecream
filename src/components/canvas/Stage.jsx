@@ -4,7 +4,27 @@ import React, { useEffect, useState } from 'react';
 import { Stage, Layer, Image, Group } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, checkedGuild }) => {
+const CanvasStage = ({
+  stageRef,
+  userName,
+  guildName,
+  frameImg,
+  image,
+  checked,
+  checkedGuild,
+  width,
+  height,
+}) => {
+  const groupDimensions = {
+    height: 272,
+    width: 271,
+  };
+  const groupHeight = groupDimensions.height;
+  const aspectRatio = width / height;
+  const imageRenderWidth = aspectRatio * groupDimensions.height;
+  const imageRenderHeight = groupDimensions.height;
+  const imagePositionX = 34;
+  const imagePositionY = 35;
   const rect = [
     {
       x: 50,
@@ -38,13 +58,18 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, 
           height={350}
           style={{ zIndex: '100', position: 'absolute' }}
         />
-        <Group clipX={39} clipY={39} clipWidth={272} clipHeight={272}>
+        <Group
+          clipX={imagePositionX}
+          clipY={imagePositionY}
+          clipWidth={groupDimensions.width}
+          clipHeight={groupHeight}
+        >
           <Image
             image={image}
-            width={281}
-            height={280}
-            x={34}
-            y={35}
+            width={imageRenderWidth}
+            height={imageRenderHeight}
+            x={imagePositionX}
+            y={imagePositionY}
             draggable='true'
             onDragEnd={() => {}}
             onDragMove={() => {}}
