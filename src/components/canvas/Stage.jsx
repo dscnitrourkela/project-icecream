@@ -58,12 +58,7 @@ const CanvasStage = ({
           height={350}
           style={{ zIndex: '100', position: 'absolute' }}
         />
-        <Group
-          clipX={imagePositionX}
-          clipY={imagePositionY}
-          clipWidth={groupDimensions.width}
-          clipHeight={groupHeight}
-        >
+        <Group clipX={39} clipY={39} clipWidth={groupDimensions.width} clipHeight={groupHeight}>
           <Image
             image={image}
             width={imageRenderWidth}
