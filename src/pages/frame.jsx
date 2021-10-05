@@ -61,6 +61,9 @@ const FRAMES = {
   SIX: frameData.frames.FIVE,
 };
 
+const align = ["center", "left", "right"];
+let i = 0;
+
 const Frame = () => {
   const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
@@ -68,7 +71,23 @@ const Frame = () => {
   const [guildName, setGuildName] = useState('Guild Name');
   const [checked, setchecked] = useState(false);
   const [checkedGuild, setcheckedGuild] = useState(false);
+  const [fontFamily, setFontFamily] = useState(null);
+  const [fontColorGuild, setFontColorGuild] = useState(null);
+  const [bgColor, setBgColor] = useState(null);
+  const [bgColorGuild, setBgColorGuild] = useState(null);
+  const [fontColor, setFontColor] = useState(null);
+  const [alignment, setAlignment] = useState(align[0]);
 
+  const handleAlignment = () => {
+      setAlignment(align[i+1]);
+      // eslint-disable-next-line no-const-assign
+      i += 1 ; 
+      
+     if(i === 3){
+      setAlignment(align[i-3]);
+      i = 0;
+     }
+  }
   const handleChange = () => setchecked((prevCheck) => !prevCheck);
   const handleChangeGuild = () => setcheckedGuild((prevCheck) => !prevCheck);
 
@@ -86,8 +105,14 @@ const Frame = () => {
           guildName={guildName}
           frameImg={frameImg}
           image={image}
+          alignment={alignment}
+          fontColor={fontColor}
           checked={checked}
           checkedGuild={checkedGuild}
+          fontFamily={fontFamily}
+          bgColor={bgColor}
+          bgColorGuild={bgColorGuild}
+          fontColorGuild={fontColorGuild}
         />
       )}
       <CarouselC>
@@ -107,6 +132,19 @@ const Frame = () => {
           setUsername={setUserName}
           guildName={guildName}
           setGuildname={setGuildName}
+          fontFamily={fontFamily}
+          setFontFamily={setFontFamily}
+          bgColor={bgColor}
+          setBgColor={setBgColor}
+          fontColor={fontColor}
+          setFontColor={setFontColor}
+          alignment={alignment}
+          bgColorGuild={bgColorGuild}
+          setBgColorGuild={setBgColorGuild}
+          fontColorGuild={fontColorGuild}
+          setFontColorGuild={setFontColorGuild}
+          handleAlignment={handleAlignment}
+          align={align}
         />
       </Container3>
       <Download stageRef={stageRef} />

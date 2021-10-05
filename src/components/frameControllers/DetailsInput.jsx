@@ -17,6 +17,19 @@ const Inputs = ({
   setUsername,
   guildName,
   setGuildname,
+  fontFamily,
+  setFontFamily,
+  bgColor,
+  setBgColor,
+  fontColor,
+  setFontColor,
+  alignment,
+  bgColorGuild,
+  setBgColorGuild,
+  fontColorGuild,
+  setFontColorGuild,
+  handleAlignment,
+  align
 }) => (
   <div>
     <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
@@ -31,6 +44,19 @@ const Inputs = ({
       setUsername={setUsername}
       guildName={guildName}
       setGuildname={setGuildname}
+      fontFamily={fontFamily}
+      setFontFamily={setFontFamily}
+      bgColor={bgColor}
+      setBgColor={setBgColor}
+      fontColor={fontColor}
+      setFontColor={setFontColor}
+      alignment={alignment}
+      bgColorGuild={bgColorGuild}
+      setBgColorGuild={setBgColorGuild}
+      fontColorGuild={fontColorGuild}
+      setFontColorGuild={setFontColorGuild}
+      handleAlignment={handleAlignment}
+      align={align}
     />
   </div>
 );

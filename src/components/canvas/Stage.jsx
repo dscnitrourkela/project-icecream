@@ -1,10 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // Components
 import { Stage, Layer, Image, Group } from 'react-konva';
 import TransformableText from './TransformableText';
 
-const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, checkedGuild }) => {
+const CanvasStage = ({ 
+  stageRef, 
+  userName, 
+  guildName, 
+  frameImg, 
+  image, 
+  checked, 
+  checkedGuild,
+  bgColor,
+  bgColorGuild,
+  fontFamily, 
+  fontColor,
+  fontColorGuild,
+  alignment
+}) => {
   const rect = [
     {
       x: 50,
@@ -19,15 +33,10 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, 
   ];
   const [rectangles, setRectangles] = useState(rect);
   const [selectedId, selectShape] = useState(null);
-  const [bgColour, setBgColour] = useState(null);
 
   const checkDeselect = () => {
     selectShape(null);
   };
-
-  useEffect(() => {
-    setBgColour('lightgreen');
-  }, []);
 
   return (
     <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
@@ -55,8 +64,10 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, 
             <TransformableText
               // eslint-disable-next-line react/no-array-index-key
               name={userName}
-              colour={bgColour}
-              fontFamily='Roboto'
+              colour={bgColor}
+              fontFamily={fontFamily}
+              alignment={alignment}
+              fontColor={fontColor}
               fontStyle='bold'
               fontSize={22}
               shapeProps={rect[0]}
@@ -75,8 +86,10 @@ const CanvasStage = ({ stageRef, userName, guildName, frameImg, image, checked, 
             <TransformableText
               // eslint-disable-next-line react/no-array-index-key
               name={guildName}
-              colour={bgColour}
-              fontFamily='Roboto'
+              colour={bgColorGuild}
+              fontFamily={fontFamily}
+              alignment={alignment}
+              fontColor={fontColorGuild}
               fontStyle='normal'
               fontSize={20}
               shapeProps={rect[1]}

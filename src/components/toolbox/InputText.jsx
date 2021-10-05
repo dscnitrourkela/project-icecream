@@ -1,11 +1,11 @@
 import React from 'react';
 
-import CustomButtons from './CustomTools';
-
 // Libraries
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Switch from 'react-switch';
+
+import CustomButtons from './CustomTools';
 
 const Container2 = styled.div`
   ${tw`
@@ -47,6 +47,7 @@ const Section2 = styled.div`
 const Toggle = styled.div`
   ${tw`
      pl-5
+     pt-1.5
   `}
 `;
 
@@ -64,16 +65,29 @@ const FormFillup = styled.input`
   font-size: 1rem;
 `;
 
-const CustomText = ({
-  userName,
-  guildName,
-  setUsername,
-  setGuildname,
-  checked,
+const CustomText = ({ 
+  userName, 
+  guildName, 
+  setUsername, 
+  setGuildname, 
+  checked, 
   checkedGuild,
-  handleChange,
   handleChangeGuild,
-}) => (
+  handleChange, 
+  fontFamily, 
+  fontColor,
+  setFontColor,
+  bgColor,
+  setBgColor,
+  alignment,
+  setFontFamily,
+  bgColorGuild,
+  setBgColorGuild,
+  fontColorGuild,
+  handleAlignment,
+  setFontColorGuild, 
+  align
+ }) => (
   <Container2>
     <Section1>
       <Heading1>Name</Heading1>
@@ -104,7 +118,20 @@ const CustomText = ({
           placeholder='Your Name'
           onChange={(e) => setUsername(e.target.value)}
         />
-        <CustomButtons />
+        <CustomButtons 
+          fontColors={fontColor}
+          setFontColors={setFontColor}
+          bgColors={bgColor}
+          setBgColors={setBgColor}
+          alignment={alignment}
+          fontFamily={fontFamily}
+          setFontFamily={setFontFamily}
+          handleAlignment={handleAlignment}
+          align={align}
+          FontId="custom-color-font-name"
+          bgId="custom-color-bg-name"
+        />
+        
       </Section2>
     )}
 
@@ -137,7 +164,20 @@ const CustomText = ({
           placeholder='Your Guild'
           onChange={(e) => setGuildname(e.target.value)}
         />
-        <CustomButtons />
+
+        <CustomButtons 
+          fontColors={fontColorGuild}
+          setFontColors={setFontColorGuild}
+          bgColors={bgColorGuild}
+          setBgColors={setBgColorGuild}
+          alignment={alignment}
+          fontFamily={fontFamily}
+          setFontFamily={setFontFamily}
+          handleAlignment={handleAlignment}
+          align={align}
+          FontId="custom-color-font-guild"
+          bgId="custom-color-bg-guild"
+        />
       </Section2>
     )}
   </Container2>
