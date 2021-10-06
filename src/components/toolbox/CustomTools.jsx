@@ -20,9 +20,21 @@ const ButtonContainer = styled.div`
 const CustomButton = styled.button`
   background-color: white;
   padding: 6px 8px;
+  padding-right: 3px;
   border-radius: 8px;
-  margin-left: 10px;
+  margin-left: 12px;
   border: none;
+  cursor: pointer;
+  outline: none;
+`;
+
+const CustomButtonAlign = styled.button`
+  background-color: white;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-left: 12px;
+  border: none;
+  cursor: pointer;
   outline: none;
 `;
 
@@ -37,6 +49,7 @@ const CustomButtons = ({
  setFontFamily,
  align,
  FontId,
+ fontlist,
  bgId
 }) => {
 
@@ -63,7 +76,7 @@ const CustomButtons = ({
             type='color'
             accept='color'
             value={fontColors}
-            style={{ display: 'none' }}
+            style={{ visibility: 'hidden', width: "1px", height: "1px" }}
             id={FontId}
             onChange={(e) => setFontColors(e.target.value)}
             />
@@ -76,26 +89,26 @@ const CustomButtons = ({
             type='color'
             accept='color'
             value={bgColors}
-            style={{ display: 'none' }}
+            style={{ visibility: 'hidden', width: "1px", height: "1px" }}
             id={bgId}
             onChange={(e) => setBgColors(e.target.value)}
             />
         </CustomButton>
 
-        <CustomButton onClick={handleAlignment}>
+        <CustomButtonAlign onClick={handleAlignment}>
             {renderIcon()}
-        </CustomButton>
+        </CustomButtonAlign>
 
         <CustomButton>
          <input
-            list="list-font"
-            type="text"
+            list={fontlist}
+            type="search"
             value={fontFamily}
             style={{ outline: 'none', border: 'none' }}
             placeholder="Font Type"
             onChange={(e) => setFontFamily(e.target.value)}
          />
-            <datalist id="list-font" style={{ color: 'black'}}>
+            <datalist id={fontlist} >
               <option value = "Merriweather" aria-label="Merriweather" />
               <option value = "Comic Neue" aria-label="Comic Neue" />
               <option value = "Source Sans Pro" aria-label="Source Sans Pro" />

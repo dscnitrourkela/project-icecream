@@ -85,7 +85,9 @@ const CustomText = ({
   setBgColorGuild,
   fontColorGuild,
   handleAlignment,
-  setFontColorGuild, 
+  setFontColorGuild,
+  setFontFamilyGuild,
+  fontFamilyGuild, 
   align
  }) => (
   <Container2>
@@ -126,6 +128,7 @@ const CustomText = ({
           alignment={alignment}
           fontFamily={fontFamily}
           setFontFamily={setFontFamily}
+          fontlist="list-font-name"
           handleAlignment={handleAlignment}
           align={align}
           FontId="custom-color-font-name"
@@ -171,8 +174,9 @@ const CustomText = ({
           bgColors={bgColorGuild}
           setBgColors={setBgColorGuild}
           alignment={alignment}
-          fontFamily={fontFamily}
-          setFontFamily={setFontFamily}
+          fontFamily={fontFamilyGuild}
+          setFontFamily={setFontFamilyGuild}
+          fontlist="list-font-guild"
           handleAlignment={handleAlignment}
           align={align}
           FontId="custom-color-font-guild"

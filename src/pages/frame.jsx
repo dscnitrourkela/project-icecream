@@ -72,6 +72,7 @@ const Frame = () => {
   const [checked, setchecked] = useState(false);
   const [checkedGuild, setcheckedGuild] = useState(false);
   const [fontFamily, setFontFamily] = useState(null);
+  const [fontFamilyGuild, setFontFamilyGuild] = useState(null);
   const [fontColorGuild, setFontColorGuild] = useState(null);
   const [bgColor, setBgColor] = useState(null);
   const [bgColorGuild, setBgColorGuild] = useState(null);
@@ -113,6 +114,7 @@ const Frame = () => {
           bgColor={bgColor}
           bgColorGuild={bgColorGuild}
           fontColorGuild={fontColorGuild}
+          fontFamilyGuild={fontFamilyGuild}
         />
       )}
       <CarouselC>
@@ -145,6 +147,8 @@ const Frame = () => {
           setFontColorGuild={setFontColorGuild}
           handleAlignment={handleAlignment}
           align={align}
+          fontFamilyGuild={fontFamilyGuild}
+          setFontFamilyGuild={setFontFamilyGuild}
         />
       </Container3>
       <Download stageRef={stageRef} />

@@ -29,6 +29,8 @@ const Inputs = ({
   fontColorGuild,
   setFontColorGuild,
   handleAlignment,
+  fontFamilyGuild,
+  setFontFamilyGuild,
   align
 }) => (
   <div>
@@ -55,6 +57,8 @@ const Inputs = ({
       setBgColorGuild={setBgColorGuild}
       fontColorGuild={fontColorGuild}
       setFontColorGuild={setFontColorGuild}
+      fontFamilyGuild={fontFamilyGuild}
+      setFontFamilyGuild={setFontFamilyGuild}
       handleAlignment={handleAlignment}
       align={align}
     />

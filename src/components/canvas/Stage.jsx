@@ -17,6 +17,7 @@ const CanvasStage = ({
   fontFamily, 
   fontColor,
   fontColorGuild,
+  fontFamilyGuild,
   alignment
 }) => {
   const rect = [
@@ -87,11 +88,11 @@ const CanvasStage = ({
               // eslint-disable-next-line react/no-array-index-key
               name={guildName}
               colour={bgColorGuild}
-              fontFamily={fontFamily}
+              fontFamily={fontFamilyGuild}
               alignment={alignment}
               fontColor={fontColorGuild}
               fontStyle='normal'
-              fontSize={20}
+              fontSize={22}
               shapeProps={rect[1]}
               isSelected={rect[1].id === selectedId}
               onSelect={() => {
