@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-// Components
+/// Components
 import { Stage, Layer, Image, Group } from 'react-konva';
 import TransformableText from './TransformableText';
 import TransformableImage from './TransformableImage';
