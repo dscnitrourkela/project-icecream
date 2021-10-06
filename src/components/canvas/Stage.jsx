@@ -1,6 +1,3 @@
-/* eslint-disable block-scoped-var */
-/* eslint-disable no-var */
-/* eslint-disable vars-on-top */
 import React, { useEffect, useState } from 'react';
 
 // Components
@@ -24,36 +21,11 @@ const CanvasStage = ({
     width: 273,
   };
   const groupHeight = groupDimensions.height;
-  const groupWidth = groupDimensions.width;
   const aspectRatio = width / height;
-  console.log(aspectRatio);
-  const imageRenderWidth = aspectRatio * groupHeight;
-  const imageRenderHeight = height;
+  const imageRenderWidth = aspectRatio * groupDimensions.height;
+  const imageRenderHeight = groupDimensions.height;
   const imagePositionX = 38.5;
   const imagePositionY = 38;
-
-  if (aspectRatio > 1.7) {
-    var imageWidth = groupWidth;
-    var imageHeight = imageRenderHeight / (aspectRatio * 4);
-  } else if (aspectRatio >= 1.3 && aspectRatio <= 1.7) {
-    imageWidth = groupWidth;
-    imageHeight = imageRenderHeight / (aspectRatio * 2.5);
-  } else if (aspectRatio >= 1 && aspectRatio < 1.3) {
-    imageWidth = groupWidth;
-    imageHeight = imageRenderHeight / (aspectRatio * 2);
-  } else {
-    imageWidth = imageRenderWidth;
-    imageHeight = groupHeight;
-  }
-
-  const renderImg = [
-    {
-      x: imagePositionX,
-      y: imagePositionY,
-      id: 'renderImg1',
-    },
-  ];
-
   const rect = [
     {
       x: 50,
@@ -64,6 +36,14 @@ const CanvasStage = ({
       x: 100,
       y: 100,
       id: 'rect2',
+    },
+  ];
+
+  const renderImg = [
+    {
+      x: imagePositionX,
+      y: imagePositionY,
+      id: 'renderImg1',
     },
   ];
 
@@ -95,13 +75,13 @@ const CanvasStage = ({
         <Group
           clipX={imagePositionX}
           clipY={imagePositionY}
-          clipWidth={groupWidth}
+          clipWidth={groupDimensions.width}
           clipHeight={groupHeight}
         >
           <TransformableImage
             image={image}
-            imageWidth={imageWidth}
-            imageHeight={imageHeight}
+            imageWidth={imageRenderWidth}
+            imageHeight={imageRenderHeight}
             onMouseDown={checkDeselect}
             onTouchStart={checkDeselect}
             isSelected={renderImg[0].id === selectedId1}
