@@ -32,9 +32,16 @@ const Inputs = ({
   fontFamilyGuild,
   setFontFamilyGuild,
   align
+  setHeight,
+  setWidth,
 }) => (
   <div>
-    <Upload uploadedImage={uploadedImage} setUploadedImage={setUploadedImage} />
+    <Upload
+      uploadedImage={uploadedImage}
+      setUploadedImage={setUploadedImage}
+      setHeight={setHeight}
+      setWidth={setWidth}
+    />
     <CustomText
       checked={checked}
       checkedGuild={checkedGuild}

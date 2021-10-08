@@ -67,6 +67,8 @@ let i = 0;
 const Frame = () => {
   const [selectedFrame, setSelectedFrame] = useState(FRAMES.ONE);
   const [uploadedImage, setUploadedImage] = useState();
+  const [height, setHeight] = useState();
+  const [width, setWidth] = useState();
   const [userName, setUserName] = useState('Your Name');
   const [guildName, setGuildName] = useState('Guild Name');
   const [checked, setchecked] = useState(false);
@@ -115,6 +117,8 @@ const Frame = () => {
           bgColorGuild={bgColorGuild}
           fontColorGuild={fontColorGuild}
           fontFamilyGuild={fontFamilyGuild}
+          height={height}
+          width={width}
         />
       )}
       <CarouselC>
@@ -149,6 +153,8 @@ const Frame = () => {
           align={align}
           fontFamilyGuild={fontFamilyGuild}
           setFontFamilyGuild={setFontFamilyGuild}
+          setHeight={setHeight}
+          setWidth={setWidth}
         />
       </Container3>
       <Download stageRef={stageRef} />
