@@ -31,7 +31,7 @@ const Inputs = ({
   handleAlignment,
   fontFamilyGuild,
   setFontFamilyGuild,
-  align
+  align,
   setHeight,
   setWidth,
 }) => (
