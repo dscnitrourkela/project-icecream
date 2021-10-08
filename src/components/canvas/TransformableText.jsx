@@ -12,6 +12,8 @@ const TransformableText = ({
   colour, 
   fontFamily, 
   fontStyle,
+  fontColor,
+  alignment,
   fontSize }) => {
   
     const shapeRef = useRef();
@@ -61,11 +63,12 @@ const TransformableText = ({
           <Text
             width={200}
             height={40}
-            align="center"
+            align={alignment || "center"}
             verticalAlign="middle"
             text={name}
+            fill={fontColor || "black"}
             fontSize={fontSize}
-            fontFamily={fontFamily}
+            fontFamily={fontFamily || "Roboto"}
             fontStyle={fontStyle}
           />
         </Group>
