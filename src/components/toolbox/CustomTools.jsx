@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
 const CustomButton = styled.button`
   background-color: white;
   padding: 6px 8px;
-  padding-right: 3px;
+  padding-right: 4px;
   border-radius: 8px;
   margin-left: 12px;
   border: none;

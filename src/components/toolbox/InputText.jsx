@@ -39,7 +39,7 @@ const Section1 = styled.div`
 const Section2 = styled.div`
   ${tw`
     pt-0
-    px-1
+    px-4
     md:grid grid-cols-1 auto-cols-max
   `}
 `;
@@ -52,7 +52,7 @@ const Toggle = styled.div`
 `;
 
 const FormFillup = styled.input`
-  width: 93%;
+  width: 100%;
   padding: 12px 13px;
   margin: auto;
   margin-bottom: 10px;

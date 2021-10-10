@@ -26,15 +26,25 @@ const Container3 = styled.h1`
 
 const Heading = styled.div`
   ${tw`
-   p-4
-   flex
-   ml-44
+   pl-4
+   pt-2
    m-auto
    justify-center
    text-center
    justify-items-center
    items-center
    sm:w-full
+`}
+`;
+
+const Heading2 = styled.div`
+  ${tw`
+    text-6xl
+    flex
+    font-roboto
+    justify-center
+    items-center
+    gap-4
 `}
 `;
 
@@ -52,7 +62,7 @@ const CarouselC = styled.div`
   overflow-y: hidden;
   margin: 10px, 0px;
   padding: 5px;
-  margin-left: 20%;
+  margin-left: 15%;
   overflow-x: auto;
   white-space: nowrap;
 `;
@@ -61,12 +71,25 @@ const Container = styled.div`
   ${tw`
     bg-color-secondary
     h-full
+    font-roboto
     grid
     grid-cols-2
     sm:grid-cols-1
-    font-roboto  
     overflow-x-hidden 
     overflow-y-hidden
+    `}
+`;
+
+const Yellow = styled.span`
+  ${tw`
+    text-frame-yellow
+    `}
+`;
+
+const SlimText = styled.span`
+  ${tw`
+    font-light
+    text-white
     `}
 `;
 
@@ -121,6 +144,12 @@ const Frame = () => {
     <Heading>
        <Head />
     </Heading>
+    <Heading2>
+      <h1>
+        <Yellow>FRAME</Yellow>
+      </h1>
+      <SlimText>BOI</SlimText>
+    </Heading2>
     <Container>
       <Container2>
         {typeof window !== 'undefined' && (
