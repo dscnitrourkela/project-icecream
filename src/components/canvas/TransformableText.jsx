@@ -55,14 +55,14 @@ const TransformableText = ({
           }}}
         >
           <Rect
-            width={200}
-            height={40}
+            width={250}
+            height={50}
             fill={colour || "lightblue"}
             cornerRadius={[7, 7, 7, 7]}
           />
           <Text
-            width={200}
-            height={40}
+            width={250}
+            height={50}
             align={alignment || "center"}
             verticalAlign="middle"
             text={name}

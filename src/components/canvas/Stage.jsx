@@ -47,7 +47,7 @@ const CanvasStage = ({
     },
     {
       x: 100,
-      y: 200,
+      y: 250,
       id: 'rect2',
     },
   ];
@@ -73,7 +73,7 @@ const CanvasStage = ({
     <Stage ref={stageRef} width={window.innerWidth} height={window.innerHeight}
      scaleX={scale} 
      scaleY={scale}
-     style={{ margin: "auto" }}>
+     style={{ margin: "auto", overflowX: "hidden", overflowY: "hidden" }}>
       <Layer>
         <Image
           image={frameImg}

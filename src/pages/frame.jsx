@@ -45,13 +45,15 @@ const Heading2 = styled.div`
     justify-center
     items-center
     gap-4
+    overflow-x-hidden 
+    overflow-y-hidden
 `}
 `;
 
 const Container2 = styled.div`
   ${tw`
    w-100
-   p-4
+   p-1
    m-auto
    sm:w-full
 `}
@@ -72,6 +74,7 @@ const Container = styled.div`
     bg-color-secondary
     h-full
     font-roboto
+    pt-3
     grid
     grid-cols-2
     sm:grid-cols-1
