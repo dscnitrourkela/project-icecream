@@ -23,25 +23,31 @@ const CanvasStage = ({
   width,
   height,
 }) => {
+  const sceneWidth = 600;
+  const sceneHeight = 600;
+  const scale = Math.min(
+    window.innerWidth / sceneWidth,
+    window.innerHeight / sceneHeight
+  );
   const groupDimensions = {
-    height: 272,
-    width: 273,
+    height: sceneWidth - 140,
+    width: sceneHeight - 140,
   };
   const groupHeight = groupDimensions.height;
   const aspectRatio = width / height;
   const imageRenderWidth = aspectRatio * groupDimensions.height;
   const imageRenderHeight = groupDimensions.height;
-  const imagePositionX = 38.5;
-  const imagePositionY = 38;
+  const imagePositionX = sceneWidth - 530;
+  const imagePositionY = sceneHeight - 530;
   const rect = [
     {
-      x: 50,
-      y: 50,
+      x: 100,
+      y: 150,
       id: 'rect1',
     },
     {
       x: 100,
-      y: 100,
+      y: 200,
       id: 'rect2',
     },
   ];
@@ -64,12 +70,15 @@ const CanvasStage = ({
   };
 
   return (
-    <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
+    <Stage ref={stageRef} width={window.innerWidth} height={window.innerHeight}
+     scaleX={scale} 
+     scaleY={scale}
+     style={{ margin: "auto" }}>
       <Layer>
         <Image
           image={frameImg}
-          width={350}
-          height={350}
+          width={sceneWidth}
+          height={sceneHeight}
           style={{ zIndex: '100', position: 'absolute' }}
           onMouseDown={checkDeselect}
           onTouchStart={checkDeselect}

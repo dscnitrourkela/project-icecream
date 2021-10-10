@@ -12,7 +12,7 @@ import styled from 'styled-components';
 
 
 const ButtonContainer = styled.div`
-  display: block; 
+  display: flex;
   margin-top: 2px;
   margin-right: 30px;
 `;
@@ -104,7 +104,7 @@ const CustomButtons = ({
             list={fontlist}
             type="search"
             value={fontFamily}
-            style={{ outline: 'none', border: 'none' }}
+            style={{ outline: 'none', border: 'none', width: "150px" }}
             placeholder="Font Type"
             onChange={(e) => setFontFamily(e.target.value)}
          />

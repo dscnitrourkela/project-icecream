@@ -17,21 +17,42 @@ import frameData from '../../config/frameData';
 
 const Container3 = styled.h1`
   ${tw`
-   w-94
-   pt-2
+   w-96
+   p-2
    m-auto
    sm:w-full
 `}
 `;
 
-const CarouselC = styled.h1`
+const Heading = styled.div`
   ${tw`
-    w-94
-    sm:w-full
-    overflow-y-hidden
+   p-4
+   flex
+   ml-44
+   m-auto
+   justify-center
+   text-center
+   justify-items-center
+   items-center
+   sm:w-full
 `}
-  margin: 0px, 0px;
-  padding: 1px;
+`;
+
+const Container2 = styled.div`
+  ${tw`
+   w-100
+   p-4
+   m-auto
+   sm:w-full
+`}
+`;
+
+const CarouselC = styled.div`
+  width: 60%;
+  overflow-y: hidden;
+  margin: 10px, 0px;
+  padding: 5px;
+  margin-left: 20%;
   overflow-x: auto;
   white-space: nowrap;
 `;
@@ -41,13 +62,10 @@ const Container = styled.div`
     bg-color-secondary
     h-full
     grid
-    font-roboto
-    justify-center
-    text-center
-    justify-items-center
-    items-center
-    p-5
-    /* overflow-x-hidden */
+    grid-cols-2
+    sm:grid-cols-1
+    font-roboto  
+    overflow-x-hidden 
     overflow-y-hidden
     `}
 `;
@@ -99,31 +117,36 @@ const Frame = () => {
   const [image] = useImage(uploadedImage, 'Anonymous');
 
   return (
+    <>
+    <Heading>
+       <Head />
+    </Heading>
     <Container>
-      <Head />
-      {typeof window !== 'undefined' && (
-        <CanvasStage
-          stageRef={stageRef}
-          userName={userName}
-          guildName={guildName}
-          frameImg={frameImg}
-          image={image}
-          alignment={alignment}
-          fontColor={fontColor}
-          checked={checked}
-          checkedGuild={checkedGuild}
-          fontFamily={fontFamily}
-          bgColor={bgColor}
-          bgColorGuild={bgColorGuild}
-          fontColorGuild={fontColorGuild}
-          fontFamilyGuild={fontFamilyGuild}
-          height={height}
-          width={width}
-        />
-      )}
-      <CarouselC>
-        <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-      </CarouselC>
+      <Container2>
+        {typeof window !== 'undefined' && (
+          <CanvasStage
+            stageRef={stageRef}
+            userName={userName}
+            guildName={guildName}
+            frameImg={frameImg}
+            image={image}
+            alignment={alignment}
+            fontColor={fontColor}
+            checked={checked}
+            checkedGuild={checkedGuild}
+            fontFamily={fontFamily}
+            bgColor={bgColor}
+            bgColorGuild={bgColorGuild}
+            fontColorGuild={fontColorGuild}
+            fontFamilyGuild={fontFamilyGuild}
+            height={height}
+            width={width}
+          />
+        )}
+        <CarouselC>
+          <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
+        </CarouselC>
+      </Container2>
       <Container3>
         <Inputs
           handleChange={handleChange}
@@ -156,9 +179,10 @@ const Frame = () => {
           setHeight={setHeight}
           setWidth={setWidth}
         />
+        <Download stageRef={stageRef} />
       </Container3>
-      <Download stageRef={stageRef} />
     </Container>
+  </>
   );
 };
 
