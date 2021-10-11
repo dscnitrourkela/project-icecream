@@ -25,6 +25,7 @@ module.exports = {
         logo: 'repeat(auto-fit, minmax(50px, 1fr))',
       },
       spacing: {
+        18: '18px',
         100: '41rem',
       },
       colors: {
@@ -74,6 +75,8 @@ module.exports = {
 
       lg: { max: '1023px' },
       // => @media (max-width: 1023px) { ... }
+
+      mlg: { max: '880px' },
 
       md: { max: '760px' },
       // => @media (max-width: 767px) { ... }
