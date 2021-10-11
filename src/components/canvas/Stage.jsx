@@ -30,8 +30,8 @@ const CanvasStage = ({
     window.innerHeight / sceneHeight
   );
   const groupDimensions = {
-    height: sceneWidth - 140,
-    width: sceneHeight - 140,
+    height: sceneHeight - 140,
+    width: sceneWidth - 140,
   };
   const groupHeight = groupDimensions.height;
   const aspectRatio = width / height;
@@ -67,10 +67,12 @@ const CanvasStage = ({
 
   const checkDeselect = () => {
     selectShape1(null);
+    selectShape(null);
   };
 
+
   return (
-    <Stage ref={stageRef} width={window.innerWidth} height={window.innerHeight}
+    <Stage ref={stageRef} width={window.innerWidth} height={sceneHeight}
      scaleX={scale} 
      scaleY={scale}
      style={{ margin: "auto", overflowX: "hidden", overflowY: "hidden" }}>
@@ -113,6 +115,8 @@ const CanvasStage = ({
               fontFamily={fontFamily}
               alignment={alignment}
               fontColor={fontColor}
+              onMouseDown={checkDeselect}
+              onTouchStart={checkDeselect}
               fontStyle='bold'
               fontSize={22}
               shapeProps={rect[0]}
@@ -135,6 +139,8 @@ const CanvasStage = ({
               fontFamily={fontFamilyGuild}
               alignment={alignment}
               fontColor={fontColorGuild}
+              onMouseDown={checkDeselect}
+              onTouchStart={checkDeselect}
               fontStyle='normal'
               fontSize={22}
               shapeProps={rect[1]}

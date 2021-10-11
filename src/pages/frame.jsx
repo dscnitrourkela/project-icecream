@@ -24,7 +24,7 @@ const Container3 = styled.h1`
 `}
 `;
 
-const Heading = styled.div`
+const Heading = styled.h1`
   ${tw`
    pl-4
    pt-2
@@ -37,7 +37,7 @@ const Heading = styled.div`
 `}
 `;
 
-const Heading2 = styled.div`
+const Heading2 = styled.h1`
   ${tw`
     text-6xl
     flex
@@ -50,12 +50,13 @@ const Heading2 = styled.div`
 `}
 `;
 
-const Container2 = styled.div`
+const Container2 = styled.h1`
   ${tw`
    w-100
    p-1
-   m-auto
    sm:w-full
+   md:ml-16
+   sm:ml-0
 `}
 `;
 
@@ -72,7 +73,6 @@ const CarouselC = styled.div`
 const Container = styled.div`
   ${tw`
     bg-color-secondary
-    h-full
     font-roboto
     pt-3
     grid
