@@ -24,6 +24,36 @@ const Container3 = styled.h1`
 `}
 `;
 
+const C1 = styled.div`
+  ${tw`
+  mt-5
+  mlg:mt-0
+  `}
+`;
+
+const C4 = styled.div`
+  ${tw`
+  pt-8
+  pl-5
+  mlg:flex justify-center m-0
+  `}
+`;
+
+const C3 = styled.div`
+  ${tw`
+  `}
+`;
+
+const C2 = styled.div`
+  ${tw`
+    flex 
+    gap-20
+    mt-18
+    mlg:grid
+    mlg:gap-0
+  `}
+`;
+
 const CarouselC = styled.h1`
   ${tw`
     w-94
@@ -52,6 +82,32 @@ const Container = styled.div`
     `}
 `;
 
+const Heading = styled.div`
+  ${tw`
+    font-roboto
+    text-6xl
+    flex
+    justify-center
+    items-center
+    gap-4
+    -mt-10
+    mlg:hidden
+    `}
+`;
+
+const Yellow = styled.span`
+  ${tw`
+    text-frame-yellow
+    `}
+`;
+
+const SlimText = styled.span`
+  ${tw`
+    font-light
+    text-white
+    `}
+`;
+
 const FRAMES = {
   ONE: frameData.frames.ONE,
   TWO: frameData.frames.TWO,
@@ -61,7 +117,7 @@ const FRAMES = {
   SIX: frameData.frames.FIVE,
 };
 
-const align = ["center", "left", "right"];
+const align = ['center', 'left', 'right'];
 let i = 0;
 
 const Frame = () => {
@@ -82,15 +138,15 @@ const Frame = () => {
   const [alignment, setAlignment] = useState(align[0]);
 
   const handleAlignment = () => {
-      setAlignment(align[i+1]);
-      // eslint-disable-next-line no-const-assign
-      i += 1 ; 
-      
-     if(i === 3){
-      setAlignment(align[i-3]);
+    setAlignment(align[i + 1]);
+    // eslint-disable-next-line no-const-assign
+    i += 1;
+
+    if (i === 3) {
+      setAlignment(align[i - 3]);
       i = 0;
-     }
-  }
+    }
+  };
   const handleChange = () => setchecked((prevCheck) => !prevCheck);
   const handleChangeGuild = () => setcheckedGuild((prevCheck) => !prevCheck);
 
@@ -99,66 +155,84 @@ const Frame = () => {
   const [image] = useImage(uploadedImage, 'Anonymous');
 
   return (
-    <Container>
-      <Head />
-      {typeof window !== 'undefined' && (
-        <CanvasStage
-          stageRef={stageRef}
-          userName={userName}
-          guildName={guildName}
-          frameImg={frameImg}
-          image={image}
-          alignment={alignment}
-          fontColor={fontColor}
-          checked={checked}
-          checkedGuild={checkedGuild}
-          fontFamily={fontFamily}
-          bgColor={bgColor}
-          bgColorGuild={bgColorGuild}
-          fontColorGuild={fontColorGuild}
-          fontFamilyGuild={fontFamilyGuild}
-          height={height}
-          width={width}
-        />
-      )}
-      <CarouselC>
-        <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
-      </CarouselC>
-      <Container3>
-        <Inputs
-          handleChange={handleChange}
-          handleChangeGuild={handleChangeGuild}
-          checked={checked}
-          checkedGuild={checkedGuild}
-          setchecked={setchecked}
-          setheckedGuild={setcheckedGuild}
-          uploadedImage={uploadedImage}
-          setUploadedImage={setUploadedImage}
-          userName={userName}
-          setUsername={setUserName}
-          guildName={guildName}
-          setGuildname={setGuildName}
-          fontFamily={fontFamily}
-          setFontFamily={setFontFamily}
-          bgColor={bgColor}
-          setBgColor={setBgColor}
-          fontColor={fontColor}
-          setFontColor={setFontColor}
-          alignment={alignment}
-          bgColorGuild={bgColorGuild}
-          setBgColorGuild={setBgColorGuild}
-          fontColorGuild={fontColorGuild}
-          setFontColorGuild={setFontColorGuild}
-          handleAlignment={handleAlignment}
-          align={align}
-          fontFamilyGuild={fontFamilyGuild}
-          setFontFamilyGuild={setFontFamilyGuild}
-          setHeight={setHeight}
-          setWidth={setWidth}
-        />
-      </Container3>
-      <Download stageRef={stageRef} />
-    </Container>
+    <>
+      <C4>
+        <Head />
+        <Heading>
+          <h1>
+            <Yellow>FRAME</Yellow>
+          </h1>
+          <SlimText>BOI</SlimText>
+        </Heading>
+      </C4>
+
+      <Container>
+        <C2>
+          <C1>
+            {typeof window !== 'undefined' && (
+              <CanvasStage
+                stageRef={stageRef}
+                userName={userName}
+                guildName={guildName}
+                frameImg={frameImg}
+                image={image}
+                alignment={alignment}
+                fontColor={fontColor}
+                checked={checked}
+                checkedGuild={checkedGuild}
+                fontFamily={fontFamily}
+                bgColor={bgColor}
+                bgColorGuild={bgColorGuild}
+                fontColorGuild={fontColorGuild}
+                fontFamilyGuild={fontFamilyGuild}
+                height={height}
+                width={width}
+              />
+            )}
+            <CarouselC>
+              <Carousel frames={FRAMES} setSelectedFrame={setSelectedFrame} />
+            </CarouselC>
+          </C1>
+
+          <C3>
+            <Container3>
+              <Inputs
+                handleChange={handleChange}
+                handleChangeGuild={handleChangeGuild}
+                checked={checked}
+                checkedGuild={checkedGuild}
+                setchecked={setchecked}
+                setheckedGuild={setcheckedGuild}
+                uploadedImage={uploadedImage}
+                setUploadedImage={setUploadedImage}
+                userName={userName}
+                setUsername={setUserName}
+                guildName={guildName}
+                setGuildname={setGuildName}
+                fontFamily={fontFamily}
+                setFontFamily={setFontFamily}
+                bgColor={bgColor}
+                setBgColor={setBgColor}
+                fontColor={fontColor}
+                setFontColor={setFontColor}
+                alignment={alignment}
+                bgColorGuild={bgColorGuild}
+                setBgColorGuild={setBgColorGuild}
+                fontColorGuild={fontColorGuild}
+                setFontColorGuild={setFontColorGuild}
+                handleAlignment={handleAlignment}
+                align={align}
+                fontFamilyGuild={fontFamilyGuild}
+                setFontFamilyGuild={setFontFamilyGuild}
+                setHeight={setHeight}
+                setWidth={setWidth}
+              />
+            </Container3>
+            <Download stageRef={stageRef} />
+          </C3>
+        </C2>
+      </Container>
+    </>
   );
 };
 
