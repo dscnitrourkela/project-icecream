@@ -26,6 +26,7 @@ const SubHeading = styled.p`
   ${tw`
     row-span-1
     text-white
+    font-roboto
   `}
   text-decoration: underline black;
 `;
