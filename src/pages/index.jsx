@@ -14,7 +14,6 @@ import home from '../../config/home';
 
 const Container = styled.div`
   ${tw`
-
     bg-color-secondary
     grid
     h-full

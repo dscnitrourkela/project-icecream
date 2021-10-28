@@ -59,9 +59,10 @@ const CarouselC = styled.h1`
     w-94
     sm:w-full
     overflow-y-hidden
+    mt-5
 `}
   margin: 0px, 0px;
-  padding: 1px;
+  padding: 2px;
   overflow-x: auto;
   white-space: nowrap;
 `;
@@ -112,9 +113,6 @@ const FRAMES = {
   ONE: frameData.frames.ONE,
   TWO: frameData.frames.TWO,
   THREE: frameData.frames.THREE,
-  FOUR: frameData.frames.FOUR,
-  FIVE: frameData.frames.FIVE,
-  SIX: frameData.frames.FIVE,
 };
 
 const align = ['center', 'left', 'right'];
