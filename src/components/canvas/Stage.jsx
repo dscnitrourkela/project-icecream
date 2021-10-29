@@ -6,16 +6,16 @@ import TransformableText from './TransformableText';
 import TransformableImage from './TransformableImage';
 
 const CanvasStage = ({
-  stageRef, 
-  userName, 
-  guildName, 
-  frameImg, 
-  image, 
-  checked, 
+  stageRef,
+  userName,
+  guildName,
+  frameImg,
+  image,
+  checked,
   checkedGuild,
   bgColor,
   bgColorGuild,
-  fontFamily, 
+  fontFamily,
   fontColor,
   fontColorGuild,
   fontFamilyGuild,
@@ -67,14 +67,6 @@ const CanvasStage = ({
   return (
     <Stage ref={stageRef} width={350} height={350} x={0} style={{ margin: 'auto' }}>
       <Layer>
-        <Image
-          image={frameImg}
-          width={350}
-          height={350}
-          style={{ zIndex: '100', position: 'absolute' }}
-          onMouseDown={checkDeselect}
-          onTouchStart={checkDeselect}
-        />
         <Group
           clipX={imagePositionX}
           clipY={imagePositionY}
@@ -146,6 +138,16 @@ const CanvasStage = ({
             />
           )}
         </Group>
+
+        <Image
+          image={frameImg}
+          width={350}
+          height={350}
+          style={{ zIndex: '100', position: 'absolute' }}
+          onMouseDown={checkDeselect}
+          onTouchStart={checkDeselect}
+          listening={false}
+        />
       </Layer>
     </Stage>
   );
