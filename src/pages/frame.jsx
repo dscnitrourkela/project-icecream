@@ -29,6 +29,11 @@ const C1 = styled.div`
   mt-5
   mlg:mt-0
   `}
+
+  background-color: #333333;
+  padding: 1rem;
+  border-radius: 4px;
+  width: 100%;
 `;
 
 const C4 = styled.div`
@@ -46,7 +51,7 @@ const C3 = styled.div`
 
 const C2 = styled.div`
   ${tw`
-    flex 
+    flex
     gap-20
     mt-18
     mlg:grid
