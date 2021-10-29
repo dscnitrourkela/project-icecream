@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import useImage from 'use-image';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Helmet from 'react-helmet';
 
 // Components
 import Carousel from '../components/frameControllers/FrameCarousel';
@@ -159,6 +160,10 @@ const Frame = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Frameboi | HackNITR 3.0</title>
+        <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
+      </Helmet>
       <C4>
         <Head />
         <Heading>
