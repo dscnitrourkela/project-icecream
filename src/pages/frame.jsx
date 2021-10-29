@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import useImage from 'use-image';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Helmet from 'react-helmet';
 
 // Components
 import Carousel from '../components/frameControllers/FrameCarousel';
@@ -29,6 +30,11 @@ const C1 = styled.div`
   mt-5
   mlg:mt-0
   `}
+
+  background-color: #333333;
+  padding: 1rem;
+  border-radius: 4px;
+  width: 100%;
 `;
 
 const C4 = styled.div`
@@ -46,7 +52,7 @@ const C3 = styled.div`
 
 const C2 = styled.div`
   ${tw`
-    flex 
+    flex
     gap-20
     mt-18
     mlg:grid
@@ -59,9 +65,10 @@ const CarouselC = styled.h1`
     w-94
     sm:w-full
     overflow-y-hidden
+    mt-5
 `}
   margin: 0px, 0px;
-  padding: 1px;
+  padding: 2px;
   overflow-x: auto;
   white-space: nowrap;
 `;
@@ -112,9 +119,6 @@ const FRAMES = {
   ONE: frameData.frames.ONE,
   TWO: frameData.frames.TWO,
   THREE: frameData.frames.THREE,
-  FOUR: frameData.frames.FOUR,
-  FIVE: frameData.frames.FIVE,
-  SIX: frameData.frames.FIVE,
 };
 
 const align = ['center', 'left', 'right'];
@@ -156,6 +160,10 @@ const Frame = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Frameboi | HackNITR 3.0</title>
+        <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
+      </Helmet>
       <C4>
         <Head />
         <Heading>

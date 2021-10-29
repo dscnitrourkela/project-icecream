@@ -61,6 +61,7 @@ const CanvasStage = ({
 
   const checkDeselect = () => {
     selectShape1(null);
+    selectShape(null);
   };
 
   return (
@@ -104,6 +105,8 @@ const CanvasStage = ({
               fontFamily={fontFamily}
               alignment={alignment}
               fontColor={fontColor}
+              onMouseDown={checkDeselect}
+              onTouchStart={checkDeselect}
               fontStyle='bold'
               fontSize={22}
               shapeProps={rect[0]}
@@ -126,6 +129,8 @@ const CanvasStage = ({
               fontFamily={fontFamilyGuild}
               alignment={alignment}
               fontColor={fontColorGuild}
+              onMouseDown={checkDeselect}
+              onTouchStart={checkDeselect}
               fontStyle='normal'
               fontSize={22}
               shapeProps={rect[1]}

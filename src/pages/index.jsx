@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'gatsby';
+import Helmet from 'react-helmet';
 
 // Components
 import Button from '../components/shared/Button';
@@ -14,7 +15,6 @@ import home from '../../config/home';
 
 const Container = styled.div`
   ${tw`
-
     bg-color-secondary
     grid
     h-full
@@ -78,21 +78,27 @@ const SlimText = styled.span`
 `;
 
 const Home = () => (
-  <Container>
-    <Head />
-    <FrameImg src={home.frame.src} alt={home.frame.alt} />
-    <SubHeading>{home.subheading}</SubHeading>
-    <Heading>
-      <h1>
-        <Yellow>FRAME</Yellow>
-      </h1>
-      <SlimText>BOI</SlimText>
-    </Heading>
-    <Description>{home.description}</Description>
-    <Link to='/frame'>
-      <Button>{home.button}</Button>
-    </Link>
-  </Container>
+  <>
+    <Helmet>
+      <title>Frameboi | HackNITR 3.0</title>
+      <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
+    </Helmet>
+    <Container>
+      <Head />
+      <FrameImg src={home.frame.src} alt={home.frame.alt} />
+      <SubHeading>{home.subheading}</SubHeading>
+      <Heading>
+        <h1>
+          <Yellow>FRAME</Yellow>
+        </h1>
+        <SlimText>BOI</SlimText>
+      </Heading>
+      <Description>{home.description}</Description>
+      <Link to='/frame'>
+        <Button>{home.button}</Button>
+      </Link>
+    </Container>
+  </>
 );
 
 export default Home;
