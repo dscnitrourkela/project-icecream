@@ -1,13 +1,44 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 // Libraries
 import { Layer, Stage, Image, Text } from "react-konva";
+
+// Components
+import CustomImage from "./CustomImage";
 
 // Assets
 import frame1 from "../assets/frame1";
 import profile from "../assets/frame1";
 
 const Canvas = () => {
+  /**
+   * Okay so we have removed the imageDetails variables and
+   * shifted it to a state. Not only this but also we have added
+   * 2 new properties of scale defaulted to 1 which would determine
+   * the size of our shape/element and id.
+   *
+   * In addition to that we have also created a new state called
+   * selectedElement. This element stores an id or unique field which
+   * showcases which element is currently selected.
+   */
+  const [selectedElement, setSelectedElement] = useState(null);
+  const [imageDetails, setImageDetails] = useState({
+    originalDimensions: {
+      width: 0,
+      height: 0,
+    },
+    renderDimensions: {
+      width: 300,
+      height: 300,
+    },
+    position: {
+      x: 0,
+      y: 0,
+    },
+    scale: 1,
+    id: "user-profile-image",
+    image: profile,
+  });
   /**
    * A list of objects containing the various details that we
    * would require for all the different elements.
@@ -23,25 +54,11 @@ const Canvas = () => {
     y: 0,
   };
 
-  const imageDetails = {
-    originalDimensions: {
-      width: 0,
-      height: 0,
-    },
-    renderDimensions: {
-      width: 300,
-      height: 300,
-    },
-    position: {
-      x: 0,
-      y: 0,
-    },
-  };
-
   const textDetails = {
     name: {
       value: "",
       id: "user-name",
+      scale: 1,
       dimensions: {
         width: 100,
         height: 50,
@@ -73,12 +90,11 @@ const Canvas = () => {
       style={{ position: "relative" }}
     >
       <Layer>
-        <Image
-          image={profile}
-          width={imageDetails.renderDimensions.width}
-          height={imageDetails.renderDimensions.height}
-          x={imageDetails.position.x}
-          y={imageDetails.position.y}
+        <CustomImage
+          imageDetails={imageDetails}
+          setImageDetails={setImageDetails}
+          isSelected={selectedElement === imageDetails.id}
+          onSelect={() => setSelectedElement(imageDetails.id)}
         />
 
         <Text
