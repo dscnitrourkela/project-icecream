@@ -3,18 +3,18 @@ import React from "react";
 // Components
 import { Image, Transformer } from "react-konva";
 
-const CustomImage = ({
-  imageDetails,
-  setImageDetails,
-  isSelected,
-  onSelect,
-}) => {
+// State Handlers
+import { useFrames } from "../store/contexts/frames.context";
+import { CANVAS_ACTIONS } from "../store/actions/frames.action";
+
+const CustomImage = ({ isSelected, onSelect }) => {
   /**
    * Create references to the shape which needs to be transformed
    * and to the transformer component itself.
    */
   const shapeRef = React.useRef();
   const transformerRef = React.useRef();
+  const [state, dispatch] = useFrames();
 
   /**
    * This effect runs whenever the isSelected variable is toggled
@@ -37,7 +37,7 @@ const CustomImage = ({
     renderDimensions: { width, height },
     position: { x, y },
     image,
-  } = imageDetails;
+  } = state.imageDetails;
 
   /**
    * The most important handler functions for transformations
@@ -56,7 +56,12 @@ const CustomImage = ({
   const onTransformEnd = () => {
     if (shapeRef.current) {
       const node = shapeRef.current;
-      setImageDetails((current) => ({ ...current, scale: node.scale() }));
+      dispatch({
+        type: CANVAS_ACTIONS.UPDATE_IMAGE_DIMENSIONS,
+        payload: {
+          scale: node.scale(),
+        },
+      });
     }
   };
 
@@ -69,7 +74,13 @@ const CustomImage = ({
   const onDragEnd = () => {
     if (shapeRef.current) {
       const node = shapeRef.current;
-      setImageDetails((current) => ({ ...current, x: node.x(), y: node.y() }));
+      dispatch({
+        type: CANVAS_ACTIONS.UPDATE_IMAGE_POSITIONS,
+        payload: {
+          x: node.x(),
+          y: node.y(),
+        },
+      });
     }
   };
 

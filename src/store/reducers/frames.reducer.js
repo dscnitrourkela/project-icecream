@@ -1,4 +1,4 @@
-import { CANVAS_ACTIONS } from "../actions/compose.action";
+import { CANVAS_ACTIONS } from "../actions/frames.action";
 
 /**
  * Similar to Redux, canvasReducer handles all the different
@@ -11,13 +11,29 @@ import { CANVAS_ACTIONS } from "../actions/compose.action";
 export default function canvasReducer(state, action) {
   switch (action.type) {
     case CANVAS_ACTIONS.UPLOAD_IMAGE:
-      return state;
+      return {
+        ...state,
+        originalDimensions: {
+          width: action.payload.width,
+          height: action.payload.height,
+        },
+        image: action.payload.image,
+      };
 
     case CANVAS_ACTIONS.UPDATE_IMAGE_DIMENSIONS:
-      return state;
+      return {
+        ...state,
+        scale: action.payload.scale,
+      };
 
     case CANVAS_ACTIONS.UPDATE_IMAGE_POSITIONS:
-      return state;
+      return {
+        ...state,
+        position: {
+          x: action.payload.x,
+          y: action.payload.y,
+        },
+      };
 
     default:
       return state;

@@ -1,10 +1,14 @@
 import React from "react";
 
+// Components
+import { FramesCtxProvider } from "./store/contexts/frames.context";
+import Frames from "./pages/Frame";
+
 const App = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <FramesCtxProvider>
+      <Frames />
+    </FramesCtxProvider>
   );
 };
 
