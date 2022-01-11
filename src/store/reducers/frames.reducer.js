@@ -20,7 +20,16 @@ export default function canvasReducer(state, action) {
         image: action.payload.image,
       };
 
-    case CANVAS_ACTIONS.UPDATE_IMAGE_DIMENSIONS:
+    case CANVAS_ACTIONS.UPDATE_IMAGE_RENDERED_DIMENSIONS:
+      return {
+        ...state,
+        renderDimensions: {
+          width: action.payload.width,
+          height: action.payload.height,
+        },
+      };
+
+    case CANVAS_ACTIONS.UPDATE_IMAGE_SCALE:
       return {
         ...state,
         scale: action.payload.scale,
