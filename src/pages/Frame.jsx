@@ -5,9 +5,9 @@ import Canvas from "../components/Canvas";
 
 const Frames = () => {
   return (
-    <div>
+    <>
       <Canvas />
-    </div>
+    </>
   );
 };
 

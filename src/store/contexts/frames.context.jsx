@@ -1,10 +1,10 @@
-import React, { useReducer, useMemo, createContext, useContext } from "react";
+import React, { useReducer, useMemo, useContext, createContext } from "react";
 
 // Reducer, Initial State, Types
 import canvasReducer from "../reducers/frames.reducer";
 import { initialState } from "../actions/frames.action";
 
-const FramesContext = createContext(initialState);
+export const FramesContext = createContext();
 
 export function FramesCtxProvider(props) {
   /**
@@ -19,7 +19,7 @@ export function FramesCtxProvider(props) {
    * })
    */
   const [state, dispatch] = useReducer(canvasReducer, initialState);
-  const value = useMemo(() => [state, dispatch], [state]);
+  const value = useMemo(() => ({state, dispatch}), [state]);
   return <FramesContext.Provider value={value} {...props} />;
 }
 
@@ -34,9 +34,10 @@ export function FramesCtxProvider(props) {
  */
 export function useFrames() {
   const context = useContext(FramesContext);
+
   if (!context)
     throw new Error("useFrames must be used within a FramesCtxProvider");
 
-  const [state, dispatch] = context;
+  const {state, dispatch} = context;
   return [state, dispatch];
 }

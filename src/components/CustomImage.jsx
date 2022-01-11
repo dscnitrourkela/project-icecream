@@ -2,6 +2,7 @@ import React from "react";
 
 // Components
 import { Image, Transformer } from "react-konva";
+import useImage from "use-image";
 
 // State Handlers
 import { useFrames } from "../store/contexts/frames.context";
@@ -15,6 +16,8 @@ const CustomImage = ({ isSelected, onSelect }) => {
   const shapeRef = React.useRef();
   const transformerRef = React.useRef();
   const [state, dispatch] = useFrames();
+
+  const [image] = useImage(state.imageDetails.image);
 
   /**
    * This effect runs whenever the isSelected variable is toggled
@@ -36,7 +39,6 @@ const CustomImage = ({ isSelected, onSelect }) => {
   const {
     renderDimensions: { width, height },
     position: { x, y },
-    image,
   } = state.imageDetails;
 
   /**

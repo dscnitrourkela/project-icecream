@@ -1,8 +1,8 @@
 import React from "react";
 
 // Components
-import { FramesCtxProvider } from "./store/contexts/frames.context";
 import Frames from "./pages/Frame";
+import { FramesCtxProvider } from "./store/contexts/frames.context";
 
 const App = () => {
   return (

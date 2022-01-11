@@ -25,6 +25,33 @@ export const initialState = {
     id: "user-profile-image",
     image: null,
   },
+  textDetails: {
+    name: {
+      value: "",
+      id: "user-name",
+      scale: 1,
+      dimensions: {
+        width: 100,
+        height: 50,
+      },
+      position: {
+        x: 50,
+        y: 50,
+      },
+    },
+    guild: {
+      value: "",
+      id: "user-guild",
+      dimensions: {
+        x: 100,
+        y: 50,
+      },
+      position: {
+        x: 100,
+        y: 100,
+      },
+    },
+  }
 };
 
 /**
