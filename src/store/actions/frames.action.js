@@ -13,6 +13,7 @@ export const initialState = {
     height: 350,
     x: 0,
     y: 0,
+    ref: null,
   },
   imageDetails: {
     originalDimensions: {
@@ -70,4 +71,5 @@ export const CANVAS_ACTIONS = Object.freeze({
   UPDATE_IMAGE_SCALE: "IMAGE/UPDATE_IMAGE_SCALE",
   UPDATE_IMAGE_RENDERED_DIMENSIONS: "IMAGE/UPDATE_IMAGE_RENDERED_DIMENSIONS",
   UPDATE_IMAGE_POSITIONS: "IMAGE/UPDATE_IMAGE_POSITIONS",
+  UPDATE_STAGE_REF: "STAGE/UPDATE_STAGE_REF"
 });

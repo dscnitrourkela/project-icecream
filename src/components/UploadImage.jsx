@@ -13,6 +13,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  border-radius: 7px;
+  background: #333333;
+  padding: 1rem;
+
+  color: #c7c7c7;
+  margin-bottom: 1.5rem;
 `
 
 const IconContainer = styled.div`
@@ -20,6 +27,7 @@ const IconContainer = styled.div`
   height: 60px;
   border-radius: 50%;
   background: #c7c7c7;
+  margin-left: 12px;
 
   display: flex;
   align-items: center;

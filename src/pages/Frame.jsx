@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Canvas from "../components/Canvas";
 import UploadImage from '../components/UploadImage';
 import Controller from '../components/Controller';
+import Download from '../components//Download';
 
 const GridContainer = styled.div`
   width: 60%;
@@ -21,6 +22,9 @@ const GridContainer = styled.div`
 const Column1 = styled.div`
   width: 50%;
   margin-right: 1rem;
+  background: #333333;
+  padding: 1.5rem 1rem;
+  border-radius: 7px;
 `
 
 const Column2 = styled.div`
@@ -39,6 +43,7 @@ const Frames = () => {
       <Column2>
         <UploadImage />
         <Controller />
+        <Download />
       </Column2>
     </GridContainer>
   );

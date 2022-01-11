@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Libraries
 import { Layer, Stage, Image } from "react-konva";
@@ -11,6 +11,7 @@ import { FramesContext, useFrames } from "../store/contexts/frames.context";
 
 // Utils
 import { CONTROLLER_ACTIONS } from "../store/actions/controller.action";
+import { CANVAS_ACTIONS } from "../store/actions/frames.action";
 
 const Canvas = () => {
   const [frame1] = useImage("https://res.cloudinary.com/riteshp2000/image/upload/v1641915566/frame3_u9zm5x.png");
@@ -46,6 +47,15 @@ const Canvas = () => {
       setSelectedElement(id)
     }
   }
+
+  useEffect(() => {
+    if (stageRef) {
+      dispatch({
+        type: CANVAS_ACTIONS.UPDATE_STAGE_REF,
+        payload: stageRef
+      })
+    }
+  }, [stageRef, dispatch])
 
   return (
     <FramesContext.Consumer>

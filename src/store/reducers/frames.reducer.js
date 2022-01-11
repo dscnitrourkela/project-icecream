@@ -11,6 +11,15 @@ import { CONTROLLER_ACTIONS } from "../actions/controller.action";
  */
 export default function canvasReducer(state, action) {
   switch (action.type) {
+    case CANVAS_ACTIONS.UPDATE_STAGE_REF:
+      return {
+        ...state,
+        stageDetails: {
+          ...state.stageDetails,
+          ref: action.payload,
+        }
+      }
+
     case CANVAS_ACTIONS.UPLOAD_IMAGE:
       return {
         ...state,
