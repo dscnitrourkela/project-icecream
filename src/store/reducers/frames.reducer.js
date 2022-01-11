@@ -1,4 +1,5 @@
 import { CANVAS_ACTIONS } from "../actions/frames.action";
+import { CONTROLLER_ACTIONS } from "../actions/controller.action";
 
 /**
  * Similar to Redux, canvasReducer handles all the different
@@ -13,37 +14,120 @@ export default function canvasReducer(state, action) {
     case CANVAS_ACTIONS.UPLOAD_IMAGE:
       return {
         ...state,
-        originalDimensions: {
-          width: action.payload.width,
-          height: action.payload.height,
-        },
-        image: action.payload.image,
+        imageDetails: {
+          ...state.imageDetails,
+          originalDimensions: {
+            width: action.payload.width,
+            height: action.payload.height,
+          },
+          image: action.payload.image,
+        }
       };
 
     case CANVAS_ACTIONS.UPDATE_IMAGE_RENDERED_DIMENSIONS:
       return {
         ...state,
-        renderDimensions: {
-          width: action.payload.width,
-          height: action.payload.height,
-        },
+        imageDetails: {
+          ...state.imageDetails,
+          renderDimensions: {
+            width: action.payload.width,
+            height: action.payload.height,
+          },
+        }
       };
 
     case CANVAS_ACTIONS.UPDATE_IMAGE_SCALE:
       return {
         ...state,
-        scale: action.payload.scale,
+        imageDetails: {
+          ...state.imageDetails,
+          scale: action.payload.scale,
+        }
       };
 
     case CANVAS_ACTIONS.UPDATE_IMAGE_POSITIONS:
       return {
         ...state,
-        position: {
-          x: action.payload.x,
-          y: action.payload.y,
-        },
+        imageDetails: {
+          ...state.imageDetails,
+          position: {
+            x: action.payload.x,
+            y: action.payload.y,
+          },
+        }
       };
 
+    case CONTROLLER_ACTIONS.UPDATE_NAME_INPUT:
+			return {
+				...state,
+				textDetails: {
+					...state.textDetails,
+					name: {
+            ...state.textDetails.name,
+            value: action.payload,
+          }
+				}
+			}
+
+    case CONTROLLER_ACTIONS.UPDATE_NAME_SCALE:
+      return {
+				...state,
+				textDetails: {
+					...state.textDetails,
+					name: {
+            ...state.textDetails.name,
+            scale: action.payload,
+          }
+				}
+			}
+
+    case CONTROLLER_ACTIONS.UPDATE_NAME_POSITIONS:
+      return {
+				...state,
+				textDetails: {
+					...state.textDetails,
+					name: {
+            ...state.textDetails.name,
+            position: action.payload,
+          }
+				}
+			}
+
+		case CONTROLLER_ACTIONS.UPDATE_GUILD_INPUT:
+			return {
+				...state,
+				textDetails: {
+					...state.textDetails,
+					guild: {
+            ...state.textDetails.guild,
+            value: action.payload,
+          }
+				}
+			}
+
+		case CONTROLLER_ACTIONS.UPDATE_GUILD_SCALE:
+			return {
+				...state,
+				textDetails: {
+					...state.textDetails,
+					guild: {
+            ...state.textDetails.guild,
+            scale: action.payload,
+          }
+				}
+			}
+
+    case CONTROLLER_ACTIONS.UPDATE_GUILD_POSITIONS:
+      return {
+        ...state,
+        textDetails: {
+          ...state.textDetails,
+          guild: {
+            ...state.textDetails.guild,
+            position: action.payload,
+          }
+        }
+      }
     default:
       return state;
   }

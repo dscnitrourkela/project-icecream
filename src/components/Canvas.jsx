@@ -1,16 +1,20 @@
 import React, { useRef, useState } from "react";
 
 // Libraries
-import { Layer, Stage, Text, Image } from "react-konva";
+import { Layer, Stage, Image } from "react-konva";
 import useImage from "use-image";
 
 // Components
 import CustomImage from "./CustomImage";
+import CustomText from './CustomText';
 import { FramesContext, useFrames } from "../store/contexts/frames.context";
+
+// Utils
+import { CONTROLLER_ACTIONS } from "../store/actions/controller.action";
 
 const Canvas = () => {
   const [frame1] = useImage("https://res.cloudinary.com/riteshp2000/image/upload/v1641915566/frame3_u9zm5x.png");
-  const [state] = useFrames();
+  const [state, dispatch] = useFrames();
 
   /**
    * Okay so we have removed the imageDetails variables and
@@ -32,14 +36,16 @@ const Canvas = () => {
    * them to their global states later
    */
   const stageRef = useRef();
-  const stageDetails = {
-    width: 350,
-    height: 350,
-    x: 0,
-    y: 0,
-  };
-
+  const stageDetails = state.stageDetails;
   const textDetails = state.textDetails;
+
+  const onSelect = (id) => {
+    if (selectedElement === id) {
+      setSelectedElement(null);
+    } else {
+      setSelectedElement(id)
+    }
+  }
 
   return (
     <FramesContext.Consumer>
@@ -55,23 +61,40 @@ const Canvas = () => {
               {state.imageDetails.image && (
                 <CustomImage
                   isSelected={selectedElement === state.imageDetails.id}
-                  onSelect={() => setSelectedElement(state.imageDetails.id)}
+                  onSelect={() => onSelect(state.imageDetails.id)}
                 />
               )}
 
-              <Text
-                text={textDetails.name.value}
-                width={textDetails.name.dimensions.width}
-                height={textDetails.name.dimensions.height}
-                x={textDetails.name.position.x}
-                y={textDetails.name.position.y}
+              <CustomText
+                dimensions={textDetails.name.dimensions}
+                position={textDetails.name.position}
+                name={textDetails.name.value}
+                isSelected={selectedElement === textDetails.name.id}
+                onSelect={() => onSelect(textDetails.name.id)}
+                onTransformEnd={(payload) => dispatch({
+                  action: CONTROLLER_ACTIONS.UPDATE_NAME_SCALE,
+                  payload,
+                })}
+                onDragEnd={(payload) => dispatch({
+                  action: CONTROLLER_ACTIONS.UPDATE_NAME_POSITIONS,
+                  payload,
+                })}
               />
-              <Text
-                text={textDetails.guild.value}
-                width={textDetails.guild.dimensions.width}
-                height={textDetails.guild.dimensions.height}
-                x={textDetails.guild.position.x}
-                y={textDetails.guild.position.y}
+
+              <CustomText
+                dimensions={textDetails.guild.dimensions}
+                position={textDetails.guild.position}
+                name={textDetails.guild.value}
+                isSelected={selectedElement === textDetails.guild.id}
+                onSelect={() => onSelect(textDetails.guild.id)}
+                onTransformEnd={(payload) => dispatch({
+                  action: CONTROLLER_ACTIONS.UPDATE_GUILD_SCALE,
+                  payload,
+                })}
+                onDragEnd={(payload) => dispatch({
+                  action: CONTROLLER_ACTIONS.UPDATE_GUILD_POSITIONS,
+                  payload,
+                })}
               />
 
               <Image
@@ -81,6 +104,8 @@ const Canvas = () => {
                 x={0}
                 y={0}
                 style={{ position: "absolute", top: 0, left: 0, zIndex: 100 }}
+                listening={false}
+                onSelect={() => onSelect(null)}
               />
             </Layer>
           </FramesContext.Provider>

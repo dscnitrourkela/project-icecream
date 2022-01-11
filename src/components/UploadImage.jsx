@@ -1,8 +1,34 @@
 import React from "react";
 
+// Libraries
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
 // State Handlers
 import { CANVAS_ACTIONS } from "../store/actions/frames.action";
 import { useFrames } from "../store/contexts/frames.context";
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
+
+const IconContainer = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #c7c7c7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover, & *:hover {
+    cursor: pointer;
+  }
+`
 
 const UploadImage = () => {
   /**
@@ -51,16 +77,25 @@ const UploadImage = () => {
 
   return (
     <div>
-      <label htmlFor='contained-button-file'>
-        <button>Upload Image</button>
-      </label>
+
+      <Container>
+        <h3 style={{width: 'calc(100% - 70px)'}}>
+					Click on the upload icon to upload image. You can repeat this step to choose another image.
+				</h3>
+
+        <IconContainer>
+          <label htmlFor='contained-button-file'>
+            <FontAwesomeIcon icon={faUpload} style={{ color: '#000', fontSize: '23px' }} />
+          </label>
+        </IconContainer>
+      </Container>
 
       <input
         type='file'
         accept='image/*'
         style={{ display: "none" }}
         id='contained-button-file'
-        maxFiles={1}
+        maxfiles={1}
         onChange={handleInputChange}
       />
     </div>

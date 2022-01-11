@@ -8,6 +8,12 @@
  * the required fields related to the user profile image.
  */
 export const initialState = {
+  stageDetails: {
+    width: 350,
+    height: 350,
+    x: 0,
+    y: 0,
+  },
   imageDetails: {
     originalDimensions: {
       width: 0,
@@ -35,20 +41,20 @@ export const initialState = {
         height: 50,
       },
       position: {
-        x: 50,
-        y: 50,
+        x: 95,
+        y: 70,
       },
     },
     guild: {
       value: "",
       id: "user-guild",
       dimensions: {
-        x: 100,
-        y: 50,
+        width: 100,
+        height: 50,
       },
       position: {
-        x: 100,
-        y: 100,
+        x: 95,
+        y: 130,
       },
     },
   }

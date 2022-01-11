@@ -16,8 +16,12 @@ const CustomImage = ({ isSelected, onSelect }) => {
   const shapeRef = React.useRef();
   const transformerRef = React.useRef();
   const [state, dispatch] = useFrames();
-
   const [image] = useImage(state.imageDetails.image);
+
+  const {
+    renderDimensions: { width, height },
+    position: { x, y },
+  } = state.imageDetails;
 
   /**
    * This effect runs whenever the isSelected variable is toggled
@@ -35,11 +39,6 @@ const CustomImage = ({ isSelected, onSelect }) => {
       transformerRef.current?.getLayer().batchDraw();
     }
   }, [isSelected]);
-
-  const {
-    renderDimensions: { width, height },
-    position: { x, y },
-  } = state.imageDetails;
 
   /**
    * The most important handler functions for transformations
