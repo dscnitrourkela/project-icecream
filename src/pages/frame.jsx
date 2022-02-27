@@ -84,7 +84,6 @@ const Container = styled.div`
     justify-items-center
     items-center
     p-5
-    /* overflow-x-hidden */
     overflow-y-hidden
     `}
 `;
@@ -164,15 +163,6 @@ const Frame = () => {
         <title>Frameboi | HackNITR 3.0</title>
         <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
       </Helmet>
-      <C4>
-        <Head />
-        <Heading>
-          <h1>
-            <Yellow>FRAME</Yellow>
-          </h1>
-          <SlimText>BOI</SlimText>
-        </Heading>
-      </C4>
 
       <Container>
         <C2>
