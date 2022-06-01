@@ -51,11 +51,11 @@
 
 ## About The Project
 
-A digital and customisable frame generator for all the participants of the hackathon
+A digital and customizable frame generator for all the participants of the hackathon
 
-- The web application allows you to customise your frames with wide-range of shapes and colors.
+- The web application allows you to customize your frames with wide-range of shapes and colors.
 - On completion of the frame, upload your profile picture.
-- Download the customised frame and share it with others.
+- Download the customized frame and share it with others.
 
 ## Built With
 
@@ -145,7 +145,7 @@ NOTE 2: Please abide by the [Code of Conduct](https://github.com/dscnitrourkela/
 
 ### Running the project.
 
-The project uses Yarn and not NPM. It is strictly advised to stick with Yarn so as to avoid dependency conflicts down the line.
+The project uses Yarn and not NPM. It is strictly advised to stick with Yarn in order to avoid dependency conflicts down the line.
 
 ```
 
