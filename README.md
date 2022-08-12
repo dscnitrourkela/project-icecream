@@ -14,7 +14,7 @@
   <h3 align="center">Frameboi</h3>
 
   <p align="center">
-    Profile Picture Frame Generator for HackNITR 3.0
+    Profile Picture Frame Generator for HackNITR 4.0
     <br />
     <br />
     <a href="https://frame.dscnitrourkela.org/">View Live</a>

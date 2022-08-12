@@ -3,11 +3,11 @@ module.exports = {
   siteMetadata: {
     title: `Frameboi`,
     siteUrl: `https://frame.dscnitrourkela.org`,
-    description: `Profile Picture Frame Generator for HackNITR 3.0 `,
+    description: `Profile Picture Frame Generator for HackNITR 4.0 `,
     canonicalUrl: `https://frame.dscnitrourkela.org`,
     author: {
       name: `Frameboi`,
-      description: `Profile Picture Frame Generator for HackNITR 3.0 `,
+      description: `Profile Picture Frame Generator for HackNITR 4.0 `,
     },
     organisation: {
       name: `DSC NIT Rourkela`,
@@ -24,7 +24,7 @@ module.exports = {
       options: {
         name: `HackNITR | Frameboi`,
         short_name: `Frameboi`,
-        description: `Profile Picture Frame Generator for HackNITR 3.0 `,
+        description: `Profile Picture Frame Generator for HackNITR 4.0 `,
         start_url: '/',
         background_color: '#17171d',
         theme_color: '#ffffff',
