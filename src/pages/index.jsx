@@ -80,8 +80,8 @@ const SlimText = styled.span`
 const Home = () => (
   <>
     <Helmet>
-      <title>Frameboi | HackNITR 3.0</title>
-      <meta name='Frameboi | HackNITR 3.0' contect='Virtual badges for HackNITR 3.0' />
+      <title>Frameboi | HackNITR 4.0</title>
+      <meta name='Frameboi | HackNITR 4.0' contect='Virtual badges for HackNITR 4.0' />
     </Helmet>
     <Container>
       <Head />
