@@ -117,8 +117,6 @@ const SlimText = styled.span`
 const FRAMES = {
   ONE: frameData.frames.ONE,
   TWO: frameData.frames.TWO,
-  THREE: frameData.frames.THREE,
-  FOUR:frameData.frames.FOUR,
 };
 
 const align = ['center', 'left', 'right'];
